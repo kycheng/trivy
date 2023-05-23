@@ -20,6 +20,9 @@ import (
 	"net/http"
 	"sort"
 	"strings"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // AuthenticationScheme defines scheme of the authentication method
@@ -63,7 +66,7 @@ const (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// OCTET      = <any 8-bit sequence of data>
 	// CHAR       = <any US-ASCII character (octets 0 - 127)>
 	// CTL        = <any US-ASCII control character (octets 0 - 31) and DEL (127)>

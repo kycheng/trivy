@@ -18,6 +18,9 @@ import (
 	"io"
 	"net"
 	"net/http"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 const (
@@ -120,7 +123,7 @@ func (d pusherDelegator) Push(target string, opts *http.PushOptions) error {
 var pickDelegator = make([]func(*responseWriterDelegator) delegator, 32)
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// TODO(beorn7): Code generation would help here.
 	pickDelegator[0] = func(d *responseWriterDelegator) delegator { // 0
 		return d

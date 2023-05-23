@@ -3,6 +3,9 @@ package log
 import (
 	stdlog "log"
 	"os"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // StdLogger corresponds to a minimal subset of the interface satisfied by stdlib log.Logger
@@ -14,7 +17,7 @@ type StdLogger interface {
 var Logger StdLogger
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// default Logger
 	SetLogger(stdlog.New(os.Stderr, "[restful] ", stdlog.LstdFlags|stdlog.Lshortfile))
 }

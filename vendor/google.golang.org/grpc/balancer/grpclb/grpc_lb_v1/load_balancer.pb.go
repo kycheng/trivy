@@ -26,13 +26,16 @@
 package grpc_lb_v1
 
 import (
+	reflect "reflect"
+	sync "sync"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	proto "github.com/golang/protobuf/proto"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	durationpb "google.golang.org/protobuf/types/known/durationpb"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
-	reflect "reflect"
-	sync "sync"
 )
 
 const (
@@ -816,7 +819,9 @@ var file_grpc_lb_v1_load_balancer_proto_depIdxs = []int32{
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now()); file_grpc_lb_v1_load_balancer_proto_init() }
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
+	file_grpc_lb_v1_load_balancer_proto_init()
+}
 func file_grpc_lb_v1_load_balancer_proto_init() {
 	if File_grpc_lb_v1_load_balancer_proto != nil {
 		return

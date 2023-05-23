@@ -21,7 +21,9 @@ import (
 	"reflect"
 	"strings"
 	"sync"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/mailru/easyjson/jlexer"
 	"github.com/mailru/easyjson/jwriter"
 )
@@ -37,7 +39,7 @@ const comma = byte(',')
 var closers map[byte]byte
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	closers = map[byte]byte{
 		'{': '}',
 		'[': ']',

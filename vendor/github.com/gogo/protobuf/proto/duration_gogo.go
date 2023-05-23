@@ -31,6 +31,8 @@ package proto
 import (
 	"reflect"
 	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 var durationType = reflect.TypeOf((*time.Duration)(nil)).Elem()
@@ -45,6 +47,6 @@ func (*duration) ProtoMessage()  {}
 func (*duration) String() string { return "duration<string>" }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RegisterType((*duration)(nil), "gogo.protobuf.proto.duration")
 }

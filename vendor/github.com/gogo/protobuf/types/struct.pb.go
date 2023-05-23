@@ -7,14 +7,17 @@ import (
 	bytes "bytes"
 	encoding_binary "encoding/binary"
 	fmt "fmt"
-	proto "github.com/gogo/protobuf/proto"
-	github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
 	io "io"
 	math "math"
 	math_bits "math/bits"
 	reflect "reflect"
 	strconv "strconv"
 	strings "strings"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+	proto "github.com/gogo/protobuf/proto"
+	github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -31,7 +34,7 @@ const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 // `NullValue` is a singleton enumeration to represent the null value for the
 // `Value` type union.
 //
-//  The JSON representation for `NullValue` is JSON `null`.
+//	The JSON representation for `NullValue` is JSON `null`.
 type NullValue int32
 
 const (
@@ -322,7 +325,7 @@ func (*ListValue) XXX_MessageName() string {
 	return "google.protobuf.ListValue"
 }
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterEnum("google.protobuf.NullValue", NullValue_name, NullValue_value)
 	proto.RegisterType((*Struct)(nil), "google.protobuf.Struct")
 	proto.RegisterMapType((map[string]*Value)(nil), "google.protobuf.Struct.FieldsEntry")
@@ -331,7 +334,9 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now()); proto.RegisterFile("google/protobuf/struct.proto", fileDescriptor_df322afd6c9fb402) }
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
+	proto.RegisterFile("google/protobuf/struct.proto", fileDescriptor_df322afd6c9fb402)
+}
 
 var fileDescriptor_df322afd6c9fb402 = []byte{
 	// 443 bytes of a gzipped FileDescriptorProto

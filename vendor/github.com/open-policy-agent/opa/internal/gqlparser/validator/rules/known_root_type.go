@@ -2,7 +2,9 @@ package validator
 
 import (
 	"fmt"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/internal/gqlparser/ast"
 
 	//nolint:revive // Validator rules each use dot imports for convenience.
@@ -10,7 +12,7 @@ import (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	AddRule("KnownRootType", func(observers *Events, addError AddErrFunc) {
 		// A query's root must be a valid type.  Surprisingly, this isn't
 		// checked anywhere else!

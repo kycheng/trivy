@@ -21,7 +21,9 @@ import (
 	"os"
 	"path/filepath"
 	"sync"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	api "github.com/containerd/containerd/api/services/introspection/v1"
 	"github.com/containerd/containerd/api/types"
 	"github.com/containerd/containerd/errdefs"
@@ -36,7 +38,7 @@ import (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	plugin.Register(&plugin.Registration{
 		Type:     plugin.ServicePlugin,
 		ID:       services.IntrospectionService,

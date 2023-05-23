@@ -30,6 +30,7 @@ import (
 	"sync/atomic"
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"google.golang.org/grpc/balancer"
 	"google.golang.org/grpc/balancer/base"
 	"google.golang.org/grpc/codes"
@@ -503,7 +504,7 @@ type ClientConn struct {
 // WaitForStateChange waits until the connectivity.State of ClientConn changes from sourceState or
 // ctx expires. A true value is returned in former case and false in latter.
 //
-// Experimental
+// # Experimental
 //
 // Notice: This API is EXPERIMENTAL and may be changed or removed in a
 // later release.
@@ -522,7 +523,7 @@ func (cc *ClientConn) WaitForStateChange(ctx context.Context, sourceState connec
 
 // GetState returns the connectivity.State of ClientConn.
 //
-// Experimental
+// # Experimental
 //
 // Notice: This API is EXPERIMENTAL and may be changed or removed in a later
 // release.
@@ -534,7 +535,7 @@ func (cc *ClientConn) GetState() connectivity.State {
 // the channel is idle.  Does not wait for the connection attempts to begin
 // before returning.
 //
-// Experimental
+// # Experimental
 //
 // Notice: This API is EXPERIMENTAL and may be changed or removed in a later
 // release.
@@ -583,7 +584,7 @@ func (cc *ClientConn) waitForResolvedAddrs(ctx context.Context) error {
 var emptyServiceConfig *ServiceConfig
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	cfg := parseServiceConfig("{}")
 	if cfg.Err != nil {
 		panic(fmt.Sprintf("impossible error parsing empty service config: %v", cfg.Err))
@@ -762,7 +763,7 @@ func (cc *ClientConn) channelzMetric() *channelz.ChannelInternalMetric {
 
 // Target returns the target string of the ClientConn.
 //
-// Experimental
+// # Experimental
 //
 // Notice: This API is EXPERIMENTAL and may be changed or removed in a
 // later release.
@@ -832,9 +833,9 @@ func equalAddresses(a, b []resolver.Address) bool {
 //
 // If ac is Ready, it checks whether current connected address of ac is in the
 // new addrs list.
-//  - If true, it updates ac.addrs and returns true. The ac will keep using
-//    the existing connection.
-//  - If false, it does nothing and returns false.
+//   - If true, it updates ac.addrs and returns true. The ac will keep using
+//     the existing connection.
+//   - If false, it does nothing and returns false.
 func (ac *addrConn) tryUpdateAddrs(addrs []resolver.Address) bool {
 	ac.mu.Lock()
 	defer ac.mu.Unlock()
@@ -999,7 +1000,7 @@ func (cc *ClientConn) resolveNow(o resolver.ResolveNowOptions) {
 // However, if a previously unavailable network becomes available, this may be
 // used to trigger an immediate reconnect.
 //
-// Experimental
+// # Experimental
 //
 // Notice: This API is EXPERIMENTAL and may be changed or removed in a
 // later release.

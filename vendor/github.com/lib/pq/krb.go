@@ -13,7 +13,8 @@ var newGss NewGSSFunc
 //	import "github.com/lib/pq/auth/kerberos"
 //
 //	func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+//
+//
 //		pq.RegisterGSSProvider(func() (pq.GSS, error) { return kerberos.NewGSS() })
 //	}
 func RegisterGSSProvider(newGssArg NewGSSFunc) {

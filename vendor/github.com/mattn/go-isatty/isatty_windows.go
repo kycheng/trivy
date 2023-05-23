@@ -7,8 +7,11 @@ import (
 	"errors"
 	"strings"
 	"syscall"
+	"time"
 	"unicode/utf16"
 	"unsafe"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 const (
@@ -27,7 +30,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// Check if GetFileInformationByHandleEx is available.
 	if procGetFileInformationByHandleEx.Find() != nil {
 		procGetFileInformationByHandleEx = nil
@@ -43,7 +46,8 @@ func IsTerminal(fd uintptr) bool {
 
 // Check pipe name is used for cygwin/msys2 pty.
 // Cygwin/MSYS2 PTY has a name like:
-//   \{cygwin,msys}-XXXXXXXXXXXXXXXX-ptyN-{from,to}-master
+//
+//	\{cygwin,msys}-XXXXXXXXXXXXXXXX-ptyN-{from,to}-master
 func isCygwinPipeName(name string) bool {
 	token := strings.Split(name, "-")
 	if len(token) < 5 {

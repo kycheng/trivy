@@ -10,8 +10,10 @@ package bidirule
 
 import (
 	"errors"
+	"time"
 	"unicode/utf8"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"golang.org/x/text/transform"
 	"golang.org/x/text/unicode/bidi"
 )
@@ -248,7 +250,7 @@ func (t *Transformer) Span(src []byte, atEOF bool) (n int, err error) {
 var asciiTable [128]bidi.Properties
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	for i := range asciiTable {
 		p, _ := bidi.LookupRune(rune(i))
 		asciiTable[i] = p

@@ -3,9 +3,15 @@
 
 package app_identity
 
-import proto "github.com/golang/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import (
+	fmt "fmt"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+	proto "github.com/golang/protobuf/proto"
+
+	math "math"
+)
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -545,7 +551,7 @@ func (m *GetDefaultGcsBucketNameResponse) GetDefaultGcsBucketName() string {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*AppIdentityServiceError)(nil), "appengine.AppIdentityServiceError")
 	proto.RegisterType((*SignForAppRequest)(nil), "appengine.SignForAppRequest")
 	proto.RegisterType((*SignForAppResponse)(nil), "appengine.SignForAppResponse")
@@ -561,7 +567,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("google.golang.org/appengine/internal/app_identity/app_identity_service.proto", fileDescriptor_app_identity_service_08a6e3f74b04cfa4)
 }
 

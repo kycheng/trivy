@@ -22,7 +22,9 @@ package annotations
 
 import (
 	reflect "reflect"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	descriptorpb "google.golang.org/protobuf/types/descriptorpb"
@@ -93,7 +95,9 @@ var file_google_api_annotations_proto_depIdxs = []int32{
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now()); file_google_api_annotations_proto_init() }
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
+	file_google_api_annotations_proto_init()
+}
 func file_google_api_annotations_proto_init() {
 	if File_google_api_annotations_proto != nil {
 		return

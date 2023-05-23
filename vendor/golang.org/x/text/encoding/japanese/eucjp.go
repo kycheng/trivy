@@ -5,8 +5,10 @@
 package japanese
 
 import (
+	"time"
 	"unicode/utf8"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"golang.org/x/text/encoding"
 	"golang.org/x/text/encoding/internal"
 	"golang.org/x/text/encoding/internal/identifier"
@@ -218,7 +220,7 @@ func (eucJPEncoder) Transform(dst, src []byte, atEOF bool) (nDst, nSrc int, err 
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// Check that the hard-coded encode switch covers all tables.
 	if numEncodeTables != 6 {
 		panic("bad numEncodeTables")

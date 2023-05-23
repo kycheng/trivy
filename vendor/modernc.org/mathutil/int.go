@@ -8,6 +8,9 @@ import (
 	"fmt"
 	"math"
 	"math/big"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 var (
@@ -20,7 +23,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	var ok bool
 	MaxInt128, ok = big.NewInt(0).SetString("0x7fffffff_ffffffff_ffffffff_ffffffff", 0)
 	if !ok {

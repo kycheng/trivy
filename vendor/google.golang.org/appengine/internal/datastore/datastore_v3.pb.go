@@ -3,9 +3,15 @@
 
 package datastore
 
-import proto "github.com/golang/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import (
+	fmt "fmt"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+	proto "github.com/golang/protobuf/proto"
+
+	math "math"
+)
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -4041,7 +4047,7 @@ func (m *CommitResponse_Version) GetVersion() int64 {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*Action)(nil), "appengine.Action")
 	proto.RegisterType((*PropertyValue)(nil), "appengine.PropertyValue")
 	proto.RegisterType((*PropertyValue_PointValue)(nil), "appengine.PropertyValue.PointValue")
@@ -4100,7 +4106,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("google.golang.org/appengine/internal/datastore/datastore_v3.proto", fileDescriptor_datastore_v3_83b17b80c34f6179)
 }
 

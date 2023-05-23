@@ -20,7 +20,12 @@
 // name without scheme back to gRPC as resolved address.
 package passthrough
 
-import "google.golang.org/grpc/resolver"
+import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+	"google.golang.org/grpc/resolver"
+)
 
 const scheme = "passthrough"
 
@@ -53,6 +58,6 @@ func (*passthroughResolver) ResolveNow(o resolver.ResolveNowOptions) {}
 func (*passthroughResolver) Close() {}
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	resolver.Register(&passthroughBuilder{})
 }

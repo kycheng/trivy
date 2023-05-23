@@ -6,6 +6,9 @@ import (
 	"crypto/rand"
 	"errors"
 	"math/big"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 var (
@@ -30,7 +33,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// ES256
 	SigningMethodES256 = &SigningMethodECDSA{"ES256", crypto.SHA256, 32, 256}
 	RegisterSigningMethod(SigningMethodES256.Alg(), func() SigningMethod {

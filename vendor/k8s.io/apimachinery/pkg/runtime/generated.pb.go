@@ -21,6 +21,7 @@ package runtime
 
 import (
 	fmt "fmt"
+	"time"
 
 	io "io"
 	math "math"
@@ -28,6 +29,7 @@ import (
 	reflect "reflect"
 	strings "strings"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	proto "github.com/gogo/protobuf/proto"
 )
 
@@ -127,14 +129,14 @@ func (m *Unknown) XXX_DiscardUnknown() {
 var xxx_messageInfo_Unknown proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*RawExtension)(nil), "k8s.io.apimachinery.pkg.runtime.RawExtension")
 	proto.RegisterType((*TypeMeta)(nil), "k8s.io.apimachinery.pkg.runtime.TypeMeta")
 	proto.RegisterType((*Unknown)(nil), "k8s.io.apimachinery.pkg.runtime.Unknown")
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/generated.proto", fileDescriptor_9d3c45d7f546725c)
 }
 

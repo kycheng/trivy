@@ -6,17 +6,20 @@ package namespaces
 import (
 	context "context"
 	fmt "fmt"
+	io "io"
+	math "math"
+	math_bits "math/bits"
+	reflect "reflect"
+	strings "strings"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	proto "github.com/gogo/protobuf/proto"
 	github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
 	types "github.com/gogo/protobuf/types"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
-	io "io"
-	math "math"
-	math_bits "math/bits"
-	reflect "reflect"
-	strings "strings"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -443,7 +446,7 @@ func (m *DeleteNamespaceRequest) XXX_DiscardUnknown() {
 var xxx_messageInfo_DeleteNamespaceRequest proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*Namespace)(nil), "containerd.services.namespaces.v1.Namespace")
 	proto.RegisterMapType((map[string]string)(nil), "containerd.services.namespaces.v1.Namespace.LabelsEntry")
 	proto.RegisterType((*GetNamespaceRequest)(nil), "containerd.services.namespaces.v1.GetNamespaceRequest")
@@ -458,7 +461,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("github.com/containerd/containerd/api/services/namespaces/v1/namespace.proto", fileDescriptor_8c41761eaeea4fd3)
 }
 

@@ -21,9 +21,11 @@ package v1
 
 import (
 	fmt "fmt"
+	"time"
 
 	io "io"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	proto "github.com/gogo/protobuf/proto"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
@@ -325,7 +327,7 @@ func (m *WebhookClientConfig) XXX_DiscardUnknown() {
 var xxx_messageInfo_WebhookClientConfig proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*MutatingWebhook)(nil), "k8s.io.api.admissionregistration.v1.MutatingWebhook")
 	proto.RegisterType((*MutatingWebhookConfiguration)(nil), "k8s.io.api.admissionregistration.v1.MutatingWebhookConfiguration")
 	proto.RegisterType((*MutatingWebhookConfigurationList)(nil), "k8s.io.api.admissionregistration.v1.MutatingWebhookConfigurationList")
@@ -339,7 +341,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("k8s.io/kubernetes/vendor/k8s.io/api/admissionregistration/v1/generated.proto", fileDescriptor_aaac5994f79683e8)
 }
 

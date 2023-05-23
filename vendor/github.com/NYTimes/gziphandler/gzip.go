@@ -11,6 +11,9 @@ import (
 	"strconv"
 	"strings"
 	"sync"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 const (
@@ -42,7 +45,7 @@ const (
 var gzipWriterPools [gzip.BestCompression - gzip.BestSpeed + 2]*sync.Pool
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	for i := gzip.BestSpeed; i <= gzip.BestCompression; i++ {
 		addLevelPool(i)
 	}

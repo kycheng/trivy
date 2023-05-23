@@ -7,9 +7,14 @@
 
 package internal
 
-import "google.golang.org/appengine/urlfetch"
+import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+	"google.golang.org/appengine/urlfetch"
+)
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	appengineClientHook = urlfetch.Client
 }

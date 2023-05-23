@@ -17,6 +17,9 @@ limitations under the License.
 package appsv1beta2
 
 import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	appsapiv1beta2 "k8s.io/api/apps/v1beta2"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 )
@@ -38,7 +41,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// We only register manually written functions here. The registration of the
 	// generated functions takes place in the generated files. The separation
 	// makes the code compile even when the generated files are missing.

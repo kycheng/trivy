@@ -5,6 +5,9 @@ import (
 	"fmt"
 	"io"
 	"reflect"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 type Options struct {
@@ -29,7 +32,7 @@ func (o *Options) Validate() error {
 var emptyOptions = &Options{}
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// fill default values to avoid data race to be reported by race detector.
 	emptyOptions.Validate()
 }

@@ -5,12 +5,15 @@ package types
 
 import (
 	fmt "fmt"
-	proto "github.com/gogo/protobuf/proto"
 	io "io"
 	math "math"
 	math_bits "math/bits"
 	reflect "reflect"
 	strings "strings"
+	time "time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+	proto "github.com/gogo/protobuf/proto"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -68,12 +71,12 @@ func (m *Platform) XXX_DiscardUnknown() {
 var xxx_messageInfo_Platform proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*Platform)(nil), "containerd.types.Platform")
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("github.com/containerd/containerd/api/types/platform.proto", fileDescriptor_24ba7a4b83e2367e)
 }
 

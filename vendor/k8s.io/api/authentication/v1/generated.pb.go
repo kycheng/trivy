@@ -21,9 +21,11 @@ package v1
 
 import (
 	fmt "fmt"
+	"time"
 
 	io "io"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	proto "github.com/gogo/protobuf/proto"
 	github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
 
@@ -299,7 +301,7 @@ func (m *UserInfo) XXX_DiscardUnknown() {
 var xxx_messageInfo_UserInfo proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*BoundObjectReference)(nil), "k8s.io.api.authentication.v1.BoundObjectReference")
 	proto.RegisterType((*ExtraValue)(nil), "k8s.io.api.authentication.v1.ExtraValue")
 	proto.RegisterType((*TokenRequest)(nil), "k8s.io.api.authentication.v1.TokenRequest")
@@ -313,7 +315,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("k8s.io/kubernetes/vendor/k8s.io/api/authentication/v1/generated.proto", fileDescriptor_2953ea822e7ffe1e)
 }
 

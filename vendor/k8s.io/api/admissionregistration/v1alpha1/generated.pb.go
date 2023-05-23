@@ -21,9 +21,11 @@ package v1alpha1
 
 import (
 	fmt "fmt"
+	"time"
 
 	io "io"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	proto "github.com/gogo/protobuf/proto"
 	k8s_io_apimachinery_pkg_apis_meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -354,7 +356,7 @@ func (m *Validation) XXX_DiscardUnknown() {
 var xxx_messageInfo_Validation proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*MatchResources)(nil), "k8s.io.api.admissionregistration.v1alpha1.MatchResources")
 	proto.RegisterType((*NamedRuleWithOperations)(nil), "k8s.io.api.admissionregistration.v1alpha1.NamedRuleWithOperations")
 	proto.RegisterType((*ParamKind)(nil), "k8s.io.api.admissionregistration.v1alpha1.ParamKind")
@@ -369,7 +371,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("k8s.io/kubernetes/vendor/k8s.io/api/admissionregistration/v1alpha1/generated.proto", fileDescriptor_c3be8d256e3ae3cf)
 }
 

@@ -18,13 +18,15 @@ package gcp
 
 import (
 	"errors"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"k8s.io/client-go/rest"
 	"k8s.io/klog/v2"
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	if err := rest.RegisterAuthProviderPlugin("gcp", newGCPAuthProvider); err != nil {
 		klog.Fatalf("Failed to register gcp auth plugin: %v", err)
 	}

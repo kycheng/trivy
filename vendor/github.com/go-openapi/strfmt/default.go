@@ -23,7 +23,9 @@ import (
 	"net/mail"
 	"regexp"
 	"strings"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/asaskevich/govalidator"
 	"go.mongodb.org/mongo-driver/bson"
 )
@@ -126,7 +128,7 @@ func IsEmail(str string) bool {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// register formats in the default registry:
 	//   - byte
 	//   - creditcard

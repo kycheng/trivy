@@ -6,7 +6,9 @@ import (
 	"fmt"
 	"sort"
 	"strings"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/lann/builder"
 )
 
@@ -141,7 +143,7 @@ func (d *updateData) ToSql() (sqlStr string, args []interface{}, err error) {
 type UpdateBuilder builder.Builder
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	builder.Register(UpdateBuilder{}, updateData{})
 }
 

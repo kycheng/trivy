@@ -3,9 +3,15 @@
 
 package log
 
-import proto "github.com/golang/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import (
+	fmt "fmt"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+	proto "github.com/golang/protobuf/proto"
+
+	math "math"
+)
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -1190,7 +1196,7 @@ func (m *LogUsageResponse) GetSummary() *LogUsageRecord {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*LogServiceError)(nil), "appengine.LogServiceError")
 	proto.RegisterType((*UserAppLogLine)(nil), "appengine.UserAppLogLine")
 	proto.RegisterType((*UserAppLogGroup)(nil), "appengine.UserAppLogGroup")
@@ -1208,7 +1214,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("google.golang.org/appengine/internal/log/log_service.proto", fileDescriptor_log_service_f054fd4b5012319d)
 }
 

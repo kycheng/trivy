@@ -8,7 +8,9 @@ import (
 	"strconv"
 	"strings"
 	"sync"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/containerd/typeurl"
 	"github.com/pkg/errors"
 )
@@ -17,7 +19,7 @@ var helpers map[string]struct{}
 var helpersMu sync.RWMutex
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	typeurl.Register((*Stack)(nil), "github.com/moby/buildkit", "stack.Stack+json")
 
 	helpers = map[string]struct{}{}

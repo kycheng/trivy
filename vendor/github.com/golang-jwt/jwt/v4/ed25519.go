@@ -2,10 +2,13 @@ package jwt
 
 import (
 	"errors"
+	"time"
 
 	"crypto"
 	"crypto/ed25519"
 	"crypto/rand"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 var (
@@ -22,7 +25,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	SigningMethodEdDSA = &SigningMethodEd25519{}
 	RegisterSigningMethod(SigningMethodEdDSA.Alg(), func() SigningMethod {
 		return SigningMethodEdDSA

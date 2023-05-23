@@ -26,7 +26,9 @@ import (
 	"io"
 	"net"
 	"sync"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	grpc "google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/credentials"
@@ -70,7 +72,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	for protocol, f := range altsRecordFuncs {
 		if err := conn.RegisterProtocol(protocol, f); err != nil {
 			panic(err)

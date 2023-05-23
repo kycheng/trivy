@@ -26,7 +26,9 @@ import (
 	"strconv"
 	"strings"
 	"sync"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"golang.org/x/net/http/httpguts"
 )
 
@@ -38,7 +40,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	e := os.Getenv("GODEBUG")
 	if strings.Contains(e, "http2debug=1") {
 		VerboseLogs = true

@@ -18,7 +18,9 @@ import (
 	"os/exec"
 	"regexp"
 	"syscall"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	cleanhttp "github.com/hashicorp/go-cleanhttp"
 )
 
@@ -60,7 +62,7 @@ var forcedRegexp = regexp.MustCompile(`^([A-Za-z0-9]+)::(.+)$`)
 var httpClient = cleanhttp.DefaultClient()
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	httpGetter := &HttpGetter{
 		Netrc: true,
 	}

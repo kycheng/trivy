@@ -25,6 +25,8 @@ import (
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // LevelType tells a logger the minimum level to log. When code reports a log entry,
@@ -190,7 +192,7 @@ func Level() LevelType {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// separated for testing purposes
 	initDefaultLogger()
 }

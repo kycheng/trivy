@@ -8,7 +8,9 @@ import (
 	"io"
 	"sort"
 	"strings"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/lann/builder"
 )
 
@@ -167,7 +169,7 @@ func (d *insertData) appendSelectToSQL(w io.Writer, args []interface{}) ([]inter
 type InsertBuilder builder.Builder
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	builder.Register(InsertBuilder{}, insertData{})
 }
 

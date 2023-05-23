@@ -22,7 +22,9 @@ package proto
 
 import (
 	"fmt"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/golang/protobuf/proto"
 	"google.golang.org/grpc/encoding"
 )
@@ -31,7 +33,7 @@ import (
 const Name = "proto"
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	encoding.RegisterCodec(codec{})
 }
 

@@ -6,13 +6,16 @@ package restful
 
 import (
 	"net/http"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // DefaultContainer is a restful.Container that uses http.DefaultServeMux
 var DefaultContainer *Container
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	DefaultContainer = NewContainer()
 	DefaultContainer.ServeMux = http.DefaultServeMux
 }

@@ -4,6 +4,8 @@ import (
 	"os"
 	"strconv"
 	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 var (
@@ -50,7 +52,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	SystemCreate = durationFromEnvironment("HCSSHIM_TIMEOUT_SYSTEMCREATE", SystemCreate)
 	SystemStart = durationFromEnvironment("HCSSHIM_TIMEOUT_SYSTEMSTART", SystemStart)
 	SystemPause = durationFromEnvironment("HCSSHIM_TIMEOUT_SYSTEMPAUSE", SystemPause)

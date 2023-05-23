@@ -12,6 +12,9 @@ package ps
 import (
 	"bytes"
 	"fmt"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // Any is a shorthand for Go's verbose interface{} type.
@@ -70,7 +73,7 @@ var nilMap = &tree{}
 // All map nodes are created by cloning this structure so
 // they avoid the problem too.
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	for i := range nilMap.children {
 		nilMap.children[i] = nilMap
 	}

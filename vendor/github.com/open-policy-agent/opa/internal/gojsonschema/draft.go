@@ -17,7 +17,9 @@ package gojsonschema
 import (
 	"errors"
 	"math"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/xeipuuv/gojsonreference"
 )
 
@@ -42,7 +44,7 @@ type draftConfigs []draftConfig
 var drafts draftConfigs
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	drafts = []draftConfig{
 		{
 			Version:       Draft4,

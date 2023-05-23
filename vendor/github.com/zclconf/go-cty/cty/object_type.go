@@ -3,6 +3,9 @@ package cty
 import (
 	"fmt"
 	"sort"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 type typeObject struct {
@@ -131,7 +134,7 @@ var EmptyObject Type
 var EmptyObjectVal Value
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	EmptyObject = Object(map[string]Type{})
 	EmptyObjectVal = Value{
 		ty: EmptyObject,

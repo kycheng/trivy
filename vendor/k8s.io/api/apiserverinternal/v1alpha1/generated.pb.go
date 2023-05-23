@@ -21,9 +21,11 @@ package v1alpha1
 
 import (
 	fmt "fmt"
+	"time"
 
 	io "io"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	proto "github.com/gogo/protobuf/proto"
 
 	math "math"
@@ -212,7 +214,7 @@ func (m *StorageVersionStatus) XXX_DiscardUnknown() {
 var xxx_messageInfo_StorageVersionStatus proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*ServerStorageVersion)(nil), "k8s.io.api.apiserverinternal.v1alpha1.ServerStorageVersion")
 	proto.RegisterType((*StorageVersion)(nil), "k8s.io.api.apiserverinternal.v1alpha1.StorageVersion")
 	proto.RegisterType((*StorageVersionCondition)(nil), "k8s.io.api.apiserverinternal.v1alpha1.StorageVersionCondition")
@@ -222,7 +224,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("k8s.io/kubernetes/vendor/k8s.io/api/apiserverinternal/v1alpha1/generated.proto", fileDescriptor_a3903ff5e3cc7a03)
 }
 

@@ -23,8 +23,10 @@ import (
 	"sort"
 	"strings"
 	"sync"
+	"time"
 	"unicode/utf8"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/cespare/xxhash/v2"
 	//nolint:staticcheck // Ignore SA1019. Need to keep deprecated package for compatibility.
 	"github.com/golang/protobuf/proto"
@@ -59,7 +61,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	MustRegister(NewProcessCollector(ProcessCollectorOpts{}))
 	MustRegister(NewGoCollector())
 }

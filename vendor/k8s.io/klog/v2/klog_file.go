@@ -26,6 +26,8 @@ import (
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // MaxSize is the maximum size of a log file in bytes.
@@ -50,7 +52,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	if h, err := os.Hostname(); err == nil {
 		host = shortHostname(h)
 	}

@@ -14,13 +14,15 @@ import (
 	"sort"
 	"strings"
 	"sync"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"golang.org/x/oauth2"
 	"google.golang.org/appengine"
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	appengineTokenFunc = appengine.AccessToken
 	appengineAppIDFunc = appengine.AppID
 }

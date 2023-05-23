@@ -21,9 +21,11 @@ package v1beta1
 
 import (
 	fmt "fmt"
+	"time"
 
 	io "io"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	proto "github.com/gogo/protobuf/proto"
 	github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -132,7 +134,7 @@ func (m *AdmissionReview) XXX_DiscardUnknown() {
 var xxx_messageInfo_AdmissionReview proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*AdmissionRequest)(nil), "k8s.io.api.admission.v1beta1.AdmissionRequest")
 	proto.RegisterType((*AdmissionResponse)(nil), "k8s.io.api.admission.v1beta1.AdmissionResponse")
 	proto.RegisterMapType((map[string]string)(nil), "k8s.io.api.admission.v1beta1.AdmissionResponse.AuditAnnotationsEntry")
@@ -140,7 +142,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("k8s.io/kubernetes/vendor/k8s.io/api/admission/v1beta1/generated.proto", fileDescriptor_b87c2352de86eab9)
 }
 

@@ -22,9 +22,11 @@ package v1
 import (
 	encoding_binary "encoding/binary"
 	fmt "fmt"
+	"time"
 
 	io "io"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	proto "github.com/gogo/protobuf/proto"
 	github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
 	runtime "k8s.io/apimachinery/pkg/runtime"
@@ -777,7 +779,7 @@ func (m *WebhookConversion) XXX_DiscardUnknown() {
 var xxx_messageInfo_WebhookConversion proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*ConversionRequest)(nil), "k8s.io.apiextensions_apiserver.pkg.apis.apiextensions.v1.ConversionRequest")
 	proto.RegisterType((*ConversionResponse)(nil), "k8s.io.apiextensions_apiserver.pkg.apis.apiextensions.v1.ConversionResponse")
 	proto.RegisterType((*ConversionReview)(nil), "k8s.io.apiextensions_apiserver.pkg.apis.apiextensions.v1.ConversionReview")
@@ -811,7 +813,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("k8s.io/kubernetes/vendor/k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1/generated.proto", fileDescriptor_f5a35c9667703937)
 }
 

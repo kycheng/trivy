@@ -31,18 +31,19 @@ func NewRouter() *Router {
 // It implements the http.Handler interface, so it can be registered to serve
 // requests:
 //
-//     var router = mux.NewRouter()
+//	var router = mux.NewRouter()
 //
-//     func main() {
-//         http.Handle("/", router)
-//     }
+//	func main() {
+//	    http.Handle("/", router)
+//	}
 //
 // Or, for Google App Engine, register it in a init() function:
 //
-//     func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
-//         http.Handle("/", router)
-//     }
+//	func init() {
+//
+//
+//	    http.Handle("/", router)
+//	}
 //
 // This will send all incoming requests to the router.
 type Router struct {

@@ -5,13 +5,16 @@
 package ccgo // import "modernc.org/ccgo/v3/lib"
 
 import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"golang.org/x/sys/unix"
 )
 
 var totalRam uint64
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	var si unix.Sysinfo_t
 	if unix.Sysinfo(&si) != nil {
 		return

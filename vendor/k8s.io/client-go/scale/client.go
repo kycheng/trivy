@@ -19,7 +19,9 @@ package scale
 import (
 	"context"
 	"fmt"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	autoscaling "k8s.io/api/autoscaling/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
@@ -38,7 +40,7 @@ var dynamicParameterCodec = runtime.NewParameterCodec(parameterScheme)
 var versionV1 = schema.GroupVersion{Version: "v1"}
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	metav1.AddToGroupVersion(parameterScheme, versionV1)
 }
 

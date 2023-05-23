@@ -21,9 +21,11 @@ package v2beta1
 
 import (
 	fmt "fmt"
+	"time"
 
 	io "io"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	proto "github.com/gogo/protobuf/proto"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
@@ -185,7 +187,7 @@ func (m *APIVersionDiscovery) XXX_DiscardUnknown() {
 var xxx_messageInfo_APIVersionDiscovery proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*APIGroupDiscovery)(nil), "k8s.io.api.apidiscovery.v2beta1.APIGroupDiscovery")
 	proto.RegisterType((*APIGroupDiscoveryList)(nil), "k8s.io.api.apidiscovery.v2beta1.APIGroupDiscoveryList")
 	proto.RegisterType((*APIResourceDiscovery)(nil), "k8s.io.api.apidiscovery.v2beta1.APIResourceDiscovery")
@@ -194,7 +196,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("k8s.io/kubernetes/vendor/k8s.io/api/apidiscovery/v2beta1/generated.proto", fileDescriptor_0442b7af4d680cb7)
 }
 

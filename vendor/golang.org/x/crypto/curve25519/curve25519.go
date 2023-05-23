@@ -11,7 +11,9 @@ import (
 	"crypto/subtle"
 	"errors"
 	"strconv"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"golang.org/x/crypto/curve25519/internal/field"
 )
 
@@ -94,7 +96,9 @@ var Basepoint []byte
 var basePoint = [32]byte{9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now()); Basepoint = basePoint[:] }
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
+	Basepoint = basePoint[:]
+}
 
 func checkBasepoint() {
 	if subtle.ConstantTimeCompare(Basepoint, []byte{

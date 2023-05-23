@@ -3,6 +3,9 @@ package jsoniter
 import (
 	"math"
 	"strconv"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 var intDigits []int8
@@ -12,7 +15,7 @@ const uint64SafeToMultiple10 = uint64(0xffffffffffffffff)/10 - 1
 const maxFloat64 = 1<<53 - 1
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	intDigits = make([]int8, 256)
 	for i := 0; i < len(intDigits); i++ {
 		intDigits[i] = invalidCharForNumber

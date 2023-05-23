@@ -8,6 +8,9 @@ import (
 	"fmt"
 	"math"
 	"strings"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 func mainLoop(L *LState, baseframe *callFrame) {
@@ -299,7 +302,7 @@ type instFunc func(*LState, uint32, *callFrame) int
 var jumpTable [opCodeMax + 1]instFunc
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	jumpTable = [opCodeMax + 1]instFunc{
 		func(L *LState, inst uint32, baseframe *callFrame) int { //OP_MOVE
 			reg := L.reg

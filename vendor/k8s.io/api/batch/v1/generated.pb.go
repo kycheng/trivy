@@ -21,9 +21,11 @@ package v1
 
 import (
 	fmt "fmt"
+	"time"
 
 	io "io"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	proto "github.com/gogo/protobuf/proto"
 	k8s_io_api_core_v1 "k8s.io/api/core/v1"
 	v11 "k8s.io/api/core/v1"
@@ -473,7 +475,7 @@ func (m *UncountedTerminatedPods) XXX_DiscardUnknown() {
 var xxx_messageInfo_UncountedTerminatedPods proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*CronJob)(nil), "k8s.io.api.batch.v1.CronJob")
 	proto.RegisterType((*CronJobList)(nil), "k8s.io.api.batch.v1.CronJobList")
 	proto.RegisterType((*CronJobSpec)(nil), "k8s.io.api.batch.v1.CronJobSpec")
@@ -492,7 +494,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("k8s.io/kubernetes/vendor/k8s.io/api/batch/v1/generated.proto", fileDescriptor_3b52da57c93de713)
 }
 

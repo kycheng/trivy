@@ -6,7 +6,9 @@ package topdown
 
 import (
 	"fmt"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/ast"
 )
 
@@ -43,7 +45,7 @@ func builtinOPARuntime(bctx BuiltinContext, _ []*ast.Term, iter func(*ast.Term) 
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RegisterBuiltinFunc(ast.OPARuntime.Name, builtinOPARuntime)
 }
 

@@ -6,6 +6,9 @@ import (
 	"io"
 	"net"
 	"sync"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // PoolConfig contains configuration for the allocation and reuse strategy.
@@ -31,7 +34,7 @@ func initBuffers() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	initBuffers()
 }
 

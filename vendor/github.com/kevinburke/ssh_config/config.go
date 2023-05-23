@@ -8,7 +8,7 @@
 // the host name to match on ("example.com"), and the second argument is the key
 // you want to retrieve ("Port"). The keywords are case insensitive.
 //
-// 		port := ssh_config.Get("myhost", "Port")
+//	port := ssh_config.Get("myhost", "Port")
 //
 // You can also manipulate an SSH config file and then print it or write it back
 // to disk.
@@ -42,6 +42,9 @@ import (
 	"runtime"
 	"strings"
 	"sync"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 const version = "1.0"
@@ -628,7 +631,7 @@ func (inc *Include) String() string {
 var matchAll *Pattern
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	var err error
 	matchAll, err = NewPattern("*")
 	if err != nil {

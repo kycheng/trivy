@@ -4,12 +4,15 @@ import (
 	"fmt"
 	"math"
 	"strconv"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 var pow10 []uint64
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	pow10 = []uint64{1, 10, 100, 1000, 10000, 100000, 1000000}
 }
 

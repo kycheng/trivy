@@ -1,5 +1,11 @@
 package aec
 
+import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+)
+
 // Builder is a lightweight syntax to construct customized ANSI.
 type Builder struct {
 	ANSI ANSI
@@ -384,6 +390,6 @@ func (builder *Builder) RGB8BitB(r, g, b uint8) *Builder {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	EmptyBuilder = &Builder{empty}
 }

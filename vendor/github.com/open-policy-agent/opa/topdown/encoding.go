@@ -12,7 +12,9 @@ import (
 	"fmt"
 	"net/url"
 	"strings"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	ghodss "github.com/ghodss/yaml"
 
 	"github.com/open-policy-agent/opa/ast"
@@ -286,7 +288,7 @@ func builtinHexDecode(a ast.Value) (ast.Value, error) {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RegisterFunctionalBuiltin1(ast.JSONMarshal.Name, builtinJSONMarshal)
 	RegisterFunctionalBuiltin1(ast.JSONUnmarshal.Name, builtinJSONUnmarshal)
 	RegisterFunctionalBuiltin1(ast.JSONIsValid.Name, builtinJSONIsValid)

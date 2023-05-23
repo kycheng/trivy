@@ -8,7 +8,10 @@ import (
 	"fmt"
 	"os"
 	"syscall"
+	"time"
 	"unsafe"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 var (
@@ -28,7 +31,7 @@ type window struct {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	var err error
 	tty, err = os.Open("/dev/tty")
 	if err != nil {

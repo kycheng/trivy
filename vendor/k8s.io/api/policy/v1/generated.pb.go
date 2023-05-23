@@ -21,9 +21,11 @@ package v1
 
 import (
 	fmt "fmt"
+	"time"
 
 	io "io"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	proto "github.com/gogo/protobuf/proto"
 	github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -188,7 +190,7 @@ func (m *PodDisruptionBudgetStatus) XXX_DiscardUnknown() {
 var xxx_messageInfo_PodDisruptionBudgetStatus proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*Eviction)(nil), "k8s.io.api.policy.v1.Eviction")
 	proto.RegisterType((*PodDisruptionBudget)(nil), "k8s.io.api.policy.v1.PodDisruptionBudget")
 	proto.RegisterType((*PodDisruptionBudgetList)(nil), "k8s.io.api.policy.v1.PodDisruptionBudgetList")
@@ -198,7 +200,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("k8s.io/kubernetes/vendor/k8s.io/api/policy/v1/generated.proto", fileDescriptor_2d50488813b2d18e)
 }
 

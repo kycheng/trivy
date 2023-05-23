@@ -23,7 +23,9 @@ package jsonerror
 import (
 	reflect "reflect"
 	sync "sync"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	code "google.golang.org/genproto/googleapis/rpc/code"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
@@ -229,7 +231,9 @@ var file_apierror_internal_proto_error_proto_depIdxs = []int32{
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now()); file_apierror_internal_proto_error_proto_init() }
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
+	file_apierror_internal_proto_error_proto_init()
+}
 func file_apierror_internal_proto_error_proto_init() {
 	if File_apierror_internal_proto_error_proto != nil {
 		return

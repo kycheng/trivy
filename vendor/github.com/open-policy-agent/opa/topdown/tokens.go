@@ -20,7 +20,9 @@ import (
 	"hash"
 	"math/big"
 	"strings"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/ast"
 	"github.com/open-policy-agent/opa/internal/jwx/jwa"
 	"github.com/open-policy-agent/opa/internal/jwx/jwk"
@@ -42,7 +44,8 @@ const (
 )
 
 // JSONWebToken represent the 3 parts (header, payload & signature) of
-//              a JWT in Base64.
+//
+//	a JWT in Base64.
 type JSONWebToken struct {
 	header        string
 	payload       string
@@ -1180,7 +1183,7 @@ func getInputSHA(input []byte, h func() hash.Hash) []byte {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RegisterFunctionalBuiltin1(ast.JWTDecode.Name, builtinJWTDecode)
 	RegisterBuiltinFunc(ast.JWTVerifyRS256.Name, builtinJWTVerifyRS256)
 	RegisterBuiltinFunc(ast.JWTVerifyRS384.Name, builtinJWTVerifyRS384)

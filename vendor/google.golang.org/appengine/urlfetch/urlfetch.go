@@ -17,6 +17,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/golang/protobuf/proto"
 	"golang.org/x/net/context"
 
@@ -205,7 +206,7 @@ func (t *Transport) RoundTrip(req *http.Request) (res *http.Response, err error)
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	internal.RegisterErrorCodeMap("urlfetch", pb.URLFetchServiceError_ErrorCode_name)
 	internal.RegisterTimeoutErrorCode("urlfetch", int32(pb.URLFetchServiceError_DEADLINE_EXCEEDED))
 }

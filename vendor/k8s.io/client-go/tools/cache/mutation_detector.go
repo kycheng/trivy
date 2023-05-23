@@ -24,6 +24,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"k8s.io/klog/v2"
 
 	"k8s.io/apimachinery/pkg/runtime"
@@ -33,7 +34,7 @@ import (
 var mutationDetectionEnabled = false
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	mutationDetectionEnabled, _ = strconv.ParseBool(os.Getenv("KUBE_CACHE_MUTATION_DETECTOR"))
 }
 

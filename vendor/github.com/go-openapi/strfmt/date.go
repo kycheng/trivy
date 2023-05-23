@@ -21,11 +21,12 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"go.mongodb.org/mongo-driver/bson"
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	d := Date{}
 	// register this format in the default registry
 	Default.Add("date", &d, IsDate)

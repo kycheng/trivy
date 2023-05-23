@@ -5,6 +5,9 @@
 package proto
 
 import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"google.golang.org/protobuf/internal/errors"
 	"google.golang.org/protobuf/reflect/protoreflect"
 )
@@ -30,7 +33,7 @@ type Message = protoreflect.ProtoMessage
 var Error error
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	Error = errors.Error
 }
 

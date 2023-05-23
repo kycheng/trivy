@@ -28,6 +28,12 @@
 
 package proto
 
+import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+)
+
 type float64Value struct {
 	Value float64 `protobuf:"fixed64,1,opt,name=value,proto3" json:"value,omitempty"`
 }
@@ -101,7 +107,7 @@ func (*bytesValue) ProtoMessage()  {}
 func (*bytesValue) String() string { return "[]byte<string>" }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RegisterType((*float64Value)(nil), "gogo.protobuf.proto.DoubleValue")
 	RegisterType((*float32Value)(nil), "gogo.protobuf.proto.FloatValue")
 	RegisterType((*int64Value)(nil), "gogo.protobuf.proto.Int64Value")

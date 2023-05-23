@@ -17,10 +17,15 @@
 
 package metadata
 
-import "syscall"
+import (
+	"syscall"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+)
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// Initialize syscallRetryable to return true on transient socket-level
 	// errors. These errors are specific to Linux.
 	syscallRetryable = func(err error) bool { return err == syscall.ECONNRESET || err == syscall.ECONNREFUSED }

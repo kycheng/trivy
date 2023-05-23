@@ -2,6 +2,9 @@ package match
 
 import (
 	"sync"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 type SomePool interface {
@@ -47,7 +50,7 @@ var segmentsByRuneLength [5][]int = [5][]int{
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	for i := cacheToAndHigher; i >= cacheFrom; i >>= 1 {
 		func(i int) {
 			segmentsPools[i-1] = sync.Pool{New: func() interface{} {

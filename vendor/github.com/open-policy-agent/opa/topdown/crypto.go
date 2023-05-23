@@ -20,7 +20,9 @@ import (
 	"io/ioutil"
 	"os"
 	"strings"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/ast"
 	"github.com/open-policy-agent/opa/internal/jwx/jwk"
 	"github.com/open-policy-agent/opa/topdown/builtins"
@@ -230,7 +232,7 @@ func builtinCryptoHmacSha512(_ BuiltinContext, args []*ast.Term, iter func(*ast.
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RegisterFunctionalBuiltin1(ast.CryptoX509ParseCertificates.Name, builtinCryptoX509ParseCertificates)
 	RegisterBuiltinFunc(ast.CryptoX509ParseAndVerifyCertificates.Name, builtinCryptoX509ParseAndVerifyCertificates)
 	RegisterFunctionalBuiltin1(ast.CryptoMd5.Name, builtinCryptoMd5)

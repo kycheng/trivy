@@ -43,7 +43,6 @@ package typeurl
 // the init function
 //
 //   func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
 //      typeurl.Register(&Foo{}, "Foo")
 //   }
 //
@@ -52,7 +51,6 @@ package typeurl
 // example, from the github.com/containerd/containerd/client package:
 //
 //   func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
 //     const prefix = "types.containerd.io"
 //     // register TypeUrls for commonly marshaled external types
 //     major := strconv.Itoa(specs.VersionMajor)

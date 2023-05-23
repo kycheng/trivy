@@ -22,6 +22,7 @@ import (
 	"time"
 	"unsafe"
 
+    "github.com/aquasecurity/trivy/pkg/bug"
 	"modernc.org/libc"
 	"modernc.org/libc/sys/types"
 	sqlite3 "modernc.org/sqlite/lib"

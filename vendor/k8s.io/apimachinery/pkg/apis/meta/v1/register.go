@@ -17,6 +17,9 @@ limitations under the License.
 package v1
 
 import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
@@ -98,7 +101,7 @@ func AddMetaToScheme(scheme *runtime.Scheme) error {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	scheme.AddUnversionedTypes(SchemeGroupVersion, optionsTypes...)
 
 	utilruntime.Must(AddMetaToScheme(scheme))

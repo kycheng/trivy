@@ -6,6 +6,9 @@ import (
 	"fmt"
 	"regexp"
 	"strings"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // Constraints is one or more constraint that a semantic version can be
@@ -166,7 +169,7 @@ const cvRegex string = `v?([0-9|x|X|\*]+)(\.[0-9|x|X|\*]+)?(\.[0-9|x|X|\*]+)?` +
 	`(\+([0-9A-Za-z\-]+(\.[0-9A-Za-z\-]+)*))?`
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	constraintOps = map[string]cfunc{
 		"":   constraintTildeOrEqual,
 		"=":  constraintTildeOrEqual,

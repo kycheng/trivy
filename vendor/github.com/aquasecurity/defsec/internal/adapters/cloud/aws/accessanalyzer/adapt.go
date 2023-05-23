@@ -2,12 +2,14 @@ package api_gateway
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/aquasecurity/defsec/internal/adapters/cloud/aws"
 	"github.com/aquasecurity/defsec/pkg/concurrency"
 	"github.com/aquasecurity/defsec/pkg/providers/aws/accessanalyzer"
 	"github.com/aquasecurity/defsec/pkg/state"
 	"github.com/aquasecurity/defsec/pkg/types"
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/aws/aws-sdk-go-v2/aws/arn"
 	api "github.com/aws/aws-sdk-go-v2/service/accessanalyzer"
 	aatypes "github.com/aws/aws-sdk-go-v2/service/accessanalyzer/types"

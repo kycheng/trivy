@@ -8,8 +8,10 @@ import (
 	"fmt"
 	"math/big"
 	"strings"
+	"time"
 	"unicode"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/ast"
 	"github.com/open-policy-agent/opa/topdown/builtins"
 )
@@ -139,6 +141,6 @@ func extractNumAndUnit(s string) (string, string) {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RegisterBuiltinFunc(ast.UnitsParseBytes.Name, builtinNumBytes)
 }

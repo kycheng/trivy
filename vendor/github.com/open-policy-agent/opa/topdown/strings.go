@@ -9,7 +9,9 @@ import (
 	"math/big"
 	"sort"
 	"strings"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/tchap/go-patricia/v2/patricia"
 
 	"github.com/open-policy-agent/opa/ast"
@@ -564,7 +566,7 @@ func reverseString(str string) string {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RegisterFunctionalBuiltin2(ast.FormatInt.Name, builtinFormatInt)
 	RegisterFunctionalBuiltin2(ast.Concat.Name, builtinConcat)
 	RegisterFunctionalBuiltin2(ast.IndexOf.Name, builtinIndexOf)

@@ -17,6 +17,9 @@ limitations under the License.
 package autoscalingv1
 
 import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	autoscalingapiv1 "k8s.io/api/autoscaling/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 )
@@ -38,7 +41,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// We only register manually written functions here. The registration of the
 	// generated functions takes place in the generated files. The separation
 	// makes the code compile even when the generated files are missing.

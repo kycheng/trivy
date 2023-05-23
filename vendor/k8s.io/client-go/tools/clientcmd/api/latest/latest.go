@@ -17,13 +17,16 @@ limitations under the License.
 package latest
 
 import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	"k8s.io/apimachinery/pkg/runtime/serializer/json"
 	"k8s.io/apimachinery/pkg/runtime/serializer/versioning"
 	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
 	"k8s.io/client-go/tools/clientcmd/api"
-	"k8s.io/client-go/tools/clientcmd/api/v1"
+	v1 "k8s.io/client-go/tools/clientcmd/api/v1"
 )
 
 // Version is the string that represents the current external default version.
@@ -47,7 +50,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	Scheme = runtime.NewScheme()
 	utilruntime.Must(api.AddToScheme(Scheme))
 	utilruntime.Must(v1.AddToScheme(Scheme))

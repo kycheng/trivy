@@ -4,13 +4,15 @@ import (
 	"syscall"
 	"time"
 	"unsafe"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // Used by chtimes
 var maxTime time.Time
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// chtimes initialization
 	if unsafe.Sizeof(syscall.Timespec{}.Nsec) == 8 {
 		// This is a 64 bit timespec

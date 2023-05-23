@@ -2,6 +2,9 @@ package lua
 
 import (
 	"os"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 var CompatVarArg = true
@@ -24,7 +27,7 @@ var LuaPathDefault string
 var LuaOS string
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	if os.PathSeparator == '/' { // unix-like
 		LuaOS = "unix"
 		LuaLDir = "/usr/local/share/lua/5.1"

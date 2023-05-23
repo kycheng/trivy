@@ -18,6 +18,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"go.opencensus.io/internal"
 )
 
@@ -35,7 +36,7 @@ var (
 type internalOnly struct{}
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	//TODO(#412): remove
 	internal.Trace = &internalOnly{}
 }

@@ -23,7 +23,9 @@ package binarylog
 import (
 	"fmt"
 	"os"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"google.golang.org/grpc/grpclog"
 	"google.golang.org/grpc/internal/grpcutil"
 )
@@ -70,7 +72,7 @@ func GetMethodLogger(methodName string) MethodLogger {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	const envStr = "GRPC_BINARY_LOG_FILTER"
 	configStr := os.Getenv(envStr)
 	binLogger = NewLoggerFromConfigString(configStr)

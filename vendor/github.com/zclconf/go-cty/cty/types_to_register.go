@@ -5,7 +5,9 @@ import (
 	"fmt"
 	"math/big"
 	"strings"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/zclconf/go-cty/cty/set"
 )
 
@@ -29,7 +31,7 @@ import (
 var InternalTypesToRegister []interface{}
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	InternalTypesToRegister = []interface{}{
 		primitiveType{},
 		typeList{},

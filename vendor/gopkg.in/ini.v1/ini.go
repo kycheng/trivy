@@ -20,6 +20,9 @@ import (
 	"regexp"
 	"runtime"
 	"strings"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 const (
@@ -58,7 +61,7 @@ var (
 var inTest = len(os.Args) > 0 && strings.HasSuffix(strings.TrimSuffix(os.Args[0], ".exe"), ".test")
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	if runtime.GOOS == "windows" && !inTest {
 		LineBreak = "\r\n"
 	}

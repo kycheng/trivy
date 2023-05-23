@@ -6,7 +6,9 @@ package topdown
 
 import (
 	"math/big"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/ast"
 	"github.com/open-policy-agent/opa/topdown/builtins"
 )
@@ -79,7 +81,7 @@ func builtinBitsArity2(fn bitsArity2) BuiltinFunc {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RegisterBuiltinFunc(ast.BitsOr.Name, builtinBitsArity2(bitsOr))
 	RegisterBuiltinFunc(ast.BitsAnd.Name, builtinBitsArity2(bitsAnd))
 	RegisterBuiltinFunc(ast.BitsNegate.Name, builtinBitsArity1(bitsNegate))

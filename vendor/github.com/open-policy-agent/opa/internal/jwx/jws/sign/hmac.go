@@ -5,7 +5,9 @@ import (
 	"crypto/sha256"
 	"crypto/sha512"
 	"hash"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/internal/jwx/jwa"
 
 	"github.com/pkg/errors"
@@ -14,7 +16,7 @@ import (
 var hmacSignFuncs = map[jwa.SignatureAlgorithm]hmacSignFunc{}
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	algs := map[jwa.SignatureAlgorithm]func() hash.Hash{
 		jwa.HS256: sha256.New,
 		jwa.HS384: sha512.New384,

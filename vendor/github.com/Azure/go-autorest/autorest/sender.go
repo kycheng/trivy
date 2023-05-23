@@ -29,6 +29,7 @@ import (
 
 	"github.com/Azure/go-autorest/logger"
 	"github.com/Azure/go-autorest/tracing"
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // there is one sender per TLS renegotiation type, i.e. count of tls.RenegotiationSupport enums
@@ -43,7 +44,7 @@ type defaultSender struct {
 var defaultSenders [defaultSendersCount]defaultSender
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	for i := 0; i < defaultSendersCount; i++ {
 		defaultSenders[i].init = &sync.Once{}
 	}

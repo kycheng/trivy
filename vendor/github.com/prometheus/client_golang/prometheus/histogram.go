@@ -200,7 +200,6 @@ var nativeHistogramBounds = [][]float64{
 // var nativeHistogramBounds [][]float64 = make([][]float64, 9)
 //
 // func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
 // 	// Populate nativeHistogramBounds.
 // 	numBuckets := 1
 // 	for i := range nativeHistogramBounds {

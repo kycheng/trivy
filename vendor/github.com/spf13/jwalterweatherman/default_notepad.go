@@ -10,6 +10,9 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 var (
@@ -41,7 +44,7 @@ func reloadDefaultNotepad() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	defaultNotepad = NewNotepad(LevelError, LevelWarn, os.Stdout, ioutil.Discard, "", log.Ldate|log.Ltime)
 	reloadDefaultNotepad()
 }

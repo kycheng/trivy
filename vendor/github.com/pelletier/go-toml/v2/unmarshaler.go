@@ -12,6 +12,7 @@ import (
 	"sync/atomic"
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/pelletier/go-toml/v2/internal/ast"
 	"github.com/pelletier/go-toml/v2/internal/danger"
 	"github.com/pelletier/go-toml/v2/internal/tracker"
@@ -880,7 +881,7 @@ const (
 var maxUint int64 = math.MaxInt64
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	m := uint64(^uint(0))
 	if m < uint64(maxUint) {
 		maxUint = int64(m)

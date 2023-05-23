@@ -8,7 +8,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"strings"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	gqlast "github.com/open-policy-agent/opa/internal/gqlparser/ast"
 	gqlparser "github.com/open-policy-agent/opa/internal/gqlparser/parser"
 	gqlvalidator "github.com/open-policy-agent/opa/internal/gqlparser/validator"
@@ -454,7 +456,7 @@ func builtinGraphQLIsValid(_ BuiltinContext, operands []*ast.Term, iter func(*as
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RegisterBuiltinFunc(ast.GraphQLParse.Name, builtinGraphQLParse)
 	RegisterBuiltinFunc(ast.GraphQLParseAndVerify.Name, builtinGraphQLParseAndVerify)
 	RegisterBuiltinFunc(ast.GraphQLParseQuery.Name, builtinGraphQLParseQuery)

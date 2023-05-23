@@ -8,16 +8,21 @@ import (
 	"fmt"
 	"io"
 	"sync"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/oklog/ulid"
 	"go.mongodb.org/mongo-driver/bson"
 )
 
 // ULID represents a ulid string format
 // ref:
-//   https://github.com/ulid/spec
+//
+//	https://github.com/ulid/spec
+//
 // impl:
-//   https://github.com/oklog/ulid
+//
+//	https://github.com/oklog/ulid
 //
 // swagger:strfmt ulid
 type ULID struct {
@@ -62,7 +67,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// register formats in the default registry:
 	//   - ulid
 	ulid := ULID{}

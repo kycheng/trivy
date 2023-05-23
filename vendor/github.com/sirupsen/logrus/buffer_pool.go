@@ -3,6 +3,9 @@ package logrus
 import (
 	"bytes"
 	"sync"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 var (
@@ -33,7 +36,7 @@ func SetBufferPool(bp BufferPool) {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	SetBufferPool(&defaultPool{
 		pool: &sync.Pool{
 			New: func() interface{} {

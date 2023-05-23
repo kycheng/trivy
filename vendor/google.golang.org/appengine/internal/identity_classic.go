@@ -2,18 +2,22 @@
 // Use of this source code is governed by the Apache 2.0
 // license that can be found in the LICENSE file.
 
+//go:build appengine
 // +build appengine
 
 package internal
 
 import (
+	"time"
+
 	"appengine"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	netcontext "golang.org/x/net/context"
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	appengineStandard = true
 }
 

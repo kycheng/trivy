@@ -39,7 +39,6 @@ var E_Customtype = &proto.ExtensionDesc{
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
 	proto.RegisterExtension(E_Nullable)
 	proto.RegisterExtension(E_Embed)
 	proto.RegisterExtension(E_Customtype)

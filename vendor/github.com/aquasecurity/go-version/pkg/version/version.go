@@ -5,11 +5,13 @@ import (
 	"fmt"
 	"regexp"
 	"strings"
+	"time"
 
 	"golang.org/x/xerrors"
 
 	"github.com/aquasecurity/go-version/pkg/part"
 	"github.com/aquasecurity/go-version/pkg/prerelease"
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // The compiled regular expression used to test the validity of a version.
@@ -34,7 +36,7 @@ type Version struct {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	versionRegex = regexp.MustCompile("^" + regex + "$")
 }
 

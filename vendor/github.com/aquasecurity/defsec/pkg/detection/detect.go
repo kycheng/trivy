@@ -6,9 +6,11 @@ import (
 	"io"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"github.com/aquasecurity/defsec/pkg/scanners/azure/arm/parser/armjson"
 	"github.com/aquasecurity/defsec/pkg/types"
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"gopkg.in/yaml.v3"
 )
 
@@ -32,7 +34,7 @@ var matchers = map[FileType]func(name string, r io.ReadSeeker) bool{}
 
 // nolint
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 
 	matchers[FileTypeJSON] = func(name string, r io.ReadSeeker) bool {
 		ext := filepath.Ext(filepath.Base(name))

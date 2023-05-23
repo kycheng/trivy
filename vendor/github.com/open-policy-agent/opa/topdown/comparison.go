@@ -4,7 +4,12 @@
 
 package topdown
 
-import "github.com/open-policy-agent/opa/ast"
+import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+	"github.com/open-policy-agent/opa/ast"
+)
 
 type compareFunc func(a, b ast.Value) bool
 
@@ -39,7 +44,7 @@ func builtinCompare(cmp compareFunc) FunctionalBuiltin2 {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RegisterFunctionalBuiltin2(ast.GreaterThan.Name, builtinCompare(compareGreaterThan))
 	RegisterFunctionalBuiltin2(ast.GreaterThanEq.Name, builtinCompare(compareGreaterThanEq))
 	RegisterFunctionalBuiltin2(ast.LessThan.Name, builtinCompare(compareLessThan))

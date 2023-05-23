@@ -5,9 +5,12 @@ package rpc
 
 import (
 	fmt "fmt"
-	proto "github.com/gogo/protobuf/proto"
 	math "math"
 	strconv "strconv"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+	proto "github.com/gogo/protobuf/proto"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -22,7 +25,6 @@ var _ = math.Inf
 const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
 // The canonical error codes for gRPC APIs.
-//
 //
 // Sometimes multiple error codes may apply.  Services should return
 // the most specific error code that applies.  For example, prefer
@@ -215,12 +217,14 @@ func (Code) EnumDescriptor() ([]byte, []int) {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterEnum("google.rpc.Code", Code_name, Code_value)
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now()); proto.RegisterFile("google/rpc/code.proto", fileDescriptor_fe593a732623ccf0) }
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
+	proto.RegisterFile("google/rpc/code.proto", fileDescriptor_fe593a732623ccf0)
+}
 
 var fileDescriptor_fe593a732623ccf0 = []byte{
 	// 393 bytes of a gzipped FileDescriptorProto

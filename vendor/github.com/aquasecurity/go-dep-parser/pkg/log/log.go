@@ -1,13 +1,16 @@
 package log
 
 import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"go.uber.org/zap"
 )
 
 var Logger *zap.SugaredLogger
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	config := zap.Config{
 		Level:            zap.NewAtomicLevelAt(zap.InfoLevel),
 		Development:      false,

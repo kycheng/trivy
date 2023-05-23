@@ -3,9 +3,15 @@
 
 package modules
 
-import proto "github.com/golang/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import (
+	fmt "fmt"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+	proto "github.com/golang/protobuf/proto"
+
+	math "math"
+)
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -729,7 +735,7 @@ func (m *GetHostnameResponse) GetHostname() string {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*ModulesServiceError)(nil), "appengine.ModulesServiceError")
 	proto.RegisterType((*GetModulesRequest)(nil), "appengine.GetModulesRequest")
 	proto.RegisterType((*GetModulesResponse)(nil), "appengine.GetModulesResponse")
@@ -750,7 +756,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("google.golang.org/appengine/internal/modules/modules_service.proto", fileDescriptor_modules_service_9cd3bffe4e91c59a)
 }
 

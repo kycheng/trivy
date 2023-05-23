@@ -4,10 +4,13 @@
 package any
 
 import (
+	reflect "reflect"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	anypb "google.golang.org/protobuf/types/known/anypb"
-	reflect "reflect"
 )
 
 // Symbols defined in public import of google/protobuf/any.proto.
@@ -38,7 +41,9 @@ var file_github_com_golang_protobuf_ptypes_any_any_proto_depIdxs = []int32{
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now()); file_github_com_golang_protobuf_ptypes_any_any_proto_init() }
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
+	file_github_com_golang_protobuf_ptypes_any_any_proto_init()
+}
 func file_github_com_golang_protobuf_ptypes_any_any_proto_init() {
 	if File_github_com_golang_protobuf_ptypes_any_any_proto != nil {
 		return

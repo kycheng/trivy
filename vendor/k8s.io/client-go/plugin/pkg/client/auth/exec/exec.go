@@ -32,6 +32,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/davecgh/go-spew/spew"
 	"golang.org/x/term"
 
@@ -63,7 +64,7 @@ var scheme = runtime.NewScheme()
 var codecs = serializer.NewCodecFactory(scheme)
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	install.Install(scheme)
 }
 

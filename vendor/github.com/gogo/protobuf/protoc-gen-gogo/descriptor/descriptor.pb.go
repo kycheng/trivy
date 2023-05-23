@@ -5,8 +5,11 @@ package descriptor
 
 import (
 	fmt "fmt"
-	proto "github.com/gogo/protobuf/proto"
 	math "math"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+	proto "github.com/gogo/protobuf/proto"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -2665,7 +2668,7 @@ func (m *GeneratedCodeInfo_Annotation) GetEnd() int32 {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterEnum("google.protobuf.FieldDescriptorProto_Type", FieldDescriptorProto_Type_name, FieldDescriptorProto_Type_value)
 	proto.RegisterEnum("google.protobuf.FieldDescriptorProto_Label", FieldDescriptorProto_Label_name, FieldDescriptorProto_Label_value)
 	proto.RegisterEnum("google.protobuf.FileOptions_OptimizeMode", FileOptions_OptimizeMode_name, FileOptions_OptimizeMode_value)
@@ -2702,7 +2705,9 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now()); proto.RegisterFile("descriptor.proto", fileDescriptor_308767df5ffe18af) }
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
+	proto.RegisterFile("descriptor.proto", fileDescriptor_308767df5ffe18af)
+}
 
 var fileDescriptor_308767df5ffe18af = []byte{
 	// 2522 bytes of a gzipped FileDescriptorProto

@@ -15,6 +15,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/awserr"
 	"github.com/aws/aws-sdk-go/aws/request"
@@ -35,7 +36,7 @@ var errValueNotSet = fmt.Errorf("value not set")
 var byteSliceType = reflect.TypeOf([]byte{})
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	for i := 0; i < len(noEscape); i++ {
 		// AWS expects every character except these to be escaped
 		noEscape[i] = (i >= 'A' && i <= 'Z') ||

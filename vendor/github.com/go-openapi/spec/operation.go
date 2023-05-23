@@ -19,13 +19,15 @@ import (
 	"encoding/gob"
 	"encoding/json"
 	"sort"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/go-openapi/jsonpointer"
 	"github.com/go-openapi/swag"
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	gob.Register(map[string]interface{}{})
 	gob.Register([]interface{}{})
 }

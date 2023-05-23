@@ -21,9 +21,11 @@ package v1alpha1
 
 import (
 	fmt "fmt"
+	"time"
 
 	io "io"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	proto "github.com/gogo/protobuf/proto"
 	github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
 
@@ -157,7 +159,7 @@ func (m *ImageReviewStatus) XXX_DiscardUnknown() {
 var xxx_messageInfo_ImageReviewStatus proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*ImageReview)(nil), "k8s.io.api.imagepolicy.v1alpha1.ImageReview")
 	proto.RegisterType((*ImageReviewContainerSpec)(nil), "k8s.io.api.imagepolicy.v1alpha1.ImageReviewContainerSpec")
 	proto.RegisterType((*ImageReviewSpec)(nil), "k8s.io.api.imagepolicy.v1alpha1.ImageReviewSpec")
@@ -167,7 +169,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("k8s.io/kubernetes/vendor/k8s.io/api/imagepolicy/v1alpha1/generated.proto", fileDescriptor_834793af728657a5)
 }
 

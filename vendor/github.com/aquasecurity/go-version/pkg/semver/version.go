@@ -5,11 +5,13 @@ import (
 	"fmt"
 	"math"
 	"regexp"
+	"time"
 
 	"golang.org/x/xerrors"
 
 	"github.com/aquasecurity/go-version/pkg/part"
 	"github.com/aquasecurity/go-version/pkg/prerelease"
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 var (
@@ -26,7 +28,7 @@ const regex string = `^(?P<major>0|[1-9]\d*)\.(?P<minor>0|[1-9]\d*)\.(?P<patch>0
 	`?(?:\+(?P<buildmetadata>[0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$`
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	versionRegex = regexp.MustCompile(regex)
 }
 

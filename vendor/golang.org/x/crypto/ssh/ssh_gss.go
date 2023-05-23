@@ -7,12 +7,15 @@ package ssh
 import (
 	"encoding/asn1"
 	"errors"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 var krb5OID []byte
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	krb5OID, _ = asn1.Marshal(krb5Mesh)
 }
 

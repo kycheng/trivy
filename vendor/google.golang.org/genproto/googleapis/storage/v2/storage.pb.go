@@ -24,7 +24,9 @@ import (
 	context "context"
 	reflect "reflect"
 	sync "sync"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	v1 "google.golang.org/genproto/googleapis/iam/v1"
 	date "google.golang.org/genproto/googleapis/type/date"
@@ -8088,7 +8090,9 @@ var file_google_storage_v2_storage_proto_depIdxs = []int32{
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now()); file_google_storage_v2_storage_proto_init() }
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
+	file_google_storage_v2_storage_proto_init()
+}
 func file_google_storage_v2_storage_proto_init() {
 	if File_google_storage_v2_storage_proto != nil {
 		return

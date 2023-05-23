@@ -5,6 +5,9 @@
 package topdown
 
 import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/ast"
 	"github.com/open-policy-agent/opa/topdown/builtins"
 )
@@ -40,7 +43,7 @@ func builtinBinaryOr(a ast.Value, b ast.Value) (ast.Value, error) {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RegisterFunctionalBuiltin2(ast.And.Name, builtinBinaryAnd)
 	RegisterFunctionalBuiltin2(ast.Or.Name, builtinBinaryOr)
 }

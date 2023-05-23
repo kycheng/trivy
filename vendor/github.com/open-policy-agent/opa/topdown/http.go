@@ -22,6 +22,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/ast"
 	"github.com/open-policy-agent/opa/internal/version"
 	"github.com/open-policy-agent/opa/topdown/builtins"
@@ -161,7 +162,7 @@ func getHTTPResponse(bctx BuiltinContext, req ast.Object) (*ast.Term, error) {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	createAllowedKeys()
 	initDefaults()
 	RegisterBuiltinFunc(ast.HTTPSend.Name, builtinHTTPSend)

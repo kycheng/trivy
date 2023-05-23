@@ -91,6 +91,7 @@ import (
 	"sync/atomic"
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/go-logr/logr"
 
 	"k8s.io/klog/v2/internal/buffer"
@@ -401,7 +402,7 @@ var commandLine flag.FlagSet
 
 // init sets up the defaults and creates command line flags.
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	commandLine.StringVar(&logging.logDir, "log_dir", "", "If non-empty, write log files in this directory (no effect when -logtostderr=true)")
 	commandLine.StringVar(&logging.logFile, "log_file", "", "If non-empty, use this log file (no effect when -logtostderr=true)")
 	commandLine.Uint64Var(&logging.logFileMaxSizeMB, "log_file_max_size", 1800,

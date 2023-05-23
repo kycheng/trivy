@@ -10,8 +10,10 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
 	"unicode"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/moby/buildkit/frontend/dockerfile/command"
 	"github.com/moby/buildkit/frontend/dockerfile/shell"
 	"github.com/pkg/errors"
@@ -189,7 +191,7 @@ func newDefaultDirectives() *directives {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// Dispatch Table. see line_parsers.go for the parse functions.
 	// The command is parsed and mapped to the line parser. The line parser
 	// receives the arguments but not the command, and returns an AST after

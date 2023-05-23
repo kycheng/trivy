@@ -1,6 +1,9 @@
 package validator
 
 import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/internal/gqlparser/ast"
 
 	//nolint:revive // Validator rules each use dot imports for convenience.
@@ -8,7 +11,7 @@ import (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	AddRule("KnownArgumentNames", func(observers *Events, addError AddErrFunc) {
 		// A GraphQL field is only valid if all supplied arguments are defined by that field.
 		observers.OnField(func(walker *Walker, field *ast.Field) {

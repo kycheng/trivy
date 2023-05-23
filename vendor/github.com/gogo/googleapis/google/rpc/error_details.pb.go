@@ -6,14 +6,17 @@ package rpc
 import (
 	bytes "bytes"
 	fmt "fmt"
-	proto "github.com/gogo/protobuf/proto"
-	github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
-	types "github.com/gogo/protobuf/types"
 	io "io"
 	math "math"
 	math_bits "math/bits"
 	reflect "reflect"
 	strings "strings"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+	proto "github.com/gogo/protobuf/proto"
+	github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
+	types "github.com/gogo/protobuf/types"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -289,25 +292,25 @@ func (*QuotaFailure_Violation) XXX_MessageName() string {
 // Example of an error when contacting the "pubsub.googleapis.com" API when it
 // is not enabled:
 //
-//     { "reason": "API_DISABLED"
-//       "domain": "googleapis.com"
-//       "metadata": {
-//         "resource": "projects/123",
-//         "service": "pubsub.googleapis.com"
-//       }
-//     }
+//	{ "reason": "API_DISABLED"
+//	  "domain": "googleapis.com"
+//	  "metadata": {
+//	    "resource": "projects/123",
+//	    "service": "pubsub.googleapis.com"
+//	  }
+//	}
 //
 // This response indicates that the pubsub.googleapis.com API is not enabled.
 //
 // Example of an error that is returned when attempting to create a Spanner
 // instance in a region that is out of stock:
 //
-//     { "reason": "STOCKOUT"
-//       "domain": "spanner.googleapis.com",
-//       "metadata": {
-//         "availableRegions": "us-central1,us-east2"
-//       }
-//     }
+//	{ "reason": "STOCKOUT"
+//	  "domain": "spanner.googleapis.com",
+//	  "metadata": {
+//	    "availableRegions": "us-central1,us-east2"
+//	  }
+//	}
 type ErrorInfo struct {
 	// The reason of the error. This is a constant value that identifies the
 	// proximate cause of the error. Error reasons are unique within a particular
@@ -973,7 +976,7 @@ func (*LocalizedMessage) XXX_MessageName() string {
 	return "google.rpc.LocalizedMessage"
 }
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*RetryInfo)(nil), "google.rpc.RetryInfo")
 	proto.RegisterType((*DebugInfo)(nil), "google.rpc.DebugInfo")
 	proto.RegisterType((*QuotaFailure)(nil), "google.rpc.QuotaFailure")
@@ -992,7 +995,9 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now()); proto.RegisterFile("google/rpc/error_details.proto", fileDescriptor_851816e4d6b6361a) }
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
+	proto.RegisterFile("google/rpc/error_details.proto", fileDescriptor_851816e4d6b6361a)
+}
 
 var fileDescriptor_851816e4d6b6361a = []byte{
 	// 710 bytes of a gzipped FileDescriptorProto

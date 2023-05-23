@@ -1,6 +1,11 @@
 package cty
 
-import "math/big"
+import (
+	"math/big"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+)
 
 // primitiveType is the hidden implementation of the various primitive types
 // that are exposed as variables in this package.
@@ -125,7 +130,7 @@ var PositiveInfinity Value
 var NegativeInfinity Value
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	Number = Type{
 		primitiveType{Kind: primitiveTypeNumber},
 	}

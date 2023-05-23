@@ -17,6 +17,9 @@ limitations under the License.
 package internalversion
 
 import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	metav1beta1 "k8s.io/apimachinery/pkg/apis/meta/v1beta1"
 	"k8s.io/apimachinery/pkg/runtime"
@@ -84,6 +87,6 @@ func addToGroupVersion(scheme *runtime.Scheme) error {
 // Unlike other API groups, meta internal knows about all meta external versions, but keeps
 // the logic for conversion private.
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	localSchemeBuilder.Register(addToGroupVersion)
 }

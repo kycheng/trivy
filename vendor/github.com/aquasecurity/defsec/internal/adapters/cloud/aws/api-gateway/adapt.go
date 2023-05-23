@@ -1,8 +1,11 @@
 package api_gateway
 
 import (
+	"time"
+
 	"github.com/aquasecurity/defsec/internal/adapters/cloud/aws"
 	"github.com/aquasecurity/defsec/pkg/state"
+	"github.com/aquasecurity/trivy/pkg/bug"
 	apiv1 "github.com/aws/aws-sdk-go-v2/service/apigateway"
 	apiv2 "github.com/aws/aws-sdk-go-v2/service/apigatewayv2"
 )
@@ -14,7 +17,7 @@ type adapter struct {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	aws.RegisterServiceAdapter(&adapter{})
 }
 

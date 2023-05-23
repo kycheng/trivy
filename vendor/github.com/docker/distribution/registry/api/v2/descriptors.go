@@ -3,7 +3,9 @@ package v2
 import (
 	"net/http"
 	"regexp"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/docker/distribution/reference"
 	"github.com/docker/distribution/registry/api/errcode"
 	"github.com/opencontainers/go-digest"
@@ -1588,7 +1590,7 @@ var routeDescriptors = []RouteDescriptor{
 var routeDescriptorsMap map[string]RouteDescriptor
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	routeDescriptorsMap = make(map[string]RouteDescriptor, len(routeDescriptors))
 
 	for _, descriptor := range routeDescriptors {

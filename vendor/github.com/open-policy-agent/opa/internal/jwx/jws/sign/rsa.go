@@ -4,7 +4,9 @@ import (
 	"crypto"
 	"crypto/rand"
 	"crypto/rsa"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/internal/jwx/jwa"
 
 	"github.com/pkg/errors"
@@ -13,7 +15,7 @@ import (
 var rsaSignFuncs = map[jwa.SignatureAlgorithm]rsaSignFunc{}
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	algs := map[jwa.SignatureAlgorithm]struct {
 		Hash     crypto.Hash
 		SignFunc func(crypto.Hash) rsaSignFunc

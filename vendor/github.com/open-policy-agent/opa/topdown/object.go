@@ -5,6 +5,9 @@
 package topdown
 
 import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/ast"
 	"github.com/open-policy-agent/opa/internal/ref"
 	"github.com/open-policy-agent/opa/topdown/builtins"
@@ -209,7 +212,7 @@ func mergewithOverwriteInPlace(obj, other ast.Object, frozenKeys map[*ast.Term]s
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RegisterBuiltinFunc(ast.ObjectUnion.Name, builtinObjectUnion)
 	RegisterBuiltinFunc(ast.ObjectUnionN.Name, builtinObjectUnionN)
 	RegisterBuiltinFunc(ast.ObjectRemove.Name, builtinObjectRemove)

@@ -21,9 +21,11 @@ package v1
 
 import (
 	fmt "fmt"
+	"time"
 
 	io "io"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	proto "github.com/gogo/protobuf/proto"
 	github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
 	resource "k8s.io/apimachinery/pkg/api/resource"
@@ -6070,7 +6072,7 @@ func (m *WindowsSecurityContextOptions) XXX_DiscardUnknown() {
 var xxx_messageInfo_WindowsSecurityContextOptions proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*AWSElasticBlockStoreVolumeSource)(nil), "k8s.io.api.core.v1.AWSElasticBlockStoreVolumeSource")
 	proto.RegisterType((*Affinity)(nil), "k8s.io.api.core.v1.Affinity")
 	proto.RegisterType((*AttachedVolume)(nil), "k8s.io.api.core.v1.AttachedVolume")
@@ -6317,7 +6319,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("k8s.io/kubernetes/vendor/k8s.io/api/core/v1/generated.proto", fileDescriptor_83c10c24ec417dc9)
 }
 

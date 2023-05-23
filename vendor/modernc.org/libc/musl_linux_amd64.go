@@ -6,7 +6,10 @@ import (
 	"math"
 	"reflect"
 	"sync/atomic"
+	"time"
 	"unsafe"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 var _ = math.Pi
@@ -6933,7 +6936,7 @@ func Xpthread_mutexattr_settype(tls *TLS, a uintptr, type1 int32) int32 { /* pth
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	*(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&ptable)) + 0)) = uintptr(unsafe.Pointer(&table)) + uintptr(128)*2 // __ctype_b_loc.c:36:45:
 }
 

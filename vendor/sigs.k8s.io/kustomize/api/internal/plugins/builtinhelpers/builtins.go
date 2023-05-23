@@ -4,6 +4,9 @@
 package builtinhelpers
 
 import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"sigs.k8s.io/kustomize/api/internal/builtins"
 	"sigs.k8s.io/kustomize/api/resmap"
 )
@@ -37,7 +40,7 @@ const (
 var stringToBuiltinPluginTypeMap map[string]BuiltinPluginType
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now()); //nolint:gochecknoinits
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now()) //nolint:gochecknoinits
 	stringToBuiltinPluginTypeMap = makeStringToBuiltinPluginTypeMap()
 }
 

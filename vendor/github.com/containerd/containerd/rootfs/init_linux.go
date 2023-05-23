@@ -20,6 +20,9 @@ import (
 	"os"
 	"path/filepath"
 	"syscall"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 const (
@@ -27,7 +30,7 @@ const (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	initializers[defaultInitializer] = initFS
 }
 

@@ -7,14 +7,16 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/internal/jwx/jwa"
 )
 
 var ecdsaSignFuncs = map[jwa.SignatureAlgorithm]ecdsaSignFunc{}
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	algs := map[jwa.SignatureAlgorithm]crypto.Hash{
 		jwa.ES256: crypto.SHA256,
 		jwa.ES384: crypto.SHA384,

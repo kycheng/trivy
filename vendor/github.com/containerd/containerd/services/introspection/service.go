@@ -19,7 +19,9 @@ package introspection
 import (
 	context "context"
 	"errors"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	api "github.com/containerd/containerd/api/services/introspection/v1"
 	"github.com/containerd/containerd/plugin"
 	"github.com/containerd/containerd/services"
@@ -28,7 +30,7 @@ import (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	plugin.Register(&plugin.Registration{
 		Type:     plugin.GRPCPlugin,
 		ID:       "introspection",

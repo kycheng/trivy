@@ -3,10 +3,12 @@ package gem
 import (
 	"regexp"
 	"strings"
+	"time"
 
 	"golang.org/x/xerrors"
 
 	"github.com/aquasecurity/go-version/pkg/part"
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 var (
@@ -25,7 +27,7 @@ const (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	versionRegexp = regexp.MustCompile(`^\s*(` + versionPattern + `)?\s*$`)
 	segmentRegexp = regexp.MustCompile(segmentPattern)
 }

@@ -22,6 +22,7 @@ import (
 	"time"
 	"unsafe"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	guuid "github.com/google/uuid"
 	"golang.org/x/sys/unix"
 	"modernc.org/libc/errno"
@@ -38,7 +39,7 @@ import (
 var staticGetpwnam pwd.Passwd
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	atExit = append(atExit, func() { closePasswd(&staticGetpwnam) })
 }
 
@@ -392,7 +393,7 @@ func Xgetpwnam_r(t *TLS, name, cpwd, buf uintptr, buflen types.Size_t, result ui
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	atExit = append(atExit, func() { closeGroup(&staticGetgrgid) })
 }
 
@@ -601,14 +602,14 @@ func initGroup2(buf uintptr, buflen types.Size_t, p *grp.Group, name, pwd string
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	atExit = append(atExit, func() { closeGroup(&staticGetgrgid) })
 }
 
 var staticGetpwuid pwd.Passwd
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	atExit = append(atExit, func() { closePasswd(&staticGetpwuid) })
 }
 
@@ -624,7 +625,7 @@ func closePasswd(p *pwd.Passwd) {
 var staticGetgrnam grp.Group
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	atExit = append(atExit, func() { closeGroup(&staticGetgrnam) })
 }
 

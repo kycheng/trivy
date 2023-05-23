@@ -6,7 +6,10 @@ import (
 	"math"
 	"reflect"
 	"sync/atomic"
+	"time"
 	"unsafe"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 var _ = math.Pi
@@ -6848,7 +6851,7 @@ func Xstrspn(tls *TLS, s uintptr, c uintptr) size_t { /* strspn.c:6:8: */
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	*(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X_CurrentRuneLocale)) + 0)) = uintptr(unsafe.Pointer(&X_DefaultRuneLocale)) // table.cpp.c:4092:41:
 }
 

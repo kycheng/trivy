@@ -5,6 +5,9 @@ import (
 	"fmt"
 	"regexp"
 	"strings"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // Constraints is one or more constraint that a semantic version can be
@@ -105,7 +108,7 @@ var constraintMsg map[string]string
 var constraintRegex *regexp.Regexp
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	constraintOps = map[string]cfunc{
 		"":   constraintTildeOrEqual,
 		"=":  constraintTildeOrEqual,

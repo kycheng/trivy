@@ -4,7 +4,9 @@ import (
 	"crypto"
 	"crypto/ecdsa"
 	"math/big"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/pkg/errors"
 
 	"github.com/open-policy-agent/opa/internal/jwx/jwa"
@@ -13,7 +15,7 @@ import (
 var ecdsaVerifyFuncs = map[jwa.SignatureAlgorithm]ecdsaVerifyFunc{}
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	algs := map[jwa.SignatureAlgorithm]crypto.Hash{
 		jwa.ES256: crypto.SHA256,
 		jwa.ES384: crypto.SHA384,

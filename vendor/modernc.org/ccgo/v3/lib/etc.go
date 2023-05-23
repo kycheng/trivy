@@ -8,7 +8,9 @@ import (
 	"fmt"
 	"math"
 	"math/big"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"modernc.org/cc/v3"
 )
 
@@ -71,7 +73,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	for k := range reservedNames {
 		reservedIds = append(reservedIds, cc.String(k))
 	}

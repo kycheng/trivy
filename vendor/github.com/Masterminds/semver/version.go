@@ -8,6 +8,9 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // The compiled version of the regex created at init() is cached here so it
@@ -45,7 +48,7 @@ type Version struct {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	versionRegex = regexp.MustCompile("^" + SemVerRegex + "$")
 	validPrereleaseRegex = regexp.MustCompile(ValidPrerelease)
 }

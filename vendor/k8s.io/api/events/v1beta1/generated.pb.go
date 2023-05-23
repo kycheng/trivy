@@ -21,9 +21,11 @@ package v1beta1
 
 import (
 	fmt "fmt"
+	"time"
 
 	io "io"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	proto "github.com/gogo/protobuf/proto"
 	v11 "k8s.io/api/core/v1"
 
@@ -129,14 +131,14 @@ func (m *EventSeries) XXX_DiscardUnknown() {
 var xxx_messageInfo_EventSeries proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*Event)(nil), "k8s.io.api.events.v1beta1.Event")
 	proto.RegisterType((*EventList)(nil), "k8s.io.api.events.v1beta1.EventList")
 	proto.RegisterType((*EventSeries)(nil), "k8s.io.api.events.v1beta1.EventSeries")
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("k8s.io/kubernetes/vendor/k8s.io/api/events/v1beta1/generated.proto", fileDescriptor_4f97f691c32a5ac8)
 }
 

@@ -6,7 +6,10 @@ import (
 	"math"
 	"reflect"
 	"sync/atomic"
+	"time"
 	"unsafe"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 var _ = math.Pi
@@ -4724,7 +4727,7 @@ func Xstrtok(tls *TLS, s uintptr, sep uintptr) uintptr { /* strtok.c:3:6: */
 var _sp uintptr /* strtok.c:5:14: */
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	*(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X_CurrentRuneLocale)) + 0)) = uintptr(unsafe.Pointer(&X_DefaultRuneLocale)) // table.c:1940:35:
 	*(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X_CurrentRuneLocale)) + 0)) = uintptr(unsafe.Pointer(&X_DefaultRuneLocale)) // table.c:1940:35:
 }

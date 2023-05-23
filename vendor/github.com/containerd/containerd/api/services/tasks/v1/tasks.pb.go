@@ -6,6 +6,14 @@ package tasks
 import (
 	context "context"
 	fmt "fmt"
+	io "io"
+	math "math"
+	math_bits "math/bits"
+	reflect "reflect"
+	strings "strings"
+	time "time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	types "github.com/containerd/containerd/api/types"
 	task "github.com/containerd/containerd/api/types/task"
 	proto "github.com/gogo/protobuf/proto"
@@ -16,12 +24,6 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
-	io "io"
-	math "math"
-	math_bits "math/bits"
-	reflect "reflect"
-	strings "strings"
-	time "time"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1135,7 +1137,7 @@ func (m *WaitResponse) XXX_DiscardUnknown() {
 var xxx_messageInfo_WaitResponse proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*CreateTaskRequest)(nil), "containerd.services.tasks.v1.CreateTaskRequest")
 	proto.RegisterType((*CreateTaskResponse)(nil), "containerd.services.tasks.v1.CreateTaskResponse")
 	proto.RegisterType((*StartRequest)(nil), "containerd.services.tasks.v1.StartRequest")
@@ -1167,7 +1169,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("github.com/containerd/containerd/api/services/tasks/v1/tasks.proto", fileDescriptor_310e7127b8a26f14)
 }
 

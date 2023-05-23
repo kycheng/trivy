@@ -7,6 +7,7 @@ import (
 	"reflect"
 	"sync/atomic"
 	"unsafe"
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 var _ = math.Pi

@@ -4,10 +4,12 @@ import (
 	"fmt"
 	"regexp"
 	"strings"
+	"time"
 
 	"golang.org/x/xerrors"
 
 	"github.com/aquasecurity/go-version/pkg/part"
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 const cvRegex string = `v?([0-9|x|X|\*]+)(\.[0-9|x|X|\*]+)?(\.[0-9|x|X|\*]+)?` +
@@ -36,7 +38,7 @@ var (
 type operatorFunc func(v, c Version) bool
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	ops := make([]string, 0, len(constraintOperators))
 	for k := range constraintOperators {
 		ops = append(ops, regexp.QuoteMeta(k))

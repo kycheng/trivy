@@ -7,10 +7,12 @@ import (
 	"reflect"
 	"strings"
 	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	rand.Seed(time.Now().UnixNano())
 }
 

@@ -21,9 +21,11 @@ package v1beta1
 
 import (
 	fmt "fmt"
+	"time"
 
 	io "io"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	proto "github.com/gogo/protobuf/proto"
 	github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
 	k8s_io_api_core_v1 "k8s.io/api/core/v1"
@@ -1730,7 +1732,7 @@ func (m *SupplementalGroupsStrategyOptions) XXX_DiscardUnknown() {
 var xxx_messageInfo_SupplementalGroupsStrategyOptions proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*AllowedCSIDriver)(nil), "k8s.io.api.extensions.v1beta1.AllowedCSIDriver")
 	proto.RegisterType((*AllowedFlexVolume)(nil), "k8s.io.api.extensions.v1beta1.AllowedFlexVolume")
 	proto.RegisterType((*AllowedHostPath)(nil), "k8s.io.api.extensions.v1beta1.AllowedHostPath")
@@ -1796,7 +1798,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("k8s.io/kubernetes/vendor/k8s.io/api/extensions/v1beta1/generated.proto", fileDescriptor_cdc93917efc28165)
 }
 

@@ -6,7 +6,9 @@ package topdown
 
 import (
 	"fmt"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/ast"
 	"github.com/open-policy-agent/opa/internal/semver"
 	"github.com/open-policy-agent/opa/topdown/builtins"
@@ -54,7 +56,7 @@ func builtinSemVerIsValid(bctx BuiltinContext, args []*ast.Term, iter func(*ast.
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RegisterBuiltinFunc(ast.SemVerCompare.Name, builtinSemVerCompare)
 	RegisterBuiltinFunc(ast.SemVerIsValid.Name, builtinSemVerIsValid)
 }

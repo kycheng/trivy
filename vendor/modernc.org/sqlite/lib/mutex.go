@@ -8,14 +8,16 @@ import (
 	"fmt"
 	"sync"
 	"sync/atomic"
+	"time"
 	"unsafe"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"modernc.org/libc"
 	"modernc.org/libc/sys/types"
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	tls := libc.NewTLS()
 	if Xsqlite3_threadsafe(tls) == 0 {
 		panic(fmt.Errorf("sqlite: thread safety configuration error"))

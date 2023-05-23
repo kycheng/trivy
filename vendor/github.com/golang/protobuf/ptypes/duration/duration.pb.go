@@ -4,10 +4,13 @@
 package duration
 
 import (
+	reflect "reflect"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	durationpb "google.golang.org/protobuf/types/known/durationpb"
-	reflect "reflect"
 )
 
 // Symbols defined in public import of google/protobuf/duration.proto.
@@ -39,7 +42,9 @@ var file_github_com_golang_protobuf_ptypes_duration_duration_proto_depIdxs = []i
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now()); file_github_com_golang_protobuf_ptypes_duration_duration_proto_init() }
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
+	file_github_com_golang_protobuf_ptypes_duration_duration_proto_init()
+}
 func file_github_com_golang_protobuf_ptypes_duration_duration_proto_init() {
 	if File_github_com_golang_protobuf_ptypes_duration_duration_proto != nil {
 		return

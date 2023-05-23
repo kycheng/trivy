@@ -21,9 +21,11 @@ package v1beta2
 
 import (
 	fmt "fmt"
+	"time"
 
 	io "io"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	proto "github.com/gogo/protobuf/proto"
 
 	math "math"
@@ -660,7 +662,7 @@ func (m *UserSubject) XXX_DiscardUnknown() {
 var xxx_messageInfo_UserSubject proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*FlowDistinguisherMethod)(nil), "k8s.io.api.flowcontrol.v1beta2.FlowDistinguisherMethod")
 	proto.RegisterType((*FlowSchema)(nil), "k8s.io.api.flowcontrol.v1beta2.FlowSchema")
 	proto.RegisterType((*FlowSchemaCondition)(nil), "k8s.io.api.flowcontrol.v1beta2.FlowSchemaCondition")
@@ -686,7 +688,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("k8s.io/kubernetes/vendor/k8s.io/api/flowcontrol/v1beta2/generated.proto", fileDescriptor_ed300aa8e672704e)
 }
 

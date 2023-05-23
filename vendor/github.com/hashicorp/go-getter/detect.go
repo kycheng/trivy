@@ -3,7 +3,9 @@ package getter
 import (
 	"fmt"
 	"path/filepath"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/hashicorp/go-getter/helper/url"
 )
 
@@ -21,7 +23,7 @@ type Detector interface {
 var Detectors []Detector
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	Detectors = []Detector{
 		new(GitHubDetector),
 		new(GitLabDetector),

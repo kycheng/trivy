@@ -32,6 +32,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	grpclbstate "google.golang.org/grpc/balancer/grpclb/state"
 	"google.golang.org/grpc/grpclog"
 	"google.golang.org/grpc/internal/backoff"
@@ -55,7 +56,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	resolver.Register(NewBuilder())
 }
 

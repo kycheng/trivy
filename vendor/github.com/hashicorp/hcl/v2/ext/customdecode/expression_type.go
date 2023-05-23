@@ -3,7 +3,9 @@ package customdecode
 import (
 	"fmt"
 	"reflect"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/hashicorp/hcl/v2"
 	"github.com/zclconf/go-cty/cty"
 )
@@ -80,7 +82,7 @@ func ExpressionClosureFromVal(v cty.Value) *ExpressionClosure {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// Getting hold of a reflect.Type for hcl.Expression is a bit tricky because
 	// it's an interface type, but we can do it with some indirection.
 	goExpressionType := reflect.TypeOf((*hcl.Expression)(nil)).Elem()

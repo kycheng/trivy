@@ -21,9 +21,11 @@ package v1alpha1
 
 import (
 	fmt "fmt"
+	"time"
 
 	io "io"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	proto "github.com/gogo/protobuf/proto"
 	github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
 	k8s_io_api_core_v1 "k8s.io/api/core/v1"
@@ -189,7 +191,7 @@ func (m *Scheduling) XXX_DiscardUnknown() {
 var xxx_messageInfo_Scheduling proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*Overhead)(nil), "k8s.io.api.node.v1alpha1.Overhead")
 	proto.RegisterMapType((k8s_io_api_core_v1.ResourceList)(nil), "k8s.io.api.node.v1alpha1.Overhead.PodFixedEntry")
 	proto.RegisterType((*RuntimeClass)(nil), "k8s.io.api.node.v1alpha1.RuntimeClass")
@@ -200,7 +202,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("k8s.io/kubernetes/vendor/k8s.io/api/node/v1alpha1/generated.proto", fileDescriptor_82a78945ab308218)
 }
 

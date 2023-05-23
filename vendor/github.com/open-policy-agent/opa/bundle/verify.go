@@ -11,7 +11,9 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/internal/jwx/jwa"
 	"github.com/open-policy-agent/opa/internal/jwx/jws"
 	"github.com/open-policy-agent/opa/internal/jwx/jws/verify"
@@ -225,7 +227,7 @@ func RegisterVerifier(id string, v Verifier) error {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	verifiers = map[string]Verifier{
 		defaultVerifierID: &DefaultVerifier{},
 	}

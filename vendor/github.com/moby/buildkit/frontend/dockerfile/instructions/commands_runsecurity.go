@@ -4,6 +4,9 @@
 package instructions
 
 import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/pkg/errors"
 )
 
@@ -25,7 +28,7 @@ func isValidSecurity(value string) bool {
 var securityKey = "dockerfile/run/security"
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	parseRunPreHooks = append(parseRunPreHooks, runSecurityPreHook)
 	parseRunPostHooks = append(parseRunPostHooks, runSecurityPostHook)
 }

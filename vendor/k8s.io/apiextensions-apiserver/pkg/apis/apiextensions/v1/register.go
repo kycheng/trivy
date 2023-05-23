@@ -17,6 +17,9 @@ limitations under the License.
 package v1
 
 import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"
@@ -55,7 +58,7 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// We only register manually written functions here. The registration of the
 	// generated functions takes place in the generated files. The separation
 	// makes the code compile even when the generated files are missing.

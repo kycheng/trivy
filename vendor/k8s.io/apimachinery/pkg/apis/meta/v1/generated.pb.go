@@ -24,6 +24,7 @@ import (
 
 	io "io"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	proto "github.com/gogo/protobuf/proto"
 	github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
 	runtime "k8s.io/apimachinery/pkg/runtime"
@@ -1272,7 +1273,7 @@ func (m *WatchEvent) XXX_DiscardUnknown() {
 var xxx_messageInfo_WatchEvent proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*APIGroup)(nil), "k8s.io.apimachinery.pkg.apis.meta.v1.APIGroup")
 	proto.RegisterType((*APIGroupList)(nil), "k8s.io.apimachinery.pkg.apis.meta.v1.APIGroupList")
 	proto.RegisterType((*APIResource)(nil), "k8s.io.apimachinery.pkg.apis.meta.v1.APIResource")
@@ -1323,7 +1324,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/apis/meta/v1/generated.proto", fileDescriptor_cf52fa777ced5367)
 }
 

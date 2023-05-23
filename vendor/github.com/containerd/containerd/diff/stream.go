@@ -21,7 +21,9 @@ import (
 	"errors"
 	"io"
 	"os"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/containerd/containerd/archive/compression"
 	"github.com/containerd/containerd/images"
 	"github.com/gogo/protobuf/types"
@@ -36,7 +38,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// register the default compression handler
 	RegisterProcessor(compressedHandler)
 }

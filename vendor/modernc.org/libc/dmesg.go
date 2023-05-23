@@ -13,6 +13,8 @@ import (
 	"path/filepath"
 	"strings"
 	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 const dmesgs = true
@@ -23,7 +25,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	var err error
 	if logf, err = os.OpenFile("/tmp/libc.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY|os.O_SYNC, 0644); err != nil {
 		panic(err.Error())

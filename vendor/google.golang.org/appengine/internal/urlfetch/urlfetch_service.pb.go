@@ -3,9 +3,15 @@
 
 package urlfetch
 
-import proto "github.com/golang/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import (
+	fmt "fmt"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+	proto "github.com/golang/protobuf/proto"
+
+	math "math"
+)
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -462,7 +468,7 @@ func (m *URLFetchResponse_Header) GetValue() string {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*URLFetchServiceError)(nil), "appengine.URLFetchServiceError")
 	proto.RegisterType((*URLFetchRequest)(nil), "appengine.URLFetchRequest")
 	proto.RegisterType((*URLFetchRequest_Header)(nil), "appengine.URLFetchRequest.Header")
@@ -471,7 +477,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("google.golang.org/appengine/internal/urlfetch/urlfetch_service.proto", fileDescriptor_urlfetch_service_b245a7065f33bced)
 }
 

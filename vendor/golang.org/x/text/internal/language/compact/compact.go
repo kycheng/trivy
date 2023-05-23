@@ -16,7 +16,9 @@ package compact // import "golang.org/x/text/internal/language/compact"
 import (
 	"sort"
 	"strings"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"golang.org/x/text/internal/language"
 )
 
@@ -53,7 +55,7 @@ func (id ID) Tag() language.Tag {
 var specialTags []language.Tag
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	tags := strings.Split(specialTagsStr, " ")
 	specialTags = make([]language.Tag, len(tags))
 	for i, t := range tags {

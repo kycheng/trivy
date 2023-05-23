@@ -3,7 +3,9 @@ package verify
 import (
 	"crypto"
 	"crypto/rsa"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/internal/jwx/jwa"
 
 	"github.com/pkg/errors"
@@ -12,7 +14,7 @@ import (
 var rsaVerifyFuncs = map[jwa.SignatureAlgorithm]rsaVerifyFunc{}
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	algs := map[jwa.SignatureAlgorithm]struct {
 		Hash       crypto.Hash
 		VerifyFunc func(crypto.Hash) rsaVerifyFunc

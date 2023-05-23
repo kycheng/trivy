@@ -23,6 +23,7 @@ import (
 	"net"
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"google.golang.org/grpc/backoff"
 	"google.golang.org/grpc/channelz"
 	"google.golang.org/grpc/credentials"
@@ -37,7 +38,7 @@ import (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	internal.AddGlobalDialOptions = func(opt ...DialOption) {
 		extraDialOptions = append(extraDialOptions, opt...)
 	}
@@ -371,7 +372,7 @@ func WithContextDialer(f func(context.Context, string) (net.Conn, error)) DialOp
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	internal.WithHealthCheckFunc = withHealthCheckFunc
 }
 

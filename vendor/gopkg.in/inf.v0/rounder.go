@@ -2,6 +2,9 @@ package inf
 
 import (
 	"math/big"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // Rounder represents a method for rounding the (possibly infinite decimal)
@@ -9,7 +12,6 @@ import (
 // Dec.Quo().
 //
 // See the Example for results of using each Rounder with some sample values.
-//
 type Rounder rounder
 
 // See http://speleotrove.com/decimal/damodel.html#refround for more detailed
@@ -95,7 +97,7 @@ func roundHalf(f func(c int, odd uint) (roundUp bool)) func(z, q *Dec, rA, rB *b
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RoundExact = rndr{true,
 		func(z, q *Dec, rA, rB *big.Int) *Dec {
 			if rA.Sign() != 0 {

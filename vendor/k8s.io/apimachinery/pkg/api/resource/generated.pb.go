@@ -21,9 +21,11 @@ package resource
 
 import (
 	fmt "fmt"
+	"time"
 
 	math "math"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	proto "github.com/gogo/protobuf/proto"
 )
 
@@ -85,13 +87,13 @@ func (m *QuantityValue) XXX_DiscardUnknown() {
 var xxx_messageInfo_QuantityValue proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*Quantity)(nil), "k8s.io.apimachinery.pkg.api.resource.Quantity")
 	proto.RegisterType((*QuantityValue)(nil), "k8s.io.apimachinery.pkg.api.resource.QuantityValue")
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/api/resource/generated.proto", fileDescriptor_612bba87bd70906c)
 }
 

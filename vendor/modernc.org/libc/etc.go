@@ -20,6 +20,7 @@ import (
 	"time"
 	"unsafe"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"modernc.org/libc/errno"
 	"modernc.org/libc/signal"
 	"modernc.org/libc/sys/types"
@@ -54,7 +55,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	if n := stackHeaderSize; n%16 != 0 {
 		panic(fmt.Errorf("internal error: stackHeaderSize %v == %v (mod 16)", n, n%16))
 	}

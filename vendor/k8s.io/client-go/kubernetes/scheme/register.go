@@ -19,6 +19,9 @@ limitations under the License.
 package scheme
 
 import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	admissionregistrationv1 "k8s.io/api/admissionregistration/v1"
 	admissionregistrationv1alpha1 "k8s.io/api/admissionregistration/v1alpha1"
 	admissionregistrationv1beta1 "k8s.io/api/admissionregistration/v1beta1"
@@ -149,7 +152,7 @@ var localSchemeBuilder = runtime.SchemeBuilder{
 var AddToScheme = localSchemeBuilder.AddToScheme
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	v1.AddToGroupVersion(Scheme, schema.GroupVersion{Version: "v1"})
 	utilruntime.Must(AddToScheme(Scheme))
 }

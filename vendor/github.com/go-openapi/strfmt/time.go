@@ -24,13 +24,14 @@ import (
 	"strings"
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"go.mongodb.org/mongo-driver/bson"
 
 	"go.mongodb.org/mongo-driver/bson/bsontype"
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	dt := DateTime{}
 	Default.Add("datetime", &dt, IsDateTime)
 }

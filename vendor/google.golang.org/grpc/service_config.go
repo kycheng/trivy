@@ -27,6 +27,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/internal"
 	internalserviceconfig "google.golang.org/grpc/internal/serviceconfig"
@@ -217,7 +218,7 @@ type jsonSC struct {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	internal.ParseServiceConfig = parseServiceConfig
 }
 func parseServiceConfig(js string) *serviceconfig.ParseResult {
@@ -373,7 +374,7 @@ func newInt(b int) *int {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	internal.EqualServiceConfigForTesting = equalServiceConfig
 }
 

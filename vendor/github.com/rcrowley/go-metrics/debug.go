@@ -4,6 +4,8 @@ import (
 	"runtime/debug"
 	"sync"
 	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 var (
@@ -76,6 +78,6 @@ func RegisterDebugGCStats(r Registry) {
 // Allocate an initial slice for gcStats.Pause to avoid allocations during
 // normal operation.
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	gcStats.Pause = make([]time.Duration, 11)
 }

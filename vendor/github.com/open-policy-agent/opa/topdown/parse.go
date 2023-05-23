@@ -8,7 +8,9 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/ast"
 	"github.com/open-policy-agent/opa/topdown/builtins"
 )
@@ -53,7 +55,7 @@ func registerRegoMetadataBuiltinFunction(builtin *ast.Builtin) {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RegisterFunctionalBuiltin2(ast.RegoParseModule.Name, builtinRegoParseModule)
 	registerRegoMetadataBuiltinFunction(ast.RegoMetadataChain)
 	registerRegoMetadataBuiltinFunction(ast.RegoMetadataRule)

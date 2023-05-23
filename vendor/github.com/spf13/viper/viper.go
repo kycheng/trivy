@@ -34,6 +34,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/fsnotify/fsnotify"
 	"github.com/mitchellh/mapstructure"
 	"github.com/spf13/afero"
@@ -68,7 +69,7 @@ type RemoteResponse struct {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	v = New()
 }
 

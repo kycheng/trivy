@@ -2,7 +2,9 @@ package hclsyntax
 
 import (
 	"fmt"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/hashicorp/hcl/v2"
 	"github.com/zclconf/go-cty/cty"
 	"github.com/zclconf/go-cty/cty/convert"
@@ -84,7 +86,7 @@ var (
 var binaryOps []map[TokenType]*Operation
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// This operation table maps from the operator's token type
 	// to the AST operation type. All expressions produced from
 	// binary operators are BinaryOp nodes.

@@ -21,6 +21,7 @@ import (
 	"unicode/utf16"
 	"unsafe"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"modernc.org/libc/errno"
 	"modernc.org/libc/fcntl"
 	"modernc.org/libc/limits"

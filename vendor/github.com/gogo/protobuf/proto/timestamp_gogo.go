@@ -31,6 +31,8 @@ package proto
 import (
 	"reflect"
 	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 var timeType = reflect.TypeOf((*time.Time)(nil)).Elem()
@@ -45,6 +47,6 @@ func (*timestamp) ProtoMessage()  {}
 func (*timestamp) String() string { return "timestamp<string>" }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RegisterType((*timestamp)(nil), "gogo.protobuf.proto.timestamp")
 }

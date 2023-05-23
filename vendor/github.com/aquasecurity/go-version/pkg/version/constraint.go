@@ -4,7 +4,9 @@ import (
 	"fmt"
 	"regexp"
 	"strings"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"golang.org/x/xerrors"
 )
 
@@ -31,7 +33,7 @@ var (
 type operatorFunc func(v, c Version) bool
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	ops := make([]string, 0, len(constraintOperators))
 	for k := range constraintOperators {
 		ops = append(ops, regexp.QuoteMeta(k))

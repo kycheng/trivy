@@ -16,7 +16,9 @@ package client
 
 import (
 	"encoding/base64"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/runtime"
@@ -26,7 +28,7 @@ import (
 var PassThroughAuth runtime.ClientAuthInfoWriter
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	PassThroughAuth = runtime.ClientAuthInfoWriterFunc(func(_ runtime.ClientRequest, _ strfmt.Registry) error { return nil })
 }
 

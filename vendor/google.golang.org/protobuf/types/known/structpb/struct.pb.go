@@ -44,8 +44,7 @@
 // "google.golang.org/protobuf/encoding/protojson" package
 // ensures that they will be serialized as their JSON equivalent.
 //
-//
-// Conversion to and from a Go interface
+// # Conversion to and from a Go interface
 //
 // The standard Go "encoding/json" package has functionality to serialize
 // arbitrary types to a large degree. The Value.AsInterface, Struct.AsMap, and
@@ -58,8 +57,7 @@
 // forms back as Value, Struct, and ListValue messages, use the NewStruct,
 // NewList, and NewValue constructor functions.
 //
-//
-// Example usage
+// # Example usage
 //
 // Consider the following example JSON object:
 //
@@ -118,24 +116,26 @@
 //		... // handle error
 //	}
 //	... // make use of m as a *structpb.Value
-//
 package structpb
 
 import (
 	base64 "encoding/base64"
-	protojson "google.golang.org/protobuf/encoding/protojson"
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	math "math"
 	reflect "reflect"
 	sync "sync"
+	"time"
 	utf8 "unicode/utf8"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+	protojson "google.golang.org/protobuf/encoding/protojson"
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 )
 
 // `NullValue` is a singleton enumeration to represent the null value for the
 // `Value` type union.
 //
-//  The JSON representation for `NullValue` is JSON `null`.
+//	The JSON representation for `NullValue` is JSON `null`.
 type NullValue int32
 
 const (
@@ -738,7 +738,9 @@ var file_google_protobuf_struct_proto_depIdxs = []int32{
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now()); file_google_protobuf_struct_proto_init() }
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
+	file_google_protobuf_struct_proto_init()
+}
 func file_google_protobuf_struct_proto_init() {
 	if File_google_protobuf_struct_proto != nil {
 		return

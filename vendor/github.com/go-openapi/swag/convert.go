@@ -18,6 +18,9 @@ import (
 	"math"
 	"strconv"
 	"strings"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // same as ECMA Number.MAX_SAFE_INTEGER and Number.MIN_SAFE_INTEGER
@@ -54,7 +57,7 @@ func IsFloat64AJSONInteger(f float64) bool {
 var evaluatesAsTrue map[string]struct{}
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	evaluatesAsTrue = map[string]struct{}{
 		"true":     {},
 		"1":        {},

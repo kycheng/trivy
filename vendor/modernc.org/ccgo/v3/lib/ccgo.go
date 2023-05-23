@@ -30,6 +30,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/kballard/go-shellquote"
 	"golang.org/x/tools/go/packages"
 	"modernc.org/cc/v3"
@@ -51,7 +52,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	s := strings.TrimSpace(os.Getenv(experimentsEnvVar))
 	if s == "" {
 		return

@@ -7,6 +7,8 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 type resolveMapItem struct {
@@ -18,7 +20,7 @@ var resolveTable = make([]byte, 256)
 var resolveMap = make(map[string]resolveMapItem)
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	t := resolveTable
 	t[int('+')] = 'S' // Sign
 	t[int('-')] = 'S'
@@ -181,7 +183,7 @@ func resolve(tag string, in string) (rtag string, out interface{}) {
 					return yaml_INT_TAG, uintv
 				}
 			} else if strings.HasPrefix(plain, "-0b") {
-				intv, err := strconv.ParseInt("-" + plain[3:], 2, 64)
+				intv, err := strconv.ParseInt("-"+plain[3:], 2, 64)
 				if err == nil {
 					if true || intv == int64(int(intv)) {
 						return yaml_INT_TAG, int(intv)

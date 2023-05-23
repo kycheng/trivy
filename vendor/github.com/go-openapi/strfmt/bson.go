@@ -17,7 +17,9 @@ package strfmt
 import (
 	"database/sql/driver"
 	"fmt"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"go.mongodb.org/mongo-driver/bson"
 
 	"go.mongodb.org/mongo-driver/bson/bsontype"
@@ -25,7 +27,7 @@ import (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	var id ObjectId
 	// register this format in the default registry
 	Default.Add("bsonobjectid", &id, IsBSONObjectID)

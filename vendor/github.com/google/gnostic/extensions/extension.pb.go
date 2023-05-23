@@ -21,11 +21,14 @@
 package gnostic_extension_v1
 
 import (
+	reflect "reflect"
+	sync "sync"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	anypb "google.golang.org/protobuf/types/known/anypb"
-	reflect "reflect"
-	sync "sync"
 )
 
 const (
@@ -386,7 +389,9 @@ var file_extensions_extension_proto_depIdxs = []int32{
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now()); file_extensions_extension_proto_init() }
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
+	file_extensions_extension_proto_init()
+}
 func file_extensions_extension_proto_init() {
 	if File_extensions_extension_proto != nil {
 		return

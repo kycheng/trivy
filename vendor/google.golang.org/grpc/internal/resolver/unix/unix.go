@@ -21,7 +21,9 @@ package unix
 
 import (
 	"fmt"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"google.golang.org/grpc/internal/transport/networktype"
 	"google.golang.org/grpc/resolver"
 )
@@ -69,7 +71,7 @@ func (*nopResolver) ResolveNow(resolver.ResolveNowOptions) {}
 func (*nopResolver) Close() {}
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	resolver.Register(&builder{scheme: unixScheme})
 	resolver.Register(&builder{scheme: unixAbstractScheme})
 }

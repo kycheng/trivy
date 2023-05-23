@@ -5,13 +5,16 @@ package v1
 
 import (
 	fmt "fmt"
-	_ "github.com/gogo/protobuf/gogoproto"
-	proto "github.com/gogo/protobuf/proto"
 	io "io"
 	math "math"
 	math_bits "math/bits"
 	reflect "reflect"
 	strings "strings"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+	_ "github.com/gogo/protobuf/gogoproto"
+	proto "github.com/gogo/protobuf/proto"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -702,7 +705,7 @@ func (m *CgroupStats) XXX_DiscardUnknown() {
 var xxx_messageInfo_CgroupStats proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*Metrics)(nil), "io.containerd.cgroups.v1.Metrics")
 	proto.RegisterType((*HugetlbStat)(nil), "io.containerd.cgroups.v1.HugetlbStat")
 	proto.RegisterType((*PidsStat)(nil), "io.containerd.cgroups.v1.PidsStat")
@@ -721,7 +724,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("github.com/containerd/cgroups/stats/v1/metrics.proto", fileDescriptor_a17b2d87c332bfaa)
 }
 

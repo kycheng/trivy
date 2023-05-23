@@ -3,7 +3,9 @@ package version
 import (
 	"regexp"
 	"strings"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"golang.org/x/xerrors"
 )
 
@@ -25,7 +27,7 @@ const (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	requirementRegexp = regexp.MustCompile(requirementRegex)
 	softRequirementRegexp = regexp.MustCompile(softRequirementRegex)
 }

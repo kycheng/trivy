@@ -20,6 +20,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	signerCrypto "github.com/aws/aws-sdk-go-v2/internal/v4a/internal/crypto"
 	v4Internal "github.com/aws/aws-sdk-go-v2/internal/v4a/internal/v4"
 	"github.com/aws/smithy-go/encoding/httpbinding"
@@ -56,7 +57,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// Ensure the elliptic curve parameters are initialized on package import rather then on first usage
 	p256 = elliptic.P256()
 

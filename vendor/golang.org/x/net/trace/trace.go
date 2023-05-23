@@ -79,6 +79,7 @@ import (
 	"sync/atomic"
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"golang.org/x/net/internal/timeseries"
 )
 
@@ -118,7 +119,7 @@ var AuthRequest = func(req *http.Request) (any, sensitive bool) {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	_, pat := http.DefaultServeMux.Handler(&http.Request{URL: &url.URL{Path: debugRequestsPath}})
 	if pat == debugRequestsPath {
 		panic("/debug/requests is already registered. You may have two independent copies of " +

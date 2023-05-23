@@ -12,7 +12,9 @@ import (
 	"errors"
 	"fmt"
 	"strings"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/ext/customdecode"
 	"github.com/zclconf/go-cty/cty"
@@ -28,7 +30,7 @@ var TryFunc function.Function
 var CanFunc function.Function
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	TryFunc = function.New(&function.Spec{
 		VarParam: &function.Parameter{
 			Name: "expressions",

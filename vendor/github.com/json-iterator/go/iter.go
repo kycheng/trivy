@@ -4,6 +4,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // ValueType the type for JSON element
@@ -30,7 +33,7 @@ var hexDigits []byte
 var valueTypes []ValueType
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	hexDigits = make([]byte, 256)
 	for i := 0; i < len(hexDigits); i++ {
 		hexDigits[i] = 255

@@ -3,6 +3,9 @@ package token
 import (
 	"fmt"
 	"strings"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // Character type for character
@@ -311,7 +314,7 @@ func reservedKeywordToken(typ Type, value, org string, pos *Position) *Token {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	for _, keyword := range reservedNullKeywords {
 		reservedKeywordMap[keyword] = func(value, org string, pos *Position) *Token {
 			return reservedKeywordToken(NullType, value, org, pos)

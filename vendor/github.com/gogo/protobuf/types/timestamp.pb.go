@@ -6,12 +6,15 @@ package types
 import (
 	bytes "bytes"
 	fmt "fmt"
-	proto "github.com/gogo/protobuf/proto"
 	io "io"
 	math "math"
 	math_bits "math/bits"
 	reflect "reflect"
 	strings "strings"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+	proto "github.com/gogo/protobuf/proto"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -43,43 +46,42 @@ const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 //
 // Example 1: Compute Timestamp from POSIX `time()`.
 //
-//     Timestamp timestamp;
-//     timestamp.set_seconds(time(NULL));
-//     timestamp.set_nanos(0);
+//	Timestamp timestamp;
+//	timestamp.set_seconds(time(NULL));
+//	timestamp.set_nanos(0);
 //
 // Example 2: Compute Timestamp from POSIX `gettimeofday()`.
 //
-//     struct timeval tv;
-//     gettimeofday(&tv, NULL);
+//	struct timeval tv;
+//	gettimeofday(&tv, NULL);
 //
-//     Timestamp timestamp;
-//     timestamp.set_seconds(tv.tv_sec);
-//     timestamp.set_nanos(tv.tv_usec * 1000);
+//	Timestamp timestamp;
+//	timestamp.set_seconds(tv.tv_sec);
+//	timestamp.set_nanos(tv.tv_usec * 1000);
 //
 // Example 3: Compute Timestamp from Win32 `GetSystemTimeAsFileTime()`.
 //
-//     FILETIME ft;
-//     GetSystemTimeAsFileTime(&ft);
-//     UINT64 ticks = (((UINT64)ft.dwHighDateTime) << 32) | ft.dwLowDateTime;
+//	FILETIME ft;
+//	GetSystemTimeAsFileTime(&ft);
+//	UINT64 ticks = (((UINT64)ft.dwHighDateTime) << 32) | ft.dwLowDateTime;
 //
-//     // A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z
-//     // is 11644473600 seconds before Unix epoch 1970-01-01T00:00:00Z.
-//     Timestamp timestamp;
-//     timestamp.set_seconds((INT64) ((ticks / 10000000) - 11644473600LL));
-//     timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));
+//	// A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z
+//	// is 11644473600 seconds before Unix epoch 1970-01-01T00:00:00Z.
+//	Timestamp timestamp;
+//	timestamp.set_seconds((INT64) ((ticks / 10000000) - 11644473600LL));
+//	timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));
 //
 // Example 4: Compute Timestamp from Java `System.currentTimeMillis()`.
 //
-//     long millis = System.currentTimeMillis();
+//	long millis = System.currentTimeMillis();
 //
-//     Timestamp timestamp = Timestamp.newBuilder().setSeconds(millis / 1000)
-//         .setNanos((int) ((millis % 1000) * 1000000)).build();
-//
+//	Timestamp timestamp = Timestamp.newBuilder().setSeconds(millis / 1000)
+//	    .setNanos((int) ((millis % 1000) * 1000000)).build();
 //
 // Example 5: Compute Timestamp from current time in Python.
 //
-//     timestamp = Timestamp()
-//     timestamp.GetCurrentTime()
+//	timestamp = Timestamp()
+//	timestamp.GetCurrentTime()
 //
 // # JSON Mapping
 //
@@ -107,8 +109,6 @@ const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 // the Joda Time's [`ISODateTimeFormat.dateTime()`](
 // http://www.joda.org/joda-time/apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D
 // ) to obtain a formatter capable of generating timestamps in this format.
-//
-//
 type Timestamp struct {
 	// Represents seconds of UTC time since Unix epoch
 	// 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to
@@ -175,12 +175,14 @@ func (*Timestamp) XXX_MessageName() string {
 	return "google.protobuf.Timestamp"
 }
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*Timestamp)(nil), "google.protobuf.Timestamp")
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now()); proto.RegisterFile("google/protobuf/timestamp.proto", fileDescriptor_292007bbfe81227e) }
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
+	proto.RegisterFile("google/protobuf/timestamp.proto", fileDescriptor_292007bbfe81227e)
+}
 
 var fileDescriptor_292007bbfe81227e = []byte{
 	// 212 bytes of a gzipped FileDescriptorProto

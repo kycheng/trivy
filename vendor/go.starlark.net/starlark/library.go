@@ -17,10 +17,12 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"time"
 	"unicode"
 	"unicode/utf16"
 	"unicode/utf8"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"go.starlark.net/syntax"
 )
 
@@ -33,7 +35,7 @@ import (
 var Universe StringDict
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// https://github.com/google/starlark-go/blob/master/doc/spec.md#built-in-constants-and-functions
 	Universe = StringDict{
 		"None":      None,

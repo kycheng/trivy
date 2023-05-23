@@ -1,11 +1,14 @@
 package kms
 
 import (
+	"time"
+
 	"github.com/aquasecurity/defsec/internal/adapters/cloud/aws"
 	"github.com/aquasecurity/defsec/pkg/concurrency"
 	"github.com/aquasecurity/defsec/pkg/providers/aws/kms"
 	"github.com/aquasecurity/defsec/pkg/state"
 	defsecTypes "github.com/aquasecurity/defsec/pkg/types"
+	"github.com/aquasecurity/trivy/pkg/bug"
 	api "github.com/aws/aws-sdk-go-v2/service/kms"
 	"github.com/aws/aws-sdk-go-v2/service/kms/types"
 )
@@ -16,7 +19,7 @@ type adapter struct {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	aws.RegisterServiceAdapter(&adapter{})
 }
 

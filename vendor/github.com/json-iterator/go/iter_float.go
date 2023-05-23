@@ -6,7 +6,10 @@ import (
 	"math/big"
 	"strconv"
 	"strings"
+	"time"
 	"unsafe"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 var floatDigits []int8
@@ -16,7 +19,7 @@ const endOfNumber = int8(-2)
 const dotInNumber = int8(-3)
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	floatDigits = make([]int8, 256)
 	for i := 0; i < len(floatDigits); i++ {
 		floatDigits[i] = invalidCharForNumber
@@ -67,7 +70,7 @@ func (iter *Iterator) ReadBigInt() (ret *big.Int) {
 	return ret
 }
 
-//ReadFloat32 read float32
+// ReadFloat32 read float32
 func (iter *Iterator) ReadFloat32() (ret float32) {
 	c := iter.nextToken()
 	if c == '-' {

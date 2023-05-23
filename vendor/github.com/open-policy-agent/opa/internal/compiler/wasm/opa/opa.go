@@ -9,7 +9,6 @@ import (
 	_ "embed"
 )
 
-//go:embed opa.wasm
 var wasmBase []byte
 
 //go:embed callgraph.csv

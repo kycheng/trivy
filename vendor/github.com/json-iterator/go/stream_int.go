@@ -1,9 +1,15 @@
 package jsoniter
 
+import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+)
+
 var digits []uint32
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	digits = make([]uint32, 1000)
 	for i := uint32(0); i < 1000; i++ {
 		digits[i] = (((i / 100) + '0') << 16) + ((((i / 10) % 10) + '0') << 8) + i%10 + '0'

@@ -28,6 +28,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"golang.org/x/oauth2"
 	"k8s.io/apimachinery/pkg/util/net"
 	restclient "k8s.io/client-go/rest"
@@ -48,7 +49,7 @@ const (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	if err := restclient.RegisterAuthProviderPlugin("oidc", newOIDCAuthProvider); err != nil {
 		klog.Fatalf("Failed to register oidc auth plugin: %v", err)
 	}

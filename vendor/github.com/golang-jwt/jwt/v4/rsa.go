@@ -4,6 +4,9 @@ import (
 	"crypto"
 	"crypto/rand"
 	"crypto/rsa"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // SigningMethodRSA implements the RSA family of signing methods.
@@ -21,7 +24,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// RS256
 	SigningMethodRS256 = &SigningMethodRSA{"RS256", crypto.SHA256}
 	RegisterSigningMethod(SigningMethodRS256.Alg(), func() SigningMethod {

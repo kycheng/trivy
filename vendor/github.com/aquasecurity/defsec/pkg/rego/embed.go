@@ -5,14 +5,16 @@ import (
 	"embed"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"github.com/aquasecurity/defsec/internal/rules"
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/ast"
 	"github.com/open-policy-agent/opa/bundle"
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 
 	modules, err := loadEmbeddedPolicies()
 	if err != nil {

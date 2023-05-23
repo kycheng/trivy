@@ -31,6 +31,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/golang/protobuf/proto"
 	openapi_v3 "github.com/google/gnostic/openapiv3"
 	"github.com/munnerz/goautoneg"
@@ -85,7 +86,7 @@ type OpenAPIV3Group struct {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	mime.AddExtensionType(".json", mimeJson)
 	mime.AddExtensionType(".pb-v1", mimePb)
 	mime.AddExtensionType(".gz", mimePbGz)

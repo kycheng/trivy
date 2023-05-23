@@ -6,6 +6,12 @@
 
 package mathutil // import "modernc.org/mathutil"
 
+import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+)
+
 var (
 	// Set bits count in a byte
 	popcnt = [256]byte{
@@ -6982,7 +6988,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	for i, v := range liars {
 		blk := v >> 24
 		x := &lohi[blk]

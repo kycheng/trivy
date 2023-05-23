@@ -1,6 +1,11 @@
 package aec
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+)
 
 // EraseMode is listed in a variable EraseModes.
 type EraseMode uint
@@ -119,7 +124,7 @@ func ScrollDown(n int) ANSI {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	EraseModes = struct {
 		All  EraseMode
 		Head EraseMode

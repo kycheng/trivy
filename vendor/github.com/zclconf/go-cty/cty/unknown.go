@@ -1,5 +1,11 @@
 package cty
 
+import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+)
+
 // unknownType is the placeholder type used for the sigil value representing
 // "Unknown", to make it unambigiously distinct from any other possible value.
 type unknownType struct {
@@ -75,7 +81,7 @@ func (t pseudoTypeDynamic) GoString() string {
 var DynamicVal Value
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	DynamicPseudoType = Type{
 		pseudoTypeDynamic{},
 	}

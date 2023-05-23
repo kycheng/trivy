@@ -6,13 +6,16 @@ package types
 import (
 	bytes "bytes"
 	fmt "fmt"
-	proto "github.com/gogo/protobuf/proto"
 	io "io"
 	math "math"
 	math_bits "math/bits"
 	reflect "reflect"
 	strconv "strconv"
 	strings "strings"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+	proto "github.com/gogo/protobuf/proto"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -632,7 +635,7 @@ func (*Option) XXX_MessageName() string {
 	return "google.protobuf.Option"
 }
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterEnum("google.protobuf.Syntax", Syntax_name, Syntax_value)
 	proto.RegisterEnum("google.protobuf.Field_Kind", Field_Kind_name, Field_Kind_value)
 	proto.RegisterEnum("google.protobuf.Field_Cardinality", Field_Cardinality_name, Field_Cardinality_value)
@@ -644,7 +647,9 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now()); proto.RegisterFile("google/protobuf/type.proto", fileDescriptor_dd271cc1e348c538) }
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
+	proto.RegisterFile("google/protobuf/type.proto", fileDescriptor_dd271cc1e348c538)
+}
 
 var fileDescriptor_dd271cc1e348c538 = []byte{
 	// 840 bytes of a gzipped FileDescriptorProto

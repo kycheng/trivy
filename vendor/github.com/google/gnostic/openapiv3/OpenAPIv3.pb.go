@@ -28,6 +28,8 @@ import (
 	anypb "google.golang.org/protobuf/types/known/anypb"
 	reflect "reflect"
 	sync "sync"
+	"time"
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 const (

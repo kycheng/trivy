@@ -10,7 +10,9 @@ import (
 	"path/filepath"
 	"strings"
 	"syscall"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/containerd/containerd/pkg/userns"
 	"github.com/docker/docker/pkg/idtools"
 	"github.com/docker/docker/pkg/system"
@@ -18,7 +20,7 @@ import (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	sysStat = statUnix
 }
 

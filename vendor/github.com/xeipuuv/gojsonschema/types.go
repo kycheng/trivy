@@ -25,6 +25,12 @@
 
 package gojsonschema
 
+import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+)
+
 // Type constants
 const (
 	TYPE_ARRAY   = `array`
@@ -43,7 +49,7 @@ var JSON_TYPES []string
 var SCHEMA_TYPES []string
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	JSON_TYPES = []string{
 		TYPE_ARRAY,
 		TYPE_BOOLEAN,

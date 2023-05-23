@@ -7,6 +7,7 @@ package appengine
 import (
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"golang.org/x/net/context"
 
 	"google.golang.org/appengine/internal"
@@ -137,7 +138,7 @@ func SignBytes(c context.Context, bytes []byte) (keyName string, signature []byt
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	internal.RegisterErrorCodeMap("app_identity_service", pb.AppIdentityServiceError_ErrorCode_name)
 	internal.RegisterErrorCodeMap("modules", modpb.ModulesServiceError_ErrorCode_name)
 }

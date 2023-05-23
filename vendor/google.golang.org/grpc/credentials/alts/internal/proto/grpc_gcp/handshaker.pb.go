@@ -24,11 +24,14 @@
 package grpc_gcp
 
 import (
+	reflect "reflect"
+	sync "sync"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	proto "github.com/golang/protobuf/proto"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	reflect "reflect"
-	sync "sync"
 )
 
 const (
@@ -1268,7 +1271,9 @@ var file_grpc_gcp_handshaker_proto_depIdxs = []int32{
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now()); file_grpc_gcp_handshaker_proto_init() }
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
+	file_grpc_gcp_handshaker_proto_init()
+}
 func file_grpc_gcp_handshaker_proto_init() {
 	if File_grpc_gcp_handshaker_proto != nil {
 		return

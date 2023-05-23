@@ -27,6 +27,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	containersapi "github.com/containerd/containerd/api/services/containers/v1"
 	contentapi "github.com/containerd/containerd/api/services/content/v1"
 	diffapi "github.com/containerd/containerd/api/services/diff/v1"
@@ -69,7 +70,7 @@ import (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	const prefix = "types.containerd.io"
 	// register TypeUrls for commonly marshaled external types
 	major := strconv.Itoa(specs.VersionMajor)

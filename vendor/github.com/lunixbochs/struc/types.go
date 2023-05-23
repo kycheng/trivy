@@ -3,6 +3,9 @@ package struc
 import (
 	"fmt"
 	"reflect"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 type Type int
@@ -108,7 +111,7 @@ var typeNames = map[Type]string{
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	for name, enum := range typeLookup {
 		typeNames[enum] = name
 	}

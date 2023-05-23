@@ -4,11 +4,12 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/go-git/go-git/v5/plumbing/format/index"
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	fillSystemInfo = func(e *index.Entry, sys interface{}) {
 		if os, ok := sys.(*syscall.Dir); ok {
 			// Plan 9 doesn't have a CreatedAt field.

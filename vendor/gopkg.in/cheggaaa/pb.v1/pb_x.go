@@ -1,3 +1,4 @@
+//go:build (linux || darwin || freebsd || netbsd || openbsd || solaris || dragonfly) && (!appengine || !js)
 // +build linux darwin freebsd netbsd openbsd solaris dragonfly
 // +build !appengine !js
 
@@ -10,7 +11,9 @@ import (
 	"os/signal"
 	"sync"
 	"syscall"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"golang.org/x/sys/unix"
 )
 
@@ -24,7 +27,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	echoLockMutex.Lock()
 	defer echoLockMutex.Unlock()
 

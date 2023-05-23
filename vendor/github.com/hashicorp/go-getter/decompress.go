@@ -3,6 +3,9 @@ package getter
 import (
 	"os"
 	"strings"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // Decompressor defines the interface that must be implemented to add
@@ -23,7 +26,7 @@ type Decompressor interface {
 var Decompressors map[string]Decompressor
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	tarDecompressor := new(TarDecompressor)
 	tbzDecompressor := new(TarBzip2Decompressor)
 	tgzDecompressor := new(TarGzipDecompressor)

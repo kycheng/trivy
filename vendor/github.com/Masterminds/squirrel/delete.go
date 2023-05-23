@@ -5,7 +5,9 @@ import (
 	"database/sql"
 	"fmt"
 	"strings"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/lann/builder"
 )
 
@@ -89,7 +91,7 @@ func (d *deleteData) ToSql() (sqlStr string, args []interface{}, err error) {
 type DeleteBuilder builder.Builder
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	builder.Register(DeleteBuilder{}, deleteData{})
 }
 

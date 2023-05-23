@@ -3,10 +3,11 @@ package jobs
 import (
 	"embed"
 	"fmt"
-	"github.com/aquasecurity/trivy/pkg/bug"
 	"io"
 	"strings"
 	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 
 	"gopkg.in/yaml.v3"
 )
@@ -22,7 +23,7 @@ var jobTemplateMap map[string]string
 
 // Load job templates
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 
 	dir, _ := jobFS.ReadDir(jobFSFolder)

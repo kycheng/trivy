@@ -18,6 +18,9 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 const (
@@ -691,7 +694,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	protoMap := make(map[string]*Protoent)
 
 	// Load protocols

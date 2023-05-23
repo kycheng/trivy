@@ -22,6 +22,9 @@ limitations under the License.
 package extensionsv1beta1
 
 import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	v1beta1 "k8s.io/api/extensions/v1beta1"
 	conversion "k8s.io/apimachinery/pkg/conversion"
 	runtime "k8s.io/apimachinery/pkg/runtime"
@@ -29,7 +32,7 @@ import (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	localSchemeBuilder.Register(RegisterConversions)
 }
 

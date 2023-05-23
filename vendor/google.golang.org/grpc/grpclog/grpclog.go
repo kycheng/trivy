@@ -28,12 +28,14 @@ package grpclog // import "google.golang.org/grpc/grpclog"
 
 import (
 	"os"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"google.golang.org/grpc/internal/grpclog"
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	SetLoggerV2(newLoggerV2())
 }
 

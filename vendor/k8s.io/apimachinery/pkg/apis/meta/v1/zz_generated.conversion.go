@@ -23,8 +23,10 @@ package v1
 
 import (
 	url "net/url"
+	"time"
 	unsafe "unsafe"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	resource "k8s.io/apimachinery/pkg/api/resource"
 	conversion "k8s.io/apimachinery/pkg/conversion"
 	fields "k8s.io/apimachinery/pkg/fields"
@@ -35,7 +37,7 @@ import (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	localSchemeBuilder.Register(RegisterConversions)
 }
 

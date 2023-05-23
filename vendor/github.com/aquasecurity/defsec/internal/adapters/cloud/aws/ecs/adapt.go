@@ -1,8 +1,11 @@
 package ecs
 
 import (
+	"time"
+
 	"github.com/aquasecurity/defsec/internal/adapters/cloud/aws"
 	"github.com/aquasecurity/defsec/pkg/state"
+	"github.com/aquasecurity/trivy/pkg/bug"
 	ecsapi "github.com/aws/aws-sdk-go-v2/service/ecs"
 )
 
@@ -12,7 +15,7 @@ type adapter struct {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	aws.RegisterServiceAdapter(&adapter{})
 }
 

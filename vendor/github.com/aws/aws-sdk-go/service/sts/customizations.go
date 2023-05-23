@@ -1,9 +1,14 @@
 package sts
 
-import "github.com/aws/aws-sdk-go/aws/request"
+import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+	"github.com/aws/aws-sdk-go/aws/request"
+)
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	initRequest = customizeRequest
 }
 

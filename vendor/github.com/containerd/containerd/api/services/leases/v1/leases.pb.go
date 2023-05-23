@@ -6,6 +6,14 @@ package leases
 import (
 	context "context"
 	fmt "fmt"
+	io "io"
+	math "math"
+	math_bits "math/bits"
+	reflect "reflect"
+	strings "strings"
+	time "time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	proto "github.com/gogo/protobuf/proto"
 	github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
 	github_com_gogo_protobuf_types "github.com/gogo/protobuf/types"
@@ -13,12 +21,6 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
-	io "io"
-	math "math"
-	math_bits "math/bits"
-	reflect "reflect"
-	strings "strings"
-	time "time"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -480,7 +482,7 @@ func (m *ListResourcesResponse) XXX_DiscardUnknown() {
 var xxx_messageInfo_ListResourcesResponse proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*Lease)(nil), "containerd.services.leases.v1.Lease")
 	proto.RegisterMapType((map[string]string)(nil), "containerd.services.leases.v1.Lease.LabelsEntry")
 	proto.RegisterType((*CreateRequest)(nil), "containerd.services.leases.v1.CreateRequest")
@@ -497,7 +499,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("github.com/containerd/containerd/api/services/leases/v1/leases.proto", fileDescriptor_fefd70dfe8d93cbf)
 }
 

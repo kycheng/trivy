@@ -2,6 +2,9 @@ package cty
 
 import (
 	"fmt"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 type typeTuple struct {
@@ -71,7 +74,7 @@ var EmptyTuple Type
 var EmptyTupleVal Value
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	EmptyTuple = Tuple([]Type{})
 	EmptyTupleVal = Value{
 		ty: EmptyTuple,

@@ -20,6 +20,8 @@ import (
 	"syscall"
 	"time"
 	"unsafe"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 var (
@@ -28,7 +30,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	if unsafe.Sizeof(syscall.Timespec{}.Nsec) == 8 {
 		// This is a 64 bit timespec
 		// os.Chtimes limits time to the following

@@ -4,12 +4,15 @@ import (
 	"fmt"
 	"net"
 	"strings"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 var privateIPBlocks []*net.IPNet
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	for _, cidr := range []string{
 		"127.0.0.0/8",    // IPv4 loopback
 		"10.0.0.0/8",     // RFC1918

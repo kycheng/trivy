@@ -1,11 +1,14 @@
 package cloudwatch
 
 import (
+	"time"
+
 	"github.com/aquasecurity/defsec/internal/adapters/cloud/aws"
 	"github.com/aquasecurity/defsec/pkg/concurrency"
 	"github.com/aquasecurity/defsec/pkg/providers/aws/cloudwatch"
 	"github.com/aquasecurity/defsec/pkg/state"
 	defsecTypes "github.com/aquasecurity/defsec/pkg/types"
+	"github.com/aquasecurity/trivy/pkg/bug"
 	cwApi "github.com/aws/aws-sdk-go-v2/service/cloudwatch"
 	cwTypes "github.com/aws/aws-sdk-go-v2/service/cloudwatch/types"
 	api "github.com/aws/aws-sdk-go-v2/service/cloudwatchlogs"
@@ -19,7 +22,7 @@ type adapter struct {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	aws.RegisterServiceAdapter(&adapter{})
 }
 

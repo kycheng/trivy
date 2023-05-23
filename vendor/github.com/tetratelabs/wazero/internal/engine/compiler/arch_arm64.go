@@ -2,13 +2,15 @@ package compiler
 
 import (
 	"math"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/tetratelabs/wazero/internal/asm/arm64"
 )
 
 // init initializes variables for the arm64 architecture
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	newArchContext = newArchContextImpl
 	registerNameFn = arm64.RegisterName
 	unreservedGeneralPurposeRegisters = arm64UnreservedGeneralPurposeRegisters

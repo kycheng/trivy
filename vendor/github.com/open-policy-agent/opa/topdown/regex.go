@@ -8,7 +8,9 @@ import (
 	"fmt"
 	"regexp"
 	"sync"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	gintersect "github.com/yashtewari/glob-intersection"
 
 	"github.com/open-policy-agent/opa/ast"
@@ -206,7 +208,7 @@ func builtinRegexFindAllStringSubmatch(a, b, c ast.Value) (ast.Value, error) {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	regexpCache = map[string]*regexp.Regexp{}
 	RegisterBuiltinFunc(ast.RegexIsValid.Name, builtinRegexIsValid)
 	RegisterFunctionalBuiltin2(ast.RegexMatch.Name, builtinRegexMatch)

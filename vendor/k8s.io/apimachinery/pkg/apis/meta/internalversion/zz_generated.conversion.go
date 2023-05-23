@@ -22,15 +22,17 @@ limitations under the License.
 package internalversion
 
 import (
+	"time"
 	unsafe "unsafe"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	conversion "k8s.io/apimachinery/pkg/conversion"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	localSchemeBuilder.Register(RegisterConversions)
 }
 

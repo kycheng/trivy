@@ -13,6 +13,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/ast"
 	"github.com/open-policy-agent/opa/topdown/builtins"
 )
@@ -283,7 +284,7 @@ func int64ToJSONNumber(i int64) json.Number {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RegisterBuiltinFunc(ast.NowNanos.Name, builtinTimeNowNanos)
 	RegisterBuiltinFunc(ast.ParseRFC3339Nanos.Name, builtinTimeParseRFC3339Nanos)
 	RegisterBuiltinFunc(ast.ParseNanos.Name, builtinTimeParseNanos)

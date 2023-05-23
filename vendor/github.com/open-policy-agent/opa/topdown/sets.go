@@ -5,6 +5,9 @@
 package topdown
 
 import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/ast"
 	"github.com/open-policy-agent/opa/topdown/builtins"
 )
@@ -82,7 +85,7 @@ func builtinSetUnion(a ast.Value) (ast.Value, error) {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RegisterFunctionalBuiltin2(ast.SetDiff.Name, builtinSetDiff)
 	RegisterFunctionalBuiltin1(ast.Intersection.Name, builtinSetIntersection)
 	RegisterFunctionalBuiltin1(ast.Union.Name, builtinSetUnion)

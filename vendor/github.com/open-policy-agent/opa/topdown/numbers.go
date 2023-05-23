@@ -7,7 +7,9 @@ package topdown
 import (
 	"fmt"
 	"math/big"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/ast"
 	"github.com/open-policy-agent/opa/topdown/builtins"
 )
@@ -94,7 +96,7 @@ func builtinRandIntn(bctx BuiltinContext, args []*ast.Term, iter func(*ast.Term)
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RegisterBuiltinFunc(ast.NumbersRange.Name, builtinNumbersRange)
 	RegisterBuiltinFunc(ast.RandIntn.Name, builtinRandIntn)
 }

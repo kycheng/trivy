@@ -3,9 +3,15 @@
 
 package base
 
-import proto "github.com/golang/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import (
+	fmt "fmt"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+	proto "github.com/golang/protobuf/proto"
+
+	math "math"
+)
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -277,7 +283,7 @@ func (m *VoidProto) XXX_DiscardUnknown() {
 var xxx_messageInfo_VoidProto proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*StringProto)(nil), "appengine.base.StringProto")
 	proto.RegisterType((*Integer32Proto)(nil), "appengine.base.Integer32Proto")
 	proto.RegisterType((*Integer64Proto)(nil), "appengine.base.Integer64Proto")
@@ -288,7 +294,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("google.golang.org/appengine/internal/base/api_base.proto", fileDescriptor_api_base_9d49f8792e0c1140)
 }
 

@@ -5,15 +5,17 @@ package task
 
 import (
 	fmt "fmt"
-	proto "github.com/gogo/protobuf/proto"
-	github_com_gogo_protobuf_types "github.com/gogo/protobuf/types"
-	types "github.com/gogo/protobuf/types"
 	io "io"
 	math "math"
 	math_bits "math/bits"
 	reflect "reflect"
 	strings "strings"
 	time "time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+	proto "github.com/gogo/protobuf/proto"
+	github_com_gogo_protobuf_types "github.com/gogo/protobuf/types"
+	types "github.com/gogo/protobuf/types"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -158,14 +160,14 @@ func (m *ProcessInfo) XXX_DiscardUnknown() {
 var xxx_messageInfo_ProcessInfo proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterEnum("containerd.v1.types.Status", Status_name, Status_value)
 	proto.RegisterType((*Process)(nil), "containerd.v1.types.Process")
 	proto.RegisterType((*ProcessInfo)(nil), "containerd.v1.types.ProcessInfo")
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("github.com/containerd/containerd/api/types/task/task.proto", fileDescriptor_391ef18c8ab0dc16)
 }
 

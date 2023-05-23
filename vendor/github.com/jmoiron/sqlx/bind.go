@@ -8,7 +8,9 @@ import (
 	"strconv"
 	"strings"
 	"sync"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/jmoiron/sqlx/reflectx"
 )
 
@@ -31,7 +33,7 @@ var defaultBinds = map[int][]string{
 var binds sync.Map
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	for bind, drivers := range defaultBinds {
 		for _, driver := range drivers {
 			BindDriver(driver, bind)

@@ -5,12 +5,15 @@ package runctypes
 
 import (
 	fmt "fmt"
-	proto "github.com/gogo/protobuf/proto"
 	io "io"
 	math "math"
 	math_bits "math/bits"
 	reflect "reflect"
 	strings "strings"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+	proto "github.com/gogo/protobuf/proto"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -204,7 +207,7 @@ func (m *ProcessDetails) XXX_DiscardUnknown() {
 var xxx_messageInfo_ProcessDetails proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*RuncOptions)(nil), "containerd.linux.runc.RuncOptions")
 	proto.RegisterType((*CreateOptions)(nil), "containerd.linux.runc.CreateOptions")
 	proto.RegisterType((*CheckpointOptions)(nil), "containerd.linux.runc.CheckpointOptions")
@@ -212,7 +215,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("github.com/containerd/containerd/runtime/linux/runctypes/runc.proto", fileDescriptor_d20e2ba8b3cc58b9)
 }
 

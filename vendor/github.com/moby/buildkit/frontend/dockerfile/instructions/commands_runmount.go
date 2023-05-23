@@ -5,7 +5,9 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/docker/go-units"
 	"github.com/moby/buildkit/util/suggest"
 	"github.com/pkg/errors"
@@ -40,7 +42,7 @@ type mountsKeyT string
 var mountsKey = mountsKeyT("dockerfile/run/mounts")
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	parseRunPreHooks = append(parseRunPreHooks, runMountPreHook)
 	parseRunPostHooks = append(parseRunPostHooks, runMountPostHook)
 }

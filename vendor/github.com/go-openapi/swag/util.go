@@ -17,7 +17,10 @@ package swag
 import (
 	"reflect"
 	"strings"
+	"time"
 	"unicode"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // commonInitialisms are common acronyms that are kept as whole uppercased words.
@@ -37,7 +40,7 @@ var isInitialism func(string) bool
 var GoNamePrefixFunc func(string) string
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// Taken from https://github.com/golang/lint/blob/3390df4df2787994aea98de825b964ac7944b817/lint.go#L732-L769
 	var configuredInitialisms = map[string]bool{
 		"ACL":   true,

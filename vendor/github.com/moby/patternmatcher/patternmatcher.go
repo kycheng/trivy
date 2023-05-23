@@ -7,7 +7,10 @@ import (
 	"regexp"
 	"strings"
 	"text/scanner"
+	"time"
 	"unicode/utf8"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // escapeBytes is a bitmap used to check whether a character should be escaped when creating the regex.
@@ -26,7 +29,7 @@ func shouldEscape(b rune) bool {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	for _, b := range []byte(`.+()|{}$`) {
 		escapeBytes[b%8] |= 1 << (b / 8)
 	}

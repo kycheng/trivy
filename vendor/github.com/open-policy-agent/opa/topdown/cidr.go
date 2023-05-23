@@ -7,7 +7,9 @@ import (
 	"math/big"
 	"net"
 	"sort"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/ast"
 	cidrMerge "github.com/open-policy-agent/opa/internal/cidr/merge"
 	"github.com/open-policy-agent/opa/topdown/builtins"
@@ -396,7 +398,7 @@ func incIP(ip net.IP) {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RegisterFunctionalBuiltin2(ast.NetCIDROverlap.Name, builtinNetCIDRContains)
 	RegisterFunctionalBuiltin2(ast.NetCIDRIntersects.Name, builtinNetCIDRIntersects)
 	RegisterFunctionalBuiltin2(ast.NetCIDRContains.Name, builtinNetCIDRContains)

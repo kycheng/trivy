@@ -19,7 +19,8 @@
 // Package grpclb defines a grpclb balancer.
 //
 // To install grpclb balancer, import this package as:
-//    import _ "google.golang.org/grpc/balancer/grpclb"
+//
+//	import _ "google.golang.org/grpc/balancer/grpclb"
 package grpclb
 
 import (
@@ -40,6 +41,7 @@ import (
 	"google.golang.org/grpc/internal/resolver/dns"
 	"google.golang.org/grpc/resolver"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	durationpb "github.com/golang/protobuf/ptypes/duration"
 	lbpb "google.golang.org/grpc/balancer/grpclb/grpc_lb_v1"
 )
@@ -98,7 +100,7 @@ func (x *balanceLoadClientStream) Recv() (*lbpb.LoadBalanceResponse, error) {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	balancer.Register(newLBBuilder())
 	dns.EnableSRVLookups = true
 }
@@ -230,8 +232,9 @@ type lbBalancer struct {
 
 // regeneratePicker takes a snapshot of the balancer, and generates a picker from
 // it. The picker
-//  - always returns ErrTransientFailure if the balancer is in TransientFailure,
-//  - does two layer roundrobin pick otherwise.
+//   - always returns ErrTransientFailure if the balancer is in TransientFailure,
+//   - does two layer roundrobin pick otherwise.
+//
 // Caller must hold lb.mu.
 func (lb *lbBalancer) regeneratePicker(resetDrop bool) {
 	if lb.state == connectivity.TransientFailure {
@@ -292,13 +295,13 @@ func (lb *lbBalancer) regeneratePicker(resetDrop bool) {
 // those in cache (SubConns are cached for 10 seconds after remove).
 //
 // The aggregated state is:
-//  - If at least one SubConn in Ready, the aggregated state is Ready;
-//  - Else if at least one SubConn in Connecting or IDLE, the aggregated state is Connecting;
-//    - It's OK to consider IDLE as Connecting. SubConns never stay in IDLE,
-//    they start to connect immediately. But there's a race between the overall
-//    state is reported, and when the new SubConn state arrives. And SubConns
-//    never go back to IDLE.
-//  - Else the aggregated state is TransientFailure.
+//   - If at least one SubConn in Ready, the aggregated state is Ready;
+//   - Else if at least one SubConn in Connecting or IDLE, the aggregated state is Connecting;
+//   - It's OK to consider IDLE as Connecting. SubConns never stay in IDLE,
+//     they start to connect immediately. But there's a race between the overall
+//     state is reported, and when the new SubConn state arrives. And SubConns
+//     never go back to IDLE.
+//   - Else the aggregated state is TransientFailure.
 func (lb *lbBalancer) aggregateSubConnStates() connectivity.State {
 	var numConnecting uint64
 

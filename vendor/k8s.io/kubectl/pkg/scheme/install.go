@@ -17,6 +17,9 @@ limitations under the License.
 package scheme
 
 import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	admissionv1 "k8s.io/api/admission/v1"
 	admissionv1beta1 "k8s.io/api/admission/v1beta1"
 	admissionregistrationv1 "k8s.io/api/admissionregistration/v1"
@@ -57,7 +60,7 @@ import (
 // The code in this file mostly duplicate the install under k8s.io/kubernetes/pkg/api and k8s.io/kubernetes/pkg/apis,
 // but does NOT register the internal types.
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// Register external types for Scheme
 	metav1.AddToGroupVersion(Scheme, schema.GroupVersion{Version: "v1"})
 	utilruntime.Must(metav1beta1.AddMetaToScheme(Scheme))

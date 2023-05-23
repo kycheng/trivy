@@ -1,11 +1,14 @@
 package mq
 
 import (
+	"time"
+
 	"github.com/aquasecurity/defsec/internal/adapters/cloud/aws"
 	"github.com/aquasecurity/defsec/pkg/concurrency"
 	"github.com/aquasecurity/defsec/pkg/providers/aws/mq"
 	"github.com/aquasecurity/defsec/pkg/state"
 	defsecTypes "github.com/aquasecurity/defsec/pkg/types"
+	"github.com/aquasecurity/trivy/pkg/bug"
 	api "github.com/aws/aws-sdk-go-v2/service/mq"
 	"github.com/aws/aws-sdk-go-v2/service/mq/types"
 )
@@ -16,7 +19,7 @@ type adapter struct {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	aws.RegisterServiceAdapter(&adapter{})
 }
 

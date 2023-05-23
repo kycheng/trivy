@@ -4,7 +4,9 @@ import (
 	"encoding/json"
 	"errors"
 	"net/url"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/go-openapi/spec"
 	"github.com/go-openapi/swag"
 )
@@ -19,7 +21,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	jsonLoader := &loader{
 		DocLoaderWithMatch: DocLoaderWithMatch{
 			Match: func(pth string) bool {
@@ -119,9 +121,8 @@ func JSONDoc(path string) (json.RawMessage, error) {
 // This sets the configuration at the package level.
 //
 // NOTE:
-//  * this updates the default loader used by github.com/go-openapi/spec
-//  * since this sets package level globals, you shouln't call this concurrently
-//
+//   - this updates the default loader used by github.com/go-openapi/spec
+//   - since this sets package level globals, you shouln't call this concurrently
 func AddLoader(predicate DocMatcher, load DocLoader) {
 	loaders = loaders.WithHead(&loader{
 		DocLoaderWithMatch: DocLoaderWithMatch{

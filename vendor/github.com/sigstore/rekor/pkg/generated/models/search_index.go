@@ -24,7 +24,9 @@ package models
 import (
 	"context"
 	"encoding/json"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -105,7 +107,7 @@ func (m *SearchIndex) validateHash(formats strfmt.Registry) error {
 var searchIndexTypeOperatorPropEnum []interface{}
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	var res []string
 	if err := json.Unmarshal([]byte(`["and","or"]`), &res); err != nil {
 		panic(err)
@@ -252,7 +254,7 @@ func (m *SearchIndexPublicKey) Validate(formats strfmt.Registry) error {
 var searchIndexPublicKeyTypeFormatPropEnum []interface{}
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	var res []string
 	if err := json.Unmarshal([]byte(`["pgp","x509","minisign","ssh","tuf"]`), &res); err != nil {
 		panic(err)

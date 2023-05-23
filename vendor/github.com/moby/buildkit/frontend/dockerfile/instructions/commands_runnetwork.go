@@ -1,6 +1,9 @@
 package instructions
 
 import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/pkg/errors"
 )
 
@@ -24,7 +27,7 @@ func isValidNetwork(value string) bool {
 var networkKey = "dockerfile/run/network"
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	parseRunPreHooks = append(parseRunPreHooks, runNetworkPreHook)
 	parseRunPostHooks = append(parseRunPostHooks, runNetworkPostHook)
 }

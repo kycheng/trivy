@@ -1,5 +1,11 @@
 package spinner
 
+import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+)
+
 const (
 	clockOneOClock = '\U0001F550'
 	clockOneThirty = '\U0001F55C'
@@ -86,7 +92,7 @@ var CharSets = map[int][]string{
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	for i := rune(0); i < 12; i++ {
 		CharSets[37] = append(CharSets[37], string([]rune{clockOneOClock + i}))
 		CharSets[38] = append(CharSets[38], string([]rune{clockOneOClock + i}), string([]rune{clockOneThirty + i}))

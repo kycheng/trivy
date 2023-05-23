@@ -3,6 +3,9 @@ package httpbinding
 import (
 	"bytes"
 	"fmt"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 const (
@@ -95,7 +98,7 @@ func EscapePath(path string, encodeSep bool) string {
 var noEscape [256]bool
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	for i := 0; i < len(noEscape); i++ {
 		// AWS expects every character except these to be escaped
 		noEscape[i] = (i >= 'A' && i <= 'Z') ||

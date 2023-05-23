@@ -2,6 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
+//go:build linux || darwin || dragonfly || freebsd || openbsd || netbsd || solaris
 // +build linux darwin dragonfly freebsd openbsd netbsd solaris
 
 package tar
@@ -13,10 +14,13 @@ import (
 	"strconv"
 	"sync"
 	"syscall"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	sysStat = statUnix
 }
 

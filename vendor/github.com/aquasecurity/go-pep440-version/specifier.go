@@ -6,7 +6,9 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"golang.org/x/xerrors"
 )
 
@@ -30,7 +32,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	ops := make([]string, 0, len(specifierOperators))
 	for k := range specifierOperators {
 		ops = append(ops, regexp.QuoteMeta(k))

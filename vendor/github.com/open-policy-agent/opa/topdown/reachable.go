@@ -5,6 +5,9 @@
 package topdown
 
 import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/ast"
 	"github.com/open-policy-agent/opa/topdown/builtins"
 )
@@ -137,7 +140,7 @@ func builtinReachablePaths(bctx BuiltinContext, args []*ast.Term, iter func(*ast
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RegisterBuiltinFunc(ast.ReachableBuiltin.Name, builtinReachable)
 	RegisterBuiltinFunc(ast.ReachablePathsBuiltin.Name, builtinReachablePaths)
 }

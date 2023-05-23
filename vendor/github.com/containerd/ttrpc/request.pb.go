@@ -7,11 +7,14 @@
 package ttrpc
 
 import (
+	reflect "reflect"
+	sync "sync"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	reflect "reflect"
-	sync "sync"
 )
 
 const (
@@ -321,7 +324,9 @@ var file_github_com_containerd_ttrpc_request_proto_depIdxs = []int32{
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now()); file_github_com_containerd_ttrpc_request_proto_init() }
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
+	file_github_com_containerd_ttrpc_request_proto_init()
+}
 func file_github_com_containerd_ttrpc_request_proto_init() {
 	if File_github_com_containerd_ttrpc_request_proto != nil {
 		return

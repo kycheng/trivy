@@ -21,9 +21,11 @@ package v1alpha1
 
 import (
 	fmt "fmt"
+	"time"
 
 	io "io"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	proto "github.com/gogo/protobuf/proto"
 	v11 "k8s.io/api/core/v1"
 
@@ -129,14 +131,14 @@ func (m *ClusterCIDRSpec) XXX_DiscardUnknown() {
 var xxx_messageInfo_ClusterCIDRSpec proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*ClusterCIDR)(nil), "k8s.io.api.networking.v1alpha1.ClusterCIDR")
 	proto.RegisterType((*ClusterCIDRList)(nil), "k8s.io.api.networking.v1alpha1.ClusterCIDRList")
 	proto.RegisterType((*ClusterCIDRSpec)(nil), "k8s.io.api.networking.v1alpha1.ClusterCIDRSpec")
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("k8s.io/kubernetes/vendor/k8s.io/api/networking/v1alpha1/generated.proto", fileDescriptor_c1b7ac8d7d97acec)
 }
 

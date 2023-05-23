@@ -8,7 +8,9 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/ast"
 	"github.com/open-policy-agent/opa/topdown/builtins"
 )
@@ -617,7 +619,7 @@ func builtinJSONPatch(_ BuiltinContext, operands []*ast.Term, iter func(*ast.Ter
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RegisterBuiltinFunc(ast.JSONFilter.Name, builtinJSONFilter)
 	RegisterBuiltinFunc(ast.JSONRemove.Name, builtinJSONRemove)
 	RegisterBuiltinFunc(ast.JSONPatch.Name, builtinJSONPatch)

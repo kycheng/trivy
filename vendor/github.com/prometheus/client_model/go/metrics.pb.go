@@ -5,9 +5,12 @@ package io_prometheus_client
 
 import (
 	fmt "fmt"
+	math "math"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	proto "github.com/golang/protobuf/proto"
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
-	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -834,7 +837,7 @@ func (m *MetricFamily) GetMetric() []*Metric {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterEnum("io.prometheus.client.MetricType", MetricType_name, MetricType_value)
 	proto.RegisterType((*LabelPair)(nil), "io.prometheus.client.LabelPair")
 	proto.RegisterType((*Gauge)(nil), "io.prometheus.client.Gauge")
@@ -851,7 +854,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("io/prometheus/client/metrics.proto", fileDescriptor_d1e5ddb18987a258)
 }
 

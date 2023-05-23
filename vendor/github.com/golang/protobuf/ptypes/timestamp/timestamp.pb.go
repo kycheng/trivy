@@ -4,10 +4,13 @@
 package timestamp
 
 import (
+	reflect "reflect"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
-	reflect "reflect"
 )
 
 // Symbols defined in public import of google/protobuf/timestamp.proto.
@@ -40,7 +43,9 @@ var file_github_com_golang_protobuf_ptypes_timestamp_timestamp_proto_depIdxs = [
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now()); file_github_com_golang_protobuf_ptypes_timestamp_timestamp_proto_init() }
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
+	file_github_com_golang_protobuf_ptypes_timestamp_timestamp_proto_init()
+}
 func file_github_com_golang_protobuf_ptypes_timestamp_timestamp_proto_init() {
 	if File_github_com_golang_protobuf_ptypes_timestamp_timestamp_proto != nil {
 		return

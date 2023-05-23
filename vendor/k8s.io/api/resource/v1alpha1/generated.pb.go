@@ -21,9 +21,11 @@ package v1alpha1
 
 import (
 	fmt "fmt"
+	"time"
 
 	io "io"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	proto "github.com/gogo/protobuf/proto"
 	v1 "k8s.io/api/core/v1"
 
@@ -551,7 +553,7 @@ func (m *ResourceClassParametersReference) XXX_DiscardUnknown() {
 var xxx_messageInfo_ResourceClassParametersReference proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*AllocationResult)(nil), "k8s.io.api.resource.v1alpha1.AllocationResult")
 	proto.RegisterType((*PodScheduling)(nil), "k8s.io.api.resource.v1alpha1.PodScheduling")
 	proto.RegisterType((*PodSchedulingList)(nil), "k8s.io.api.resource.v1alpha1.PodSchedulingList")
@@ -573,7 +575,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("k8s.io/kubernetes/vendor/k8s.io/api/resource/v1alpha1/generated.proto", fileDescriptor_a66b2ee03d862be2)
 }
 

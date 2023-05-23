@@ -22,6 +22,8 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 type resolveMapItem struct {
@@ -33,7 +35,7 @@ var resolveTable = make([]byte, 256)
 var resolveMap = make(map[string]resolveMapItem)
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	t := resolveTable
 	t[int('+')] = 'S' // Sign
 	t[int('-')] = 'S'
@@ -85,7 +87,7 @@ var longTags = make(map[string]string)
 var shortTags = make(map[string]string)
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	for _, stag := range []string{nullTag, boolTag, strTag, intTag, floatTag, timestampTag, seqTag, mapTag, binaryTag, mergeTag} {
 		ltag := longTag(stag)
 		longTags[stag] = ltag

@@ -9,6 +9,9 @@ package cpu
 import (
 	"os"
 	"strings"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // Initialized reports whether the CPU features were initialized.
@@ -196,7 +199,7 @@ var S390X struct {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	archInit()
 	initOptions()
 	processOptions()

@@ -10,6 +10,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/awserr"
 	"github.com/aws/aws-sdk-go/aws/client"
@@ -25,7 +26,7 @@ const ErrCodeSSOProviderInvalidToken = "SSOProviderInvalidToken"
 const invalidTokenMessage = "the SSO session has expired or is invalid"
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	nowTime = time.Now
 	defaultCacheLocation = defaultCacheLocationImpl
 }

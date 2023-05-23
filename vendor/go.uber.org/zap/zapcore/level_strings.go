@@ -20,7 +20,12 @@
 
 package zapcore
 
-import "go.uber.org/zap/internal/color"
+import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+	"go.uber.org/zap/internal/color"
+)
 
 var (
 	_levelToColor = map[Level]color.Color{
@@ -39,7 +44,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	for level, color := range _levelToColor {
 		_levelToLowercaseColorString[level] = color.Add(level.String())
 		_levelToCapitalColorString[level] = color.Add(level.CapitalString())

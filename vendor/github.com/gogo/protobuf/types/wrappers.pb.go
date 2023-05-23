@@ -7,12 +7,15 @@ import (
 	bytes "bytes"
 	encoding_binary "encoding/binary"
 	fmt "fmt"
-	proto "github.com/gogo/protobuf/proto"
 	io "io"
 	math "math"
 	math_bits "math/bits"
 	reflect "reflect"
 	strings "strings"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+	proto "github.com/gogo/protobuf/proto"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -521,7 +524,7 @@ func (*BytesValue) XXX_MessageName() string {
 	return "google.protobuf.BytesValue"
 }
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*DoubleValue)(nil), "google.protobuf.DoubleValue")
 	proto.RegisterType((*FloatValue)(nil), "google.protobuf.FloatValue")
 	proto.RegisterType((*Int64Value)(nil), "google.protobuf.Int64Value")
@@ -534,7 +537,9 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now()); proto.RegisterFile("google/protobuf/wrappers.proto", fileDescriptor_5377b62bda767935) }
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
+	proto.RegisterFile("google/protobuf/wrappers.proto", fileDescriptor_5377b62bda767935)
+}
 
 var fileDescriptor_5377b62bda767935 = []byte{
 	// 285 bytes of a gzipped FileDescriptorProto

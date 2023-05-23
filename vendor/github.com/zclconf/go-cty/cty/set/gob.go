@@ -4,6 +4,9 @@ import (
 	"bytes"
 	"encoding/gob"
 	"fmt"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // GobEncode is an implementation of the interface gob.GobEncoder, allowing
@@ -72,6 +75,6 @@ type gobSet struct {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	gob.Register([]interface{}(nil))
 }

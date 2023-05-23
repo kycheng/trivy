@@ -17,6 +17,9 @@ limitations under the License.
 package dynamic
 
 import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 	"k8s.io/apimachinery/pkg/runtime"
@@ -35,7 +38,7 @@ var dynamicParameterCodec = runtime.NewParameterCodec(parameterScheme)
 var versionV1 = schema.GroupVersion{Version: "v1"}
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	metav1.AddToGroupVersion(watchScheme, versionV1)
 	metav1.AddToGroupVersion(basicScheme, versionV1)
 	metav1.AddToGroupVersion(parameterScheme, versionV1)

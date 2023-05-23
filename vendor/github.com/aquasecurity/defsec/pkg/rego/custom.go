@@ -1,13 +1,16 @@
 package rego
 
 import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/ast"
 	"github.com/open-policy-agent/opa/rego"
 	"github.com/open-policy-agent/opa/types"
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	rego.RegisterBuiltin2(&rego.Function{
 		Name: "result.new",
 		Decl: types.NewFunction(types.Args(types.S, types.A), types.A),

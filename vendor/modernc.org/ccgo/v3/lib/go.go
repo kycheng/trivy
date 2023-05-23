@@ -2635,8 +2635,7 @@ func (p *project) doVerifyStructs() {
 		a = append(a, k)
 	}
 	sort.Strings(a)
-	p.w("\n\nfunc init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());")
+	p.w("\n\nfunc init() {")
 	n := 0
 	for _, k := range a {
 		t := p.verifyStructs[k]
@@ -2722,8 +2721,7 @@ func (p *project) initPatches() {
 	}
 
 	sort.Slice(tlds, func(i, j int) bool { return tlds[i].name < tlds[j].name })
-	p.w("\n\nfunc init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());")
+	p.w("\n\nfunc init() {")
 	for _, tld := range tlds {
 		for _, patch := range tld.patches {
 			var fld string

@@ -7,6 +7,9 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // The compiled regular expression used to test the validity of a version.
@@ -40,7 +43,7 @@ type Version struct {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	versionRegexp = regexp.MustCompile("^" + VersionRegexpRaw + "$")
 	semverRegexp = regexp.MustCompile("^" + SemverRegexpRaw + "$")
 }

@@ -10,9 +10,11 @@ package cases
 
 import (
 	"strings"
+	"time"
 	"unicode"
 	"unicode/utf8"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"golang.org/x/text/internal"
 	"golang.org/x/text/language"
 	"golang.org/x/text/transform"
@@ -38,7 +40,7 @@ const maxIgnorable = 30
 const supported = "und af az el lt nl tr"
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	tags := []language.Tag{}
 	for _, s := range strings.Split(supported, " ") {
 		tags = append(tags, language.MustParse(s))

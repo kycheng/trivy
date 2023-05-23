@@ -6,7 +6,9 @@ package ast
 
 import (
 	"strings"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/types"
 )
 
@@ -3050,7 +3052,7 @@ func (b *Builtin) IsTargetPos(i int) bool {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	BuiltinMap = map[string]*Builtin{}
 	for _, b := range DefaultBuiltins {
 		RegisterBuiltin(b)

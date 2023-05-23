@@ -17,6 +17,7 @@ import (
 	gotime "time"
 	"unsafe"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	guuid "github.com/google/uuid"
 	"golang.org/x/sys/unix"
 	"modernc.org/libc/errno"
@@ -50,7 +51,7 @@ var X_tolower_tab_ = Xmalloc(nil, 2*65537)
 var X_toupper_tab_ = Xmalloc(nil, 2*65537)
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	for c := rune(0); c < 0xffff; c++ {
 		y := c
 		s := strings.ToLower(string(c))

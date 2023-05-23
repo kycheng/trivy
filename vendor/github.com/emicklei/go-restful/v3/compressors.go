@@ -7,6 +7,9 @@ package restful
 import (
 	"compress/gzip"
 	"compress/zlib"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // CompressorProvider describes a component that can provider compressors for the std methods.
@@ -36,7 +39,7 @@ type CompressorProvider interface {
 var currentCompressorProvider CompressorProvider
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	currentCompressorProvider = NewSyncPoolCompessors()
 }
 

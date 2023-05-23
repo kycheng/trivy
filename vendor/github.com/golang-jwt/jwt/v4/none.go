@@ -1,5 +1,11 @@
 package jwt
 
+import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+)
+
 // SigningMethodNone implements the none signing method.  This is required by the spec
 // but you probably should never use it.
 var SigningMethodNone *signingMethodNone
@@ -12,7 +18,7 @@ type signingMethodNone struct{}
 type unsafeNoneMagicConstant string
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	SigningMethodNone = &signingMethodNone{}
 	NoneSignatureTypeDisallowedError = NewValidationError("'none' signature type is not allowed", ValidationErrorSignatureInvalid)
 

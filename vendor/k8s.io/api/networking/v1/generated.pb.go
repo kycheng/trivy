@@ -21,9 +21,11 @@ package v1
 
 import (
 	fmt "fmt"
+	"time"
 
 	io "io"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	proto "github.com/gogo/protobuf/proto"
 	k8s_io_api_core_v1 "k8s.io/api/core/v1"
 	v11 "k8s.io/api/core/v1"
@@ -833,7 +835,7 @@ func (m *ServiceBackendPort) XXX_DiscardUnknown() {
 var xxx_messageInfo_ServiceBackendPort proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*HTTPIngressPath)(nil), "k8s.io.api.networking.v1.HTTPIngressPath")
 	proto.RegisterType((*HTTPIngressRuleValue)(nil), "k8s.io.api.networking.v1.HTTPIngressRuleValue")
 	proto.RegisterType((*IPBlock)(nil), "k8s.io.api.networking.v1.IPBlock")
@@ -865,7 +867,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("k8s.io/kubernetes/vendor/k8s.io/api/networking/v1/generated.proto", fileDescriptor_1c72867a70a7cc90)
 }
 

@@ -6,7 +6,9 @@ import (
 	"io"
 	"os"
 	"strings"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"gopkg.in/yaml.v3"
 )
 
@@ -21,7 +23,7 @@ var complianceSpecMap map[string]string
 
 // Load compliance specs
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	dir, _ := complainceFS.ReadDir(ComplianceFolder)
 	complianceSpecMap = make(map[string]string, 0)
 	for _, r := range dir {

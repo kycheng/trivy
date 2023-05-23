@@ -24,6 +24,7 @@ import (
 	"sync/atomic"
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"go.opencensus.io/internal"
 	"go.opencensus.io/trace/tracestate"
 )
@@ -524,7 +525,7 @@ func (s *span) String() string {
 var config atomic.Value // access atomically
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	config.Store(&Config{
 		DefaultSampler:             ProbabilitySampler(defaultSamplingProbability),
 		IDGenerator:                &defaultIDGenerator{},

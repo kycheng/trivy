@@ -6,9 +6,11 @@ package topdown
 
 import (
 	"math/big"
+	"time"
 
 	"fmt"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/ast"
 	"github.com/open-policy-agent/opa/topdown/builtins"
 )
@@ -172,7 +174,7 @@ func builtinRem(a, b ast.Value) (ast.Value, error) {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RegisterFunctionalBuiltin1(ast.Abs.Name, builtinArithArity1(arithAbs))
 	RegisterFunctionalBuiltin1(ast.Round.Name, builtinArithArity1(arithRound))
 	RegisterFunctionalBuiltin1(ast.Ceil.Name, builtinArithArity1(arithCeil))

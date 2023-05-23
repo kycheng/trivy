@@ -5,6 +5,9 @@
 package topdown
 
 import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/ast"
 	"github.com/open-policy-agent/opa/topdown/builtins"
 )
@@ -88,7 +91,7 @@ func builtinArrayReverse(bctx BuiltinContext, operands []*ast.Term, iter func(*a
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RegisterFunctionalBuiltin2(ast.ArrayConcat.Name, builtinArrayConcat)
 	RegisterFunctionalBuiltin3(ast.ArraySlice.Name, builtinArraySlice)
 	RegisterBuiltinFunc(ast.ArrayReverse.Name, builtinArrayReverse)

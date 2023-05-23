@@ -24,7 +24,9 @@ package models
 import (
 	"context"
 	"encoding/json"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -299,7 +301,7 @@ func (m *HashedrekordV001SchemaDataHash) Validate(formats strfmt.Registry) error
 var hashedrekordV001SchemaDataHashTypeAlgorithmPropEnum []interface{}
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	var res []string
 	if err := json.Unmarshal([]byte(`["sha256"]`), &res); err != nil {
 		panic(err)

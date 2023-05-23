@@ -6,12 +6,15 @@ package types
 import (
 	bytes "bytes"
 	fmt "fmt"
-	proto "github.com/gogo/protobuf/proto"
 	io "io"
 	math "math"
 	math_bits "math/bits"
 	reflect "reflect"
 	strings "strings"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+	proto "github.com/gogo/protobuf/proto"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -29,9 +32,9 @@ const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 // empty messages in your APIs. A typical example is to use it as the request
 // or the response type of an API method. For instance:
 //
-//     service Foo {
-//       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-//     }
+//	service Foo {
+//	  rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+//	}
 //
 // The JSON representation for `Empty` is empty JSON object `{}`.
 type Empty struct {
@@ -77,12 +80,14 @@ func (*Empty) XXX_MessageName() string {
 	return "google.protobuf.Empty"
 }
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*Empty)(nil), "google.protobuf.Empty")
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now()); proto.RegisterFile("google/protobuf/empty.proto", fileDescriptor_900544acb223d5b8) }
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
+	proto.RegisterFile("google/protobuf/empty.proto", fileDescriptor_900544acb223d5b8)
+}
 
 var fileDescriptor_900544acb223d5b8 = []byte{
 	// 176 bytes of a gzipped FileDescriptorProto

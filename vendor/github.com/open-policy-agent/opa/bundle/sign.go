@@ -9,7 +9,9 @@ import (
 	"crypto/rand"
 	"encoding/json"
 	"fmt"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/internal/jwx/jwa"
 	"github.com/open-policy-agent/opa/internal/jwx/jws"
 )
@@ -129,7 +131,7 @@ func RegisterSigner(id string, s Signer) error {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	signers = map[string]Signer{
 		defaultSignerID: &DefaultSigner{},
 	}

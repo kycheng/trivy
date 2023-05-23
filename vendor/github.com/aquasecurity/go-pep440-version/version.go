@@ -5,10 +5,12 @@ import (
 	"fmt"
 	"regexp"
 	"strings"
+	"time"
 
 	"golang.org/x/xerrors"
 
 	"github.com/aquasecurity/go-version/pkg/part"
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 var (
@@ -85,7 +87,7 @@ func (ln letterNumber) isNull() bool {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	versionRegex = regexp.MustCompile(`(?i)^\s*` + regex + `\s*$`)
 }
 

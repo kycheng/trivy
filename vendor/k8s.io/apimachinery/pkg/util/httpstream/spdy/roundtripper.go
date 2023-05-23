@@ -31,6 +31,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"golang.org/x/net/proxy"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -364,7 +365,7 @@ var statusScheme = runtime.NewScheme()
 var statusCodecs = serializer.NewCodecFactory(statusScheme)
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	statusScheme.AddUnversionedTypes(metav1.SchemeGroupVersion,
 		&metav1.Status{},
 	)

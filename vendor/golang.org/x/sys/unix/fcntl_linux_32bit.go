@@ -7,8 +7,14 @@
 
 package unix
 
+import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+)
+
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// On 32-bit Linux systems, the fcntl syscall that matches Go's
 	// Flock_t type is SYS_FCNTL64, not SYS_FCNTL.
 	fcntl64Syscall = SYS_FCNTL64

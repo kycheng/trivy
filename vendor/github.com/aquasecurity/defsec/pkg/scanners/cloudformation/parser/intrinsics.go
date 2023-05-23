@@ -3,14 +3,16 @@ package parser
 import (
 	"fmt"
 	"strings"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"gopkg.in/yaml.v3"
 )
 
 var intrinsicFuncs map[string]func(property *Property) (*Property, bool)
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	intrinsicFuncs = map[string]func(property *Property) (*Property, bool){
 		"Ref":             ResolveReference,
 		"Fn::Base64":      ResolveBase64,

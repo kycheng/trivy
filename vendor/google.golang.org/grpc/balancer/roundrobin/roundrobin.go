@@ -23,7 +23,9 @@ package roundrobin
 
 import (
 	"sync/atomic"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"google.golang.org/grpc/balancer"
 	"google.golang.org/grpc/balancer/base"
 	"google.golang.org/grpc/grpclog"
@@ -41,7 +43,7 @@ func newBuilder() balancer.Builder {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	balancer.Register(newBuilder())
 }
 

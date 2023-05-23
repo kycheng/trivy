@@ -2,22 +2,30 @@
 // source: plugin.proto
 
 /*
-	Package runtime is a generated protocol buffer package.
+Package runtime is a generated protocol buffer package.
 
-	It is generated from these files:
-		plugin.proto
+It is generated from these files:
 
-	It has these top-level messages:
-		PluginSpec
-		PluginPrivilege
+	plugin.proto
+
+It has these top-level messages:
+
+	PluginSpec
+	PluginPrivilege
 */
 package runtime
 
-import proto "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import (
+	fmt "fmt"
+	"time"
 
-import io "io"
+	"github.com/aquasecurity/trivy/pkg/bug"
+	proto "github.com/gogo/protobuf/proto"
+
+	math "math"
+
+	io "io"
+)
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -115,7 +123,7 @@ func (m *PluginPrivilege) GetValue() []string {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*PluginSpec)(nil), "PluginSpec")
 	proto.RegisterType((*PluginPrivilege)(nil), "PluginPrivilege")
 }
@@ -733,7 +741,9 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now()); proto.RegisterFile("plugin.proto", fileDescriptorPlugin) }
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
+	proto.RegisterFile("plugin.proto", fileDescriptorPlugin)
+}
 
 var fileDescriptorPlugin = []byte{
 	// 256 bytes of a gzipped FileDescriptorProto

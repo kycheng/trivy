@@ -6,7 +6,9 @@ package topdown
 
 import (
 	"strconv"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/ast"
 	"github.com/open-policy-agent/opa/topdown/builtins"
 )
@@ -107,7 +109,7 @@ func builtinToObject(a ast.Value) (ast.Value, error) {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RegisterFunctionalBuiltin1(ast.ToNumber.Name, builtinToNumber)
 	RegisterFunctionalBuiltin1(ast.CastArray.Name, builtinToArray)
 	RegisterFunctionalBuiltin1(ast.CastSet.Name, builtinToSet)

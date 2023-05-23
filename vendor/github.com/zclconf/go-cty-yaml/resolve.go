@@ -9,6 +9,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/zclconf/go-cty/cty"
 )
 
@@ -40,7 +41,7 @@ var floatLiteralRegexp = regexp.MustCompile(
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	t := resolveTable
 	t[int('+')] = 'S' // Sign
 	t[int('-')] = 'S'

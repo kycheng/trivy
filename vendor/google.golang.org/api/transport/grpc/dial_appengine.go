@@ -12,13 +12,14 @@ import (
 	"net"
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/socket"
 	"google.golang.org/grpc"
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// NOTE: dev_appserver doesn't currently support SSL.
 	// When it does, this code can be removed.
 	if appengine.IsDevAppServer() {

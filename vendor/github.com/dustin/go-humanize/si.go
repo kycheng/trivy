@@ -5,6 +5,9 @@ import (
 	"math"
 	"regexp"
 	"strconv"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 var siPrefixTable = map[float64]string{
@@ -45,7 +48,7 @@ func revfmap(in map[float64]string) map[string]float64 {
 var riParseRegex *regexp.Regexp
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	ri := `^([\-0-9.]+)\s?([`
 	for _, v := range siPrefixTable {
 		ri += v

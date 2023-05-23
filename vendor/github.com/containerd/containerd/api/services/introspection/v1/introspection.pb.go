@@ -6,6 +6,14 @@ package introspection
 import (
 	context "context"
 	fmt "fmt"
+	io "io"
+	math "math"
+	math_bits "math/bits"
+	reflect "reflect"
+	strings "strings"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	types "github.com/containerd/containerd/api/types"
 	rpc "github.com/gogo/googleapis/google/rpc"
 	proto "github.com/gogo/protobuf/proto"
@@ -14,11 +22,6 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
-	io "io"
-	math "math"
-	math_bits "math/bits"
-	reflect "reflect"
-	strings "strings"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -235,7 +238,7 @@ func (m *ServerResponse) XXX_DiscardUnknown() {
 var xxx_messageInfo_ServerResponse proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*Plugin)(nil), "containerd.services.introspection.v1.Plugin")
 	proto.RegisterMapType((map[string]string)(nil), "containerd.services.introspection.v1.Plugin.ExportsEntry")
 	proto.RegisterType((*PluginsRequest)(nil), "containerd.services.introspection.v1.PluginsRequest")
@@ -244,7 +247,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("github.com/containerd/containerd/api/services/introspection/v1/introspection.proto", fileDescriptor_1a14fda866f10715)
 }
 

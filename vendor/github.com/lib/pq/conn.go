@@ -22,6 +22,7 @@ import (
 	"time"
 	"unicode"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/lib/pq/oid"
 	"github.com/lib/pq/scram"
 )
@@ -57,7 +58,7 @@ func (d Driver) Open(name string) (driver.Conn, error) {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	sql.Register("postgres", &Driver{})
 }
 
@@ -1632,10 +1633,10 @@ func (rs *rows) NextResultSet() error {
 // QuoteIdentifier quotes an "identifier" (e.g. a table or a column name) to be
 // used as part of an SQL statement.  For example:
 //
-//    tblname := "my_table"
-//    data := "my_data"
-//    quoted := pq.QuoteIdentifier(tblname)
-//    err := db.Exec(fmt.Sprintf("INSERT INTO %s VALUES ($1)", quoted), data)
+//	tblname := "my_table"
+//	data := "my_data"
+//	quoted := pq.QuoteIdentifier(tblname)
+//	err := db.Exec(fmt.Sprintf("INSERT INTO %s VALUES ($1)", quoted), data)
 //
 // Any double quotes in name will be escaped.  The quoted identifier will be
 // case sensitive when used in a query.  If the input string contains a zero
@@ -1652,8 +1653,8 @@ func QuoteIdentifier(name string) string {
 // to DDL and other statements that do not accept parameters) to be used as part
 // of an SQL statement.  For example:
 //
-//    exp_date := pq.QuoteLiteral("2023-01-05 15:00:00Z")
-//    err := db.Exec(fmt.Sprintf("CREATE ROLE my_user VALID UNTIL %s", exp_date))
+//	exp_date := pq.QuoteLiteral("2023-01-05 15:00:00Z")
+//	err := db.Exec(fmt.Sprintf("CREATE ROLE my_user VALID UNTIL %s", exp_date))
 //
 // Any single quotes in name will be escaped. Any backslashes (i.e. "\") will be
 // replaced by two backslashes (i.e. "\\") and the C-style escape identifier

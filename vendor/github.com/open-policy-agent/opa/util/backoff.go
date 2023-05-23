@@ -7,10 +7,12 @@ package util
 import (
 	"math/rand"
 	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// NOTE(sr): We don't need good random numbers here; it's used for jittering
 	// the backup timing a bit. But anyways, let's make it random enough; without
 	// a call to rand.Seed() we'd get the same stream of numbers for each program

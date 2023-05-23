@@ -15,7 +15,9 @@ import (
 	"fmt"
 	"io"
 	"math/big"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"golang.org/x/crypto/curve25519"
 )
 
@@ -401,7 +403,7 @@ func ecHash(curve elliptic.Curve) crypto.Hash {
 var kexAlgoMap = map[string]kexAlgorithm{}
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// This is the group called diffie-hellman-group1-sha1 in
 	// RFC 4253 and Oakley Group 2 in RFC 2409.
 	p, _ := new(big.Int).SetString("FFFFFFFFFFFFFFFFC90FDAA22168C234C4C6628B80DC1CD129024E088A67CC74020BBEA63B139B22514A08798E3404DDEF9519B3CD3A431B302B0A6DF25F14374FE1356D6D51C245E485B576625E7EC6F44C42E9A637ED6B0BFF5CB6F406B7EDEE386BFB5A899FA5AE9F24117C4B1FE649286651ECE65381FFFFFFFFFFFFFFFF", 16)

@@ -18,7 +18,9 @@ import (
 	"net/rpc"
 	"os"
 	"os/exec"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/googleapis/enterprise-certificate-proxy/client/util"
 )
 
@@ -43,7 +45,7 @@ func (c *Connection) Close() error {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	gob.Register(crypto.SHA256)
 	gob.Register(&rsa.PSSOptions{})
 }

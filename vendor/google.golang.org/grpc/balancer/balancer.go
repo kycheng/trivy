@@ -26,7 +26,9 @@ import (
 	"errors"
 	"net"
 	"strings"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"google.golang.org/grpc/channelz"
 	"google.golang.org/grpc/connectivity"
 	"google.golang.org/grpc/credentials"
@@ -63,7 +65,7 @@ func unregisterForTesting(name string) {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	internal.BalancerUnregister = unregisterForTesting
 }
 

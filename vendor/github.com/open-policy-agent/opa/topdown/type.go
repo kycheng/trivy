@@ -5,6 +5,9 @@
 package topdown
 
 import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/ast"
 )
 
@@ -72,7 +75,7 @@ func builtinIsNull(a ast.Value) (ast.Value, error) {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RegisterFunctionalBuiltin1(ast.IsNumber.Name, builtinIsNumber)
 	RegisterFunctionalBuiltin1(ast.IsString.Name, builtinIsString)
 	RegisterFunctionalBuiltin1(ast.IsBoolean.Name, builtinIsBoolean)

@@ -7,7 +7,9 @@ package language
 import (
 	"errors"
 	"strings"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"golang.org/x/text/internal/language"
 )
 
@@ -713,7 +715,7 @@ func isExactEquivalent(l language.Language) bool {
 var notEquivalent []language.Language
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// Create a list of all languages for which canonicalization may alter the
 	// script or region.
 	for _, lm := range language.AliasMap {

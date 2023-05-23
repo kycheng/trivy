@@ -21,11 +21,13 @@ package intstr
 
 import (
 	fmt "fmt"
+	"time"
 
 	io "io"
 	math "math"
 	math_bits "math/bits"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	proto "github.com/gogo/protobuf/proto"
 )
 
@@ -69,12 +71,12 @@ func (m *IntOrString) XXX_DiscardUnknown() {
 var xxx_messageInfo_IntOrString proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*IntOrString)(nil), "k8s.io.apimachinery.pkg.util.intstr.IntOrString")
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/util/intstr/generated.proto", fileDescriptor_94e046ae3ce6121c)
 }
 

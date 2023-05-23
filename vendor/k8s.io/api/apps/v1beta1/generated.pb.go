@@ -21,9 +21,11 @@ package v1beta1
 
 import (
 	fmt "fmt"
+	"time"
 
 	io "io"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	proto "github.com/gogo/protobuf/proto"
 	github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
 	k8s_io_api_core_v1 "k8s.io/api/core/v1"
@@ -696,7 +698,7 @@ func (m *StatefulSetUpdateStrategy) XXX_DiscardUnknown() {
 var xxx_messageInfo_StatefulSetUpdateStrategy proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*ControllerRevision)(nil), "k8s.io.api.apps.v1beta1.ControllerRevision")
 	proto.RegisterType((*ControllerRevisionList)(nil), "k8s.io.api.apps.v1beta1.ControllerRevisionList")
 	proto.RegisterType((*Deployment)(nil), "k8s.io.api.apps.v1beta1.Deployment")
@@ -725,7 +727,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("k8s.io/kubernetes/vendor/k8s.io/api/apps/v1beta1/generated.proto", fileDescriptor_2a07313e8f66e805)
 }
 

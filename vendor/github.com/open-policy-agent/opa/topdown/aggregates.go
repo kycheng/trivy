@@ -6,7 +6,9 @@ package topdown
 
 import (
 	"math/big"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/ast"
 	"github.com/open-policy-agent/opa/topdown/builtins"
 )
@@ -247,7 +249,7 @@ func builtinMemberWithKey(_ BuiltinContext, args []*ast.Term, iter func(*ast.Ter
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RegisterFunctionalBuiltin1(ast.Count.Name, builtinCount)
 	RegisterFunctionalBuiltin1(ast.Sum.Name, builtinSum)
 	RegisterFunctionalBuiltin1(ast.Product.Name, builtinProduct)

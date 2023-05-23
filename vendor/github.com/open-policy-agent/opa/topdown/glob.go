@@ -3,7 +3,9 @@ package topdown
 import (
 	"strings"
 	"sync"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/gobwas/glob"
 
 	"github.com/open-policy-agent/opa/ast"
@@ -72,7 +74,7 @@ func builtinGlobQuoteMeta(a ast.Value) (ast.Value, error) {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	globCache = map[string]glob.Glob{}
 	RegisterFunctionalBuiltin3(ast.GlobMatch.Name, builtinGlobMatch)
 	RegisterFunctionalBuiltin1(ast.GlobQuoteMeta.Name, builtinGlobQuoteMeta)

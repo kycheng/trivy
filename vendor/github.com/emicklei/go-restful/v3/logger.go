@@ -4,6 +4,9 @@ package restful
 // Use of this source code is governed by a license
 // that can be found in the LICENSE file.
 import (
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/emicklei/go-restful/v3/log"
 )
 
@@ -11,7 +14,7 @@ var trace bool = false
 var traceLogger log.StdLogger
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	traceLogger = log.Logger // use the package logger by default
 }
 

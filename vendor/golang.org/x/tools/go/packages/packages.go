@@ -24,6 +24,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"golang.org/x/tools/go/gcexportdata"
 	"golang.org/x/tools/internal/gocommand"
 	"golang.org/x/tools/internal/packagesinternal"
@@ -397,7 +398,7 @@ type ModuleError struct {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	packagesinternal.GetForTest = func(p interface{}) string {
 		return p.(*Package).forTest
 	}

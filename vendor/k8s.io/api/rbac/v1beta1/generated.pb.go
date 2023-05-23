@@ -21,9 +21,11 @@ package v1beta1
 
 import (
 	fmt "fmt"
+	"time"
 
 	io "io"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	proto "github.com/gogo/protobuf/proto"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
@@ -381,7 +383,7 @@ func (m *Subject) XXX_DiscardUnknown() {
 var xxx_messageInfo_Subject proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*AggregationRule)(nil), "k8s.io.api.rbac.v1beta1.AggregationRule")
 	proto.RegisterType((*ClusterRole)(nil), "k8s.io.api.rbac.v1beta1.ClusterRole")
 	proto.RegisterType((*ClusterRoleBinding)(nil), "k8s.io.api.rbac.v1beta1.ClusterRoleBinding")
@@ -397,7 +399,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("k8s.io/kubernetes/vendor/k8s.io/api/rbac/v1beta1/generated.proto", fileDescriptor_99f6bec96facc83d)
 }
 

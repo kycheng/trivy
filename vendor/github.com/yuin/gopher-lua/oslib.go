@@ -5,12 +5,14 @@ import (
 	"os"
 	"strings"
 	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 var startedAt time.Time
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	startedAt = time.Now()
 }
 

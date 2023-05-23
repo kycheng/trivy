@@ -6,6 +6,9 @@ import (
 	"regexp"
 	"sort"
 	"strings"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // Constraint represents a single constraint for a version, such as
@@ -37,7 +40,7 @@ type constraintOperation struct {
 var constraintRegexp *regexp.Regexp
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	constraintOperators = map[string]constraintOperation{
 		"":   {op: equal, f: constraintEqual},
 		"=":  {op: equal, f: constraintEqual},

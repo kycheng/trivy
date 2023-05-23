@@ -2,7 +2,10 @@ package lua
 
 import (
 	"reflect"
+	"time"
 	"unsafe"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // iface is an internal representation of the go-interface.
@@ -19,7 +22,7 @@ var _uv uintptr
 var preloads [int(preloadLimit)]LValue
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	for i := 0; i < int(preloadLimit); i++ {
 		preloads[i] = LNumber(i)
 	}

@@ -3,9 +3,15 @@
 
 package remote_api
 
-import proto "github.com/golang/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import (
+	fmt "fmt"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+	proto "github.com/golang/protobuf/proto"
+
+	math "math"
+)
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -312,7 +318,7 @@ func (m *Response) GetRpcError() *RpcError {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*Request)(nil), "remote_api.Request")
 	proto.RegisterType((*ApplicationError)(nil), "remote_api.ApplicationError")
 	proto.RegisterType((*RpcError)(nil), "remote_api.RpcError")
@@ -320,7 +326,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("google.golang.org/appengine/internal/remote_api/remote_api.proto", fileDescriptor_remote_api_1978114ec33a273d)
 }
 

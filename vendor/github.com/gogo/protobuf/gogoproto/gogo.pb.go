@@ -5,9 +5,12 @@ package gogoproto
 
 import (
 	fmt "fmt"
+	math "math"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	proto "github.com/gogo/protobuf/proto"
 	descriptor "github.com/gogo/protobuf/protoc-gen-gogo/descriptor"
-	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -706,7 +709,7 @@ var E_Wktpointer = &proto.ExtensionDesc{
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterExtension(E_GoprotoEnumPrefix)
 	proto.RegisterExtension(E_GoprotoEnumStringer)
 	proto.RegisterExtension(E_EnumStringer)
@@ -786,7 +789,9 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now()); proto.RegisterFile("gogo.proto", fileDescriptor_592445b5231bc2b9) }
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
+	proto.RegisterFile("gogo.proto", fileDescriptor_592445b5231bc2b9)
+}
 
 var fileDescriptor_592445b5231bc2b9 = []byte{
 	// 1328 bytes of a gzipped FileDescriptorProto

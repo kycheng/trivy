@@ -33,6 +33,7 @@ import (
 	"sync/atomic"
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"golang.org/x/net/trace"
 
 	"google.golang.org/grpc/codes"
@@ -67,7 +68,7 @@ const (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	internal.GetServerCredentials = func(srv *Server) credentials.TransportCredentials {
 		return srv.opts.creds
 	}

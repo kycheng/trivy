@@ -17,14 +17,16 @@ package stats
 
 import (
 	"context"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"go.opencensus.io/metric/metricdata"
 	"go.opencensus.io/stats/internal"
 	"go.opencensus.io/tag"
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	internal.SubscriptionReporter = func(measure string) {
 		mu.Lock()
 		measures[measure].subscribe()

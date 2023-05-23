@@ -8,6 +8,9 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 type seq struct {
@@ -440,7 +443,7 @@ func (s *sequenceDecs) decodeSync(hist []byte) error {
 var bitMask [16]uint16
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	for i := range bitMask[:] {
 		bitMask[i] = uint16((1 << uint(i)) - 1)
 	}

@@ -6,13 +6,16 @@ package rpc
 import (
 	bytes "bytes"
 	fmt "fmt"
-	proto "github.com/gogo/protobuf/proto"
-	types "github.com/gogo/protobuf/types"
 	io "io"
 	math "math"
 	math_bits "math/bits"
 	reflect "reflect"
 	strings "strings"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+	proto "github.com/gogo/protobuf/proto"
+	types "github.com/gogo/protobuf/types"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -105,12 +108,14 @@ func (*Status) XXX_MessageName() string {
 	return "google.rpc.Status"
 }
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*Status)(nil), "google.rpc.Status")
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now()); proto.RegisterFile("google/rpc/status.proto", fileDescriptor_24d244abaf643bfe) }
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
+	proto.RegisterFile("google/rpc/status.proto", fileDescriptor_24d244abaf643bfe)
+}
 
 var fileDescriptor_24d244abaf643bfe = []byte{
 	// 238 bytes of a gzipped FileDescriptorProto

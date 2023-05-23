@@ -2,6 +2,9 @@ package aec
 
 import (
 	"fmt"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // RGB3Bit is a 3bit RGB color.
@@ -146,7 +149,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	Bold = newSGR(1)
 	Faint = newSGR(2)
 	Italic = newSGR(3)

@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"math/big"
 	"strings"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/ast"
 	"github.com/open-policy-agent/opa/topdown/builtins"
 )
@@ -121,6 +123,6 @@ func builtinUnits(_ BuiltinContext, operands []*ast.Term, iter func(*ast.Term) e
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RegisterBuiltinFunc(ast.UnitsParse.Name, builtinUnits)
 }

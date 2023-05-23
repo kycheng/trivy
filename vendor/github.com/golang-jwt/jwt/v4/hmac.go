@@ -4,6 +4,9 @@ import (
 	"crypto"
 	"crypto/hmac"
 	"errors"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // SigningMethodHMAC implements the HMAC-SHA family of signing methods.
@@ -22,7 +25,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// HS256
 	SigningMethodHS256 = &SigningMethodHMAC{"HS256", crypto.SHA256}
 	RegisterSigningMethod(SigningMethodHS256.Alg(), func() SigningMethod {

@@ -6,6 +6,14 @@ package snapshots
 import (
 	context "context"
 	fmt "fmt"
+	io "io"
+	math "math"
+	math_bits "math/bits"
+	reflect "reflect"
+	strings "strings"
+	time "time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	types "github.com/containerd/containerd/api/types"
 	proto "github.com/gogo/protobuf/proto"
 	github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
@@ -14,12 +22,6 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
-	io "io"
-	math "math"
-	math_bits "math/bits"
-	reflect "reflect"
-	strings "strings"
-	time "time"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -820,7 +822,7 @@ func (m *CleanupRequest) XXX_DiscardUnknown() {
 var xxx_messageInfo_CleanupRequest proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterEnum("containerd.services.snapshots.v1.Kind", Kind_name, Kind_value)
 	proto.RegisterType((*PrepareSnapshotRequest)(nil), "containerd.services.snapshots.v1.PrepareSnapshotRequest")
 	proto.RegisterMapType((map[string]string)(nil), "containerd.services.snapshots.v1.PrepareSnapshotRequest.LabelsEntry")
@@ -847,7 +849,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("github.com/containerd/containerd/api/services/snapshots/v1/snapshots.proto", fileDescriptor_cfc0ddf12791f168)
 }
 

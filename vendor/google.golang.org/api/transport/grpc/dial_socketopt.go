@@ -11,7 +11,9 @@ import (
 	"context"
 	"net"
 	"syscall"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"golang.org/x/sys/unix"
 	"google.golang.org/grpc"
 )
@@ -23,7 +25,7 @@ const (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// timeoutDialerOption is a grpc.DialOption that contains dialer with
 	// socket option TCP_USER_TIMEOUT. This dialer requires go versions 1.11+.
 	timeoutDialerOption = grpc.WithContextDialer(dialTCPUserTimeout)

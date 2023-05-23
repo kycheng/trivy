@@ -6,6 +6,14 @@ package events
 import (
 	context "context"
 	fmt "fmt"
+	io "io"
+	math "math"
+	math_bits "math/bits"
+	reflect "reflect"
+	strings "strings"
+	time "time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	github_com_containerd_typeurl "github.com/containerd/typeurl"
 	proto "github.com/gogo/protobuf/proto"
 	github_com_gogo_protobuf_types "github.com/gogo/protobuf/types"
@@ -13,12 +21,6 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
-	io "io"
-	math "math"
-	math_bits "math/bits"
-	reflect "reflect"
-	strings "strings"
-	time "time"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -194,7 +196,7 @@ func (m *Envelope) XXX_DiscardUnknown() {
 var xxx_messageInfo_Envelope proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*PublishRequest)(nil), "containerd.services.events.v1.PublishRequest")
 	proto.RegisterType((*ForwardRequest)(nil), "containerd.services.events.v1.ForwardRequest")
 	proto.RegisterType((*SubscribeRequest)(nil), "containerd.services.events.v1.SubscribeRequest")
@@ -202,7 +204,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("github.com/containerd/containerd/api/services/events/v1/events.proto", fileDescriptor_43fcd20dc1642376)
 }
 

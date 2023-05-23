@@ -3,9 +3,15 @@
 
 package socket
 
-import proto "github.com/golang/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import (
+	fmt "fmt"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+	proto "github.com/golang/protobuf/proto"
+
+	math "math"
+)
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -2584,7 +2590,7 @@ func (m *ResolveReply) GetAliases() []string {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*RemoteSocketServiceError)(nil), "appengine.RemoteSocketServiceError")
 	proto.RegisterType((*AddressPort)(nil), "appengine.AddressPort")
 	proto.RegisterType((*CreateSocketRequest)(nil), "appengine.CreateSocketRequest")
@@ -2622,7 +2628,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("google.golang.org/appengine/internal/socket/socket_service.proto", fileDescriptor_socket_service_b5f8f233dc327808)
 }
 

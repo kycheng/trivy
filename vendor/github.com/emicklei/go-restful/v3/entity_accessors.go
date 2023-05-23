@@ -8,6 +8,9 @@ import (
 	"encoding/xml"
 	"strings"
 	"sync"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // EntityReaderWriter can read and write values using an encoding such as JSON,XML.
@@ -35,7 +38,7 @@ type entityReaderWriters struct {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RegisterEntityAccessor(MIME_JSON, NewEntityAccessorJSON(MIME_JSON))
 	RegisterEntityAccessor(MIME_XML, NewEntityAccessorXML(MIME_XML))
 }

@@ -2,7 +2,9 @@ package runewidth
 
 import (
 	"os"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/rivo/uniseg"
 )
 
@@ -23,7 +25,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	handleEnv()
 }
 

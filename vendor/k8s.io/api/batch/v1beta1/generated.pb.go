@@ -21,9 +21,11 @@ package v1beta1
 
 import (
 	fmt "fmt"
+	"time"
 
 	io "io"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	proto "github.com/gogo/protobuf/proto"
 	v11 "k8s.io/api/core/v1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -214,7 +216,7 @@ func (m *JobTemplateSpec) XXX_DiscardUnknown() {
 var xxx_messageInfo_JobTemplateSpec proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*CronJob)(nil), "k8s.io.api.batch.v1beta1.CronJob")
 	proto.RegisterType((*CronJobList)(nil), "k8s.io.api.batch.v1beta1.CronJobList")
 	proto.RegisterType((*CronJobSpec)(nil), "k8s.io.api.batch.v1beta1.CronJobSpec")
@@ -224,7 +226,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("k8s.io/kubernetes/vendor/k8s.io/api/batch/v1beta1/generated.proto", fileDescriptor_e57b277b05179ae7)
 }
 

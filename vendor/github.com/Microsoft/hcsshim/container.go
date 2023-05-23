@@ -10,6 +10,7 @@ import (
 	"github.com/Microsoft/hcsshim/internal/hcs"
 	"github.com/Microsoft/hcsshim/internal/hcs/schema1"
 	"github.com/Microsoft/hcsshim/internal/mergemaps"
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // ContainerProperties holds the properties for a container and the processes running in that container
@@ -66,7 +67,7 @@ type container struct {
 var createContainerAdditionalJSON []byte
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	createContainerAdditionalJSON = ([]byte)(os.Getenv("HCSSHIM_CREATECONTAINER_ADDITIONALJSON"))
 }
 

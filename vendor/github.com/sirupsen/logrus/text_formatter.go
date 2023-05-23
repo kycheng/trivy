@@ -11,6 +11,8 @@ import (
 	"sync"
 	"time"
 	"unicode/utf8"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 const (
@@ -23,7 +25,7 @@ const (
 var baseTimestamp time.Time
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	baseTimestamp = time.Now()
 }
 

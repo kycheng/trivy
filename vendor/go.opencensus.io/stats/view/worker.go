@@ -20,6 +20,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"go.opencensus.io/resource"
 
 	"go.opencensus.io/metric/metricdata"
@@ -30,7 +31,7 @@ import (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	defaultWorker = NewMeter().(*worker)
 	go defaultWorker.start()
 	internal.DefaultRecorder = record

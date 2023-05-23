@@ -4,7 +4,9 @@ import (
 	"errors"
 	"fmt"
 	"strconv"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/open-policy-agent/opa/internal/gqlparser/ast"
 
 	//nolint:revive // Validator rules each use dot imports for convenience.
@@ -12,7 +14,7 @@ import (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	AddRule("ValuesOfCorrectType", func(observers *Events, addError AddErrFunc) {
 		observers.OnValue(func(walker *Walker, value *ast.Value) {
 			if value.Definition == nil || value.ExpectedType == nil {

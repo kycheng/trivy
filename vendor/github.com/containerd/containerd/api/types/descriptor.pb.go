@@ -5,14 +5,17 @@ package types
 
 import (
 	fmt "fmt"
-	proto "github.com/gogo/protobuf/proto"
-	github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
-	github_com_opencontainers_go_digest "github.com/opencontainers/go-digest"
 	io "io"
 	math "math"
 	math_bits "math/bits"
 	reflect "reflect"
 	strings "strings"
+	time "time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
+	proto "github.com/gogo/protobuf/proto"
+	github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
+	github_com_opencontainers_go_digest "github.com/opencontainers/go-digest"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -74,13 +77,13 @@ func (m *Descriptor) XXX_DiscardUnknown() {
 var xxx_messageInfo_Descriptor proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*Descriptor)(nil), "containerd.types.Descriptor")
 	proto.RegisterMapType((map[string]string)(nil), "containerd.types.Descriptor.AnnotationsEntry")
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("github.com/containerd/containerd/api/types/descriptor.proto", fileDescriptor_37f958df3707db9e)
 }
 

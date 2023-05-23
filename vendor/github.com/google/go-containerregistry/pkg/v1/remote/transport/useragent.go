@@ -18,6 +18,9 @@ import (
 	"fmt"
 	"net/http"
 	"runtime/debug"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 var (
@@ -39,7 +42,7 @@ type userAgentTransport struct {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	if v := version(); v != "" {
 		ggcrVersion = fmt.Sprintf("%s/%s", defaultUserAgent, v)
 	}

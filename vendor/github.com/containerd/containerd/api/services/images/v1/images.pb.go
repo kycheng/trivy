@@ -6,6 +6,14 @@ package images
 import (
 	context "context"
 	fmt "fmt"
+	io "io"
+	math "math"
+	math_bits "math/bits"
+	reflect "reflect"
+	strings "strings"
+	time "time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	types "github.com/containerd/containerd/api/types"
 	proto "github.com/gogo/protobuf/proto"
 	github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
@@ -14,12 +22,6 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
-	io "io"
-	math "math"
-	math_bits "math/bits"
-	reflect "reflect"
-	strings "strings"
-	time "time"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -461,7 +463,7 @@ func (m *DeleteImageRequest) XXX_DiscardUnknown() {
 var xxx_messageInfo_DeleteImageRequest proto.InternalMessageInfo
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterType((*Image)(nil), "containerd.services.images.v1.Image")
 	proto.RegisterMapType((map[string]string)(nil), "containerd.services.images.v1.Image.LabelsEntry")
 	proto.RegisterType((*GetImageRequest)(nil), "containerd.services.images.v1.GetImageRequest")
@@ -476,7 +478,7 @@ func init() {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	proto.RegisterFile("github.com/containerd/containerd/api/services/images/v1/images.proto", fileDescriptor_8666fa071128ae5f)
 }
 

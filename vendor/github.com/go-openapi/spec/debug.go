@@ -20,6 +20,9 @@ import (
 	"os"
 	"path"
 	"runtime"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 // Debug is true when the SWAGGER_DEBUG env var is not empty.
@@ -33,7 +36,7 @@ var (
 )
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	debugOptions()
 }
 

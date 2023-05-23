@@ -8,7 +8,9 @@ import (
 	"fmt"
 	"io"
 	"strings"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	iStrs "github.com/open-policy-agent/opa/internal/strings"
 
 	"github.com/open-policy-agent/opa/ast"
@@ -443,6 +445,6 @@ func rewrite(event *Event) *Event {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RegisterBuiltinFunc(ast.Trace.Name, builtinTrace)
 }

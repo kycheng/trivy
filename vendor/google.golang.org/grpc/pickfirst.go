@@ -21,7 +21,9 @@ package grpc
 import (
 	"errors"
 	"fmt"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"google.golang.org/grpc/balancer"
 	"google.golang.org/grpc/connectivity"
 )
@@ -179,6 +181,6 @@ func (i *idlePicker) Pick(balancer.PickInfo) (balancer.PickResult, error) {
 }
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now());
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	balancer.Register(newPickfirstBuilder())
 }

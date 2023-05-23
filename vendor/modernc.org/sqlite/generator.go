@@ -22,7 +22,7 @@ import (
 	"sort"
 	"strings"
 
-	"modernc.org/ccgo/v3/lib"
+	ccgo "modernc.org/ccgo/v3/lib"
 )
 
 //	gcc
@@ -846,7 +846,6 @@ func patchXsqlite3_initialize(fn string) error {
 var mu mutex
 
 func init() {
-	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now()); mu.recursive = true }
 
 func Xsqlite3_initialize(tls *libc.TLS) int32 {
 	mu.enter(tls.ID)
