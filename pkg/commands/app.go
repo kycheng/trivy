@@ -1035,9 +1035,16 @@ func NewVersionCommand(globalFlags *flag.GlobalFlagGroup) *cobra.Command {
 
 func showVersion(cacheDir, outputFormat, version string, outputWriter io.Writer) {
 	var dbMeta *metadata.Metadata
+	startTime := time.Now()
+	fmt.Println(time.Now().String(), "========= begin start showVersion ")
+	defer func() {
+		fmt.Println(time.Now().String(), "===== showVersion done, ", time.Since(startTime).String())
+	}()
 
 	mc := metadata.NewClient(cacheDir)
+	fmt.Println(time.Now().String(), " after NewClient ")
 	meta, _ := mc.Get() // nolint: errcheck
+	fmt.Println(time.Now().String(), " after Get ")
 	if !meta.UpdatedAt.IsZero() && !meta.NextUpdate.IsZero() && meta.Version != 0 {
 		dbMeta = &metadata.Metadata{
 			Version:      meta.Version,
@@ -1046,6 +1053,8 @@ func showVersion(cacheDir, outputFormat, version string, outputWriter io.Writer)
 			DownloadedAt: meta.DownloadedAt.UTC(),
 		}
 	}
+
+	fmt.Println(time.Now().String(), " after IsZero ")
 
 	switch outputFormat {
 	case "json":
