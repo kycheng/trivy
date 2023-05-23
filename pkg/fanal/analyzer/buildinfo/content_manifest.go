@@ -5,6 +5,9 @@ import (
 	"encoding/json"
 	"os"
 	"path/filepath"
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 
 	"golang.org/x/xerrors"
 
@@ -13,6 +16,7 @@ import (
 )
 
 func init() {
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	analyzer.RegisterAnalyzer(&contentManifestAnalyzer{})
 }
 

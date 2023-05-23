@@ -4,6 +4,7 @@ import (
 	"context"
 	"os"
 	"path/filepath"
+	"time"
 
 	"golang.org/x/exp/slices"
 	"golang.org/x/xerrors"
@@ -11,12 +12,14 @@ import (
 	"github.com/aquasecurity/go-dep-parser/pkg/golang/mod"
 	"github.com/aquasecurity/go-dep-parser/pkg/golang/sum"
 	godeptypes "github.com/aquasecurity/go-dep-parser/pkg/types"
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/aquasecurity/trivy/pkg/fanal/analyzer"
 	"github.com/aquasecurity/trivy/pkg/fanal/analyzer/language"
 	"github.com/aquasecurity/trivy/pkg/fanal/types"
 )
 
 func init() {
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	analyzer.RegisterAnalyzer(&gomodAnalyzer{})
 }
 

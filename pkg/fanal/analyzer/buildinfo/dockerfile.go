@@ -5,6 +5,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"github.com/moby/buildkit/frontend/dockerfile/instructions"
 	"github.com/moby/buildkit/frontend/dockerfile/parser"
@@ -13,9 +14,11 @@ import (
 
 	"github.com/aquasecurity/trivy/pkg/fanal/analyzer"
 	"github.com/aquasecurity/trivy/pkg/fanal/types"
+	"github.com/aquasecurity/trivy/pkg/bug"
 )
 
 func init() {
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	analyzer.RegisterAnalyzer(&dockerfileAnalyzer{})
 }
 

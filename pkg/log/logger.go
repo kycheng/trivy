@@ -3,6 +3,7 @@ package log
 import (
 	"os"
 	"runtime"
+	"time"
 
 	xlog "github.com/masahiro331/go-xfs-filesystem/log"
 	"go.uber.org/zap"
@@ -10,6 +11,7 @@ import (
 	"golang.org/x/xerrors"
 
 	dlog "github.com/aquasecurity/go-dep-parser/pkg/log"
+	"github.com/aquasecurity/trivy/pkg/bug"
 	flog "github.com/aquasecurity/trivy/pkg/fanal/log"
 )
 
@@ -20,6 +22,7 @@ var (
 )
 
 func init() {
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	// Set the default logger
 	Logger, _ = NewLogger(false, false) // nolint: errcheck
 }

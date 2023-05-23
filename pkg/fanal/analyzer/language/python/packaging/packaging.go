@@ -8,17 +8,20 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"golang.org/x/xerrors"
 
 	dio "github.com/aquasecurity/go-dep-parser/pkg/io"
 	"github.com/aquasecurity/go-dep-parser/pkg/python/packaging"
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/aquasecurity/trivy/pkg/fanal/analyzer"
 	"github.com/aquasecurity/trivy/pkg/fanal/analyzer/language"
 	"github.com/aquasecurity/trivy/pkg/fanal/types"
 )
 
 func init() {
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	analyzer.RegisterAnalyzer(&packagingAnalyzer{})
 }
 

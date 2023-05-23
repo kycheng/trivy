@@ -2,9 +2,11 @@ package token
 
 import (
 	"context"
+	"time"
 
 	"github.com/google/go-containerregistry/pkg/authn"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/aquasecurity/trivy/pkg/fanal/image/token/azure"
 	"github.com/aquasecurity/trivy/pkg/fanal/image/token/ecr"
 	"github.com/aquasecurity/trivy/pkg/fanal/image/token/google"
@@ -17,6 +19,7 @@ var (
 )
 
 func init() {
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	RegisterRegistry(&google.Registry{})
 	RegisterRegistry(&ecr.ECR{})
 	RegisterRegistry(&azure.Registry{})

@@ -5,17 +5,20 @@ import (
 	"context"
 	"os"
 	"regexp"
+	"time"
 
 	"golang.org/x/exp/slices"
 	"golang.org/x/xerrors"
 
 	ver "github.com/aquasecurity/go-version/pkg/version"
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/aquasecurity/trivy/pkg/fanal/analyzer"
 	aos "github.com/aquasecurity/trivy/pkg/fanal/analyzer/os"
 	"github.com/aquasecurity/trivy/pkg/fanal/types"
 )
 
 func init() {
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	analyzer.RegisterAnalyzer(&apkRepoAnalyzer{})
 }
 

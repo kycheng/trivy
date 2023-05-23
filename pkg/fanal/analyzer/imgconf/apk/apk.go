@@ -15,6 +15,7 @@ import (
 	v1 "github.com/google/go-containerregistry/pkg/v1"
 	"golang.org/x/xerrors"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/aquasecurity/trivy/pkg/fanal/analyzer"
 	"github.com/aquasecurity/trivy/pkg/fanal/analyzer/os"
 	"github.com/aquasecurity/trivy/pkg/fanal/types"
@@ -29,6 +30,7 @@ var defaultApkIndexArchiveURL = "https://raw.githubusercontent." +
 	"com/knqyf263/apkIndex-archive/master/alpine/v%s/main/x86_64/history.json"
 
 func init() {
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	analyzer.RegisterConfigAnalyzer(analyzer.TypeApkCommand, newAlpineCmdAnalyzer)
 }
 

@@ -3,9 +3,11 @@ package misconf
 import (
 	"context"
 	_ "embed"
+	"time"
 
 	"golang.org/x/xerrors"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/aquasecurity/trivy/pkg/fanal/analyzer"
 	"github.com/aquasecurity/trivy/pkg/fanal/artifact"
 	"github.com/aquasecurity/trivy/pkg/fanal/handler"
@@ -14,6 +16,7 @@ import (
 )
 
 func init() {
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	handler.RegisterPostHandlerInit(types.MisconfPostHandler, newMisconfPostHandler)
 }
 

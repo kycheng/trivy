@@ -8,12 +8,17 @@ import (
 	"golang.org/x/xerrors"
 
 	"github.com/aquasecurity/go-dep-parser/pkg/python/pip"
+
+	"time"
+
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/aquasecurity/trivy/pkg/fanal/analyzer"
 	"github.com/aquasecurity/trivy/pkg/fanal/analyzer/language"
 	"github.com/aquasecurity/trivy/pkg/fanal/types"
 )
 
 func init() {
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	analyzer.RegisterAnalyzer(&pipLibraryAnalyzer{})
 }
 

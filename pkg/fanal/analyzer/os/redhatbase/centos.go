@@ -5,7 +5,9 @@ import (
 	"context"
 	"os"
 	"strings"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/aquasecurity/trivy/pkg/fanal/analyzer"
 
 	"golang.org/x/xerrors"
@@ -18,6 +20,7 @@ import (
 const centosAnalyzerVersion = 1
 
 func init() {
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	analyzer.RegisterAnalyzer(&centOSAnalyzer{})
 }
 

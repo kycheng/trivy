@@ -3,7 +3,9 @@ package gomod
 import (
 	"context"
 	"path"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/aquasecurity/trivy/pkg/fanal/analyzer"
 	"github.com/aquasecurity/trivy/pkg/fanal/artifact"
 
@@ -14,6 +16,7 @@ import (
 )
 
 func init() {
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	handler.RegisterPostHandlerInit(types.GoModMergePostHandler, newGoModMergeHandler)
 }
 

@@ -8,11 +8,13 @@ import (
 	"path"
 	"sort"
 	"strings"
+	"time"
 
 	apkVersion "github.com/knqyf263/go-apk-version"
 	"github.com/samber/lo"
 	"golang.org/x/exp/slices"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/aquasecurity/trivy/pkg/fanal/analyzer"
 	"github.com/aquasecurity/trivy/pkg/fanal/types"
 	"github.com/aquasecurity/trivy/pkg/licensing"
@@ -20,6 +22,7 @@ import (
 )
 
 func init() {
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	analyzer.RegisterAnalyzer(&alpinePkgAnalyzer{})
 }
 

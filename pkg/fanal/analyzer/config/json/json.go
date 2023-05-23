@@ -5,14 +5,17 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"time"
 
 	"golang.org/x/xerrors"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/aquasecurity/trivy/pkg/fanal/analyzer"
 	"github.com/aquasecurity/trivy/pkg/fanal/types"
 )
 
 func init() {
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	analyzer.RegisterAnalyzer(&jsonConfigAnalyzer{})
 }
 

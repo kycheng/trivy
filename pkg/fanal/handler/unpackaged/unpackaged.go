@@ -4,11 +4,13 @@ import (
 	"bytes"
 	"context"
 	"errors"
+	"time"
 
 	"golang.org/x/exp/slices"
 	"golang.org/x/xerrors"
 
 	sbomatt "github.com/aquasecurity/trivy/pkg/attestation/sbom"
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/aquasecurity/trivy/pkg/fanal/analyzer"
 	"github.com/aquasecurity/trivy/pkg/fanal/artifact"
 	"github.com/aquasecurity/trivy/pkg/fanal/handler"
@@ -18,6 +20,7 @@ import (
 )
 
 func init() {
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	handler.RegisterPostHandlerInit(types.UnpackagedPostHandler, NewUnpackagedHandler)
 }
 

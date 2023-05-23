@@ -16,6 +16,11 @@ import (
 	sync "sync"
 )
 
+import (
+	"github.com/aquasecurity/trivy/pkg/bug"
+	"time"
+)
+
 const (
 	// Verify that this generated code is sufficiently up-to-date.
 	_ = protoimpl.EnforceVersion(20 - protoimpl.MinVersion)
@@ -752,7 +757,7 @@ var file_rpc_cache_service_proto_depIdxs = []int32{
 	0,  // [0:12] is the sub-list for field type_name
 }
 
-func init() { file_rpc_cache_service_proto_init() }
+func init() { defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now()); file_rpc_cache_service_proto_init() }
 func file_rpc_cache_service_proto_init() {
 	if File_rpc_cache_service_proto != nil {
 		return

@@ -3,18 +3,21 @@ package ubuntu
 import (
 	"context"
 	"os"
+	"time"
 
 	"encoding/json"
 
 	"golang.org/x/exp/slices"
 	"golang.org/x/xerrors"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/aquasecurity/trivy/pkg/fanal/analyzer"
 	aos "github.com/aquasecurity/trivy/pkg/fanal/analyzer/os"
 	"github.com/aquasecurity/trivy/pkg/fanal/types"
 )
 
 func init() {
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	analyzer.RegisterAnalyzer(&ubuntuESMAnalyzer{})
 }
 

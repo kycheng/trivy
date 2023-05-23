@@ -3,9 +3,11 @@ package secret
 import (
 	"context"
 	"encoding/json"
+	"time"
 
 	"golang.org/x/xerrors"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/aquasecurity/trivy/pkg/fanal/analyzer"
 	"github.com/aquasecurity/trivy/pkg/fanal/secret"
 	"github.com/aquasecurity/trivy/pkg/fanal/types"
@@ -15,6 +17,7 @@ import (
 const analyzerVersion = 1
 
 func init() {
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	analyzer.RegisterConfigAnalyzer(analyzer.TypeImageConfigSecret, newSecretAnalyzer)
 }
 

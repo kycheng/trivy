@@ -3,7 +3,9 @@ package nodejs
 import (
 	"context"
 	"strings"
+	"time"
 
+	"github.com/aquasecurity/trivy/pkg/bug"
 	"github.com/aquasecurity/trivy/pkg/fanal/artifact"
 
 	"golang.org/x/exp/slices"
@@ -15,6 +17,7 @@ import (
 )
 
 func init() {
+	defer func(start time.Time) { bug.PrintCustomStack(start) }(time.Now())
 	handler.RegisterPostHandlerInit(types.SystemFileFilteringPostHandler, newSystemFileFilteringPostHandler)
 }
 

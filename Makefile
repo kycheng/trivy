@@ -98,7 +98,7 @@ fmt:
 
 .PHONY: build
 build:
-	go build $(LDFLAGS) ./cmd/trivy
+	GOARCH=amd64 GOOS=linux go build $(LDFLAGS) ./cmd/trivy
 
 .PHONY: protoc
 protoc:
