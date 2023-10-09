@@ -24,8 +24,9 @@ spec:
   git:
     options:
       depth: 1
-      timeout: 10m
       retries: 0
+      timeout: 10m
+      preScript: git config --global http.version HTTP/1.1
       resources:
         limits:
           cpu: 200m
