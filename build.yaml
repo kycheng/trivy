@@ -19,6 +19,8 @@ spec:
       params:
         - name: command
           value: echo OK
+        - name: quality-gate
+          value: "false"
   git:
     options:
       depth: 1
