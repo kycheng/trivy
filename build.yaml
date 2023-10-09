@@ -24,7 +24,7 @@ spec:
   git:
     options:
       depth: 1
-      retries: 0
+      retries: 3
       timeout: 10m
       preScript: git config --global http.version HTTP/1.1
       resources:
