@@ -16,7 +16,11 @@ spec:
         - name: source
           workspace: source
       when: []
-      params: []
+      params:
+        - name: command
+          value: echo ok
+        - name: build-outputs-path
+          value: []
   git:
     options:
       depth: 1
