@@ -21,3 +21,16 @@
 # `github.com/moby/moby/v2` module path with a >=29.3.1 release.
 CVE-2026-34040
 CVE-2026-33997
+
+# CVE-2026-50163 (HIGH) - oras-go tar extraction: hardlink entry with relative
+# Linkname can escape the extract dir via process CWD resolution
+# (content/file/utils.go ensureLinkPath).
+#
+# No fixed version is published upstream as of 2026-07-06: the advisory lists
+# oras.land/oras-go/v2 as "affected" with FixedVersion empty, and v2.6.1 (the
+# latest release, already in use here) does not carry the fix. There is no
+# clean version to upgrade to.
+#
+# Re-check trigger: drop this entry once oras-project/oras-go ships a release
+# that lists a FixedVersion for CVE-2026-50163.
+CVE-2026-50163
