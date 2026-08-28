@@ -22,8 +22,12 @@ func tryRemote(ctx context.Context, imageName string, ref name.Reference, option
 		return nil, cleanup, err
 	}
 	// ArtifactType being non-empty indicates this is not a regular container image
-	// (e.g., Helm charts, WASM modules, or other OCI artifacts)
-	if desc.ArtifactType != "" {
+	// (e.g., Helm charts, WASM modules, or other OCI artifacts).
+	// go-containerregistry >= v0.21 populates ArtifactType with the config media
+	// type for standard Docker v2 / OCI images, so treat those as regular images.
+	if desc.ArtifactType != "" &&
+		desc.ArtifactType != "application/vnd.docker.container.image.v1+json" &&
+		desc.ArtifactType != "application/vnd.oci.image.config.v1+json" {
 		return nil, cleanup, xerrors.Errorf("unsupported artifact type %q for image %q", desc.ArtifactType, imageName)
 	}
 	img, err := desc.Image()
